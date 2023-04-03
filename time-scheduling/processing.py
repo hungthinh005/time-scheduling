@@ -50,7 +50,8 @@ def load_file():
     with col1:
         col1.write(df1[['course_id', 'course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
     with col2:
-        st.experimental_data_editor(df_room)
+        df_room = st.experimental_data_editor(df_room)
+        st.write(df_room)
 
     df_room['Lab'] = df_room['Lab'].astype(str)
     for index, row in df_room.iterrows():
