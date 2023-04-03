@@ -48,8 +48,7 @@ def load_file():
     room_columns = ['room', 'size', 'Lab']
     df_room = pd.DataFrame(room_default, columns=room_columns)
 
-    df_room = st.experimental_data_editor(df_room)
-    col2.write(df_room)
+    col2.df_room = st.experimental_data_editor(df_room)
 
     df_room['Lab'] = df_room['Lab'].astype(str)
     for index, row in df_room.iterrows():
