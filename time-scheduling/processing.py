@@ -46,7 +46,7 @@ def load_file():
     room_columns = ['room', 'size', 'Lab']
     df_room = pd.DataFrame(room_default, columns=room_columns)
 
-    col1, col2 = st.columns(5)
+    col1, col2 = st.columns(2)
     with col1:
         col1.write(df1[['course_id', 'course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
     with col2:
