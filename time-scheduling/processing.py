@@ -18,8 +18,9 @@ def load_file():
     df = pd.DataFrame(df)
     df1 = df[['MaMH', 'TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
     df1 = df1.rename(columns={'MaMH': 'course_id', 'TenMH': 'course_name','ToTH': 'Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name' })
-    col1, col2 = st.columns([5,5])
-    col1.write(df1)
+    col1, col2 = st.columns(5)
+    with col1:
+        col1.write(df1)
     df1['Lab'] = df1['Lab'].fillna(0)
     df1['Lab'] = df1['Lab'].astype(str)
     df1['prof_id'] = df1['prof_id'].astype(int)
@@ -47,8 +48,8 @@ def load_file():
     ]
     room_columns = ['room', 'size', 'Lab']
     df_room = pd.DataFrame(room_default, columns=room_columns)
-
-    col2.df_room = st.experimental_data_editor(df_room)
+    with col2:
+        st.experimental_data_editor(df_room)
 
     df_room['Lab'] = df_room['Lab'].astype(str)
     for index, row in df_room.iterrows():
