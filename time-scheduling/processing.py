@@ -46,12 +46,7 @@ def load_file():
     room_columns = ['room', 'size', 'Lab']
     df_room = pd.DataFrame(room_default, columns=room_columns)
 
-    col1, col2 = st.columns(2)
-    with col1:
-        col1.write(df1[['course_id', 'course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
-    with col2:
-        df_room = st.experimental_data_editor(df_room)
-        st.write(df_room)
+    
 
     df_room['Lab'] = df_room['Lab'].astype(str)
     for index, row in df_room.iterrows():
@@ -61,7 +56,11 @@ def load_file():
             df_room.at[index, 'Lab'] = ''
     df_room['Lab'] = df_room['Lab'].astype(bool)
 
-
+    col1, col2 = st.columns(2)
+    with col1:
+        col1.write(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
+    with col2:
+        df_room = st.experimental_data_editor(df_room)
 
     # create list of dictionaries representing each object in the JSON file
     objects = []
