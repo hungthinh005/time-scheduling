@@ -49,7 +49,7 @@ def load_file():
     df_room = pd.DataFrame(room_default, columns=room_columns)
 
     df_room = st.experimental_data_editor(df_room)
-    st.write(df_room)
+    col2.write(df_room)
 
     df_room['Lab'] = df_room['Lab'].astype(str)
     for index, row in df_room.iterrows():
