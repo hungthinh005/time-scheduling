@@ -1,0 +1,441 @@
+[
+	{
+		"prof": {
+			"id": 1,
+			"name": "Tran Tien Khoa"
+		}
+	},
+	{
+		"prof": {
+			"id": 2,
+			"name": "Le Ngoc Anh Khoa"
+		}
+	},
+	{
+		"prof": {
+			"id": 3,
+			"name": "Phung Phuong Linh"
+		}
+	},
+	{
+		"prof": {
+			"id": 4,
+			"name": "Nguyen Thi Le Ha"
+		}
+	},
+	{
+		"prof": {
+			"id": 5,
+			"name": "Le Hong Nhung"
+		}
+	},
+	{
+		"prof": {
+			"id": 6,
+			"name": "Tran Tien Khoa1"
+		}
+	},
+	{
+		"prof": {
+			"id": 7,
+			"name": "Le Ngoc Anh Khoa1"
+		}
+	},
+	{
+		"prof": {
+			"id": 8,
+			"name": "Phung Phuong Linh1"
+		}
+	},
+	{
+		"prof": {
+			"id": 9,
+			"name": "Nguyen Thi Le Ha1"
+		}
+	},
+	{
+		"prof": {
+			"id": 10,
+			"name": "Le Hong Nhung1"
+		}
+	},
+	{
+		"prof": {
+			"id": 11,
+			"name": "Tran Tien Khoa2"
+		}
+	},
+	{
+		"prof": {
+			"id": 12,
+			"name": "Le Ngoc Anh Khoa2"
+		}
+	},
+	{
+		"prof": {
+			"id": 13,
+			"name": "Phung Phuong Linh2"
+		}
+	},
+	{
+		"prof": {
+			"id": 14,
+			"name": "Nguyen Thi Le Ha2"
+		}
+	},
+	{
+		"prof": {
+			"id": 15,
+			"name": "Le Hong Nhung2"
+		}
+	},
+	{
+		"course": {
+			"id": 1,
+			"name": "Principles of Marketing (1)"
+		}
+	},
+	{
+		"course": {
+			"id": 2,
+			"name": "Financial Accounting (2)"
+		}
+	},
+	{
+		"course": {
+			"id": 3,
+			"name": "Business Communication (3)"
+		}
+	},
+	{
+		"course": {
+			"id": 4,
+			"name": "Managerial Accounting (4)"
+		}
+	},
+	{
+		"course": {
+			"id": 5,
+			"name": "Fundamentals of Financial Management (5)"
+		}
+	},
+	
+	{
+		"course": {
+			"id": 6,
+			"name": "Principles of Marketing (6)"
+		}
+	},
+	{
+		"course": {
+			"id": 7,
+			"name": "Financial Accounting (7)"
+		}
+	},
+	{
+		"course": {
+			"id": 8,
+			"name": "Business Communication (8)"
+		}
+	},
+	{
+		"course": {
+			"id": 9,
+			"name": "Managerial Accounting (9)"
+		}
+	},
+	{
+		"course": {
+			"id": 10,
+			"name": "Fundamentals of Financial Management (10)"
+		}
+	},
+	
+	{
+		"course": {
+			"id": 11,
+			"name": "Principles of Marketing (11)"
+		}
+	},
+	{
+		"course": {
+			"id": 12,
+			"name": "Financial Accounting (12)"
+		}
+	},
+	{
+		"course": {
+			"id": 13,
+			"name": "Business Communication (13)"
+		}
+	},
+	{
+		"course": {
+			"id": 14,
+			"name": "Managerial Accounting (14)"
+		}
+	},
+	{
+		"course": {
+			"id": 15,
+			"name": "Fundamentals of Financial Management (15)"
+		}
+	},
+	{
+		"room": {
+			"name": "A1",
+			"lab": true,
+			"size": 24
+		}
+	},
+	{
+		"room": {
+			"name": "A3",
+			"lab": false,
+			"size": 60
+		}
+	},
+	{
+		"room": {
+			"name": "A2",
+			"lab": true,
+			"size": 24
+		}
+	},
+	{
+		"room": {
+			"name": "A4",
+			"lab": false,
+			"size": 60
+		}
+	},
+	{
+		"class": {
+			"professor": 1,
+			"course": 1,
+			"duration": 3
+		}
+	},
+	{
+		"class": {
+			"professor": 2,
+			"course": 2,
+			"duration": 3
+		}
+	},
+	{
+		"class": {
+			"professor": 3,
+			"course": 3,
+			"duration": 3
+
+		}
+	},
+	{
+		"class": {
+			"professor": 4,
+			"course": 4,
+			"duration": 3
+
+		}
+	},
+	{
+		"class": {
+			"professor": 5,
+			"course": 5,
+			"duration": 4,
+			"lab": true
+		}
+	},
+	
+	{
+		"class": {
+			"professor": 6,
+			"course": 6,
+			"duration": 3
+		}
+	},
+	{
+		"class": {
+			"professor": 7,
+			"course": 7,
+			"duration": 3
+		}
+	},
+	{
+		"class": {
+			"professor": 8,
+			"course": 8,
+			"duration": 3
+
+		}
+	},
+	{
+		"class": {
+			"professor": 9,
+			"course": 9,
+			"duration": 3
+
+		}
+	},
+	{
+		"class": {
+			"professor": 10,
+			"course": 10,
+			"duration": 4,
+			"lab": true
+		}
+	},
+	{
+		"class": {
+			"professor": 11,
+			"course": 11,
+			"duration": 3
+		}
+	},
+	{
+		"class": {
+			"professor": 12,
+			"course": 12,
+			"duration": 3
+		}
+	},
+	{
+		"class": {
+			"professor": 13,
+			"course": 13,
+			"duration": 3
+
+		}
+	},
+	{
+		"class": {
+			"professor": 14,
+			"course": 14,
+			"duration": 3
+
+		}
+	},
+	{
+		"class": {
+			"professor": 15,
+			"course": 15,
+			"duration": 4,
+			"lab": true
+		}
+	},
+	{
+		"class": {
+			"professor": 11,
+			"course": 11,
+			"duration": 3
+		}
+	},
+	{
+		"class": {
+			"professor": 12,
+			"course": 12,
+			"duration": 3
+		}
+	},
+	{
+		"class": {
+			"professor": 13,
+			"course": 13,
+			"duration": 3
+
+		}
+	},
+	{
+		"class": {
+			"professor": 14,
+			"course": 14,
+			"duration": 3
+
+		}
+	},
+	{
+		"class": {
+			"professor": 15,
+			"course": 15,
+			"duration": 4,
+			"lab": true
+		}
+	},
+	{
+		"class": {
+			"professor": 11,
+			"course": 11,
+			"duration": 3
+		}
+	},
+	{
+		"class": {
+			"professor": 12,
+			"course": 12,
+			"duration": 3
+		}
+	},
+	{
+		"class": {
+			"professor": 13,
+			"course": 13,
+			"duration": 3
+
+		}
+	},
+	{
+		"class": {
+			"professor": 14,
+			"course": 14,
+			"duration": 3
+
+		}
+	},
+	{
+		"class": {
+			"professor": 15,
+			"course": 15,
+			"duration": 4,
+			"lab": true
+		}
+	},
+	{
+		"class": {
+			"professor": 11,
+			"course": 11,
+			"duration": 3
+		}
+	},
+	{
+		"class": {
+			"professor": 12,
+			"course": 12,
+			"duration": 3
+		}
+	},
+	{
+		"class": {
+			"professor": 13,
+			"course": 13,
+			"duration": 3
+
+		}
+	},
+	{
+		"class": {
+			"professor": 14,
+			"course": 14,
+			"duration": 3
+
+		}
+	},
+	{
+		"class": {
+			"professor": 15,
+			"course": 15,
+			"duration": 4,
+			"lab": true
+		}
+	}
+]
