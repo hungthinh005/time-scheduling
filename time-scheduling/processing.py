@@ -85,7 +85,7 @@ def load_file():
 
     with col2:
         with st.expander("Edit your data"):
-            col3, col4 = st.columns(2)
+            col3, col4 = st.columns(4)
             with col3:
                 st.experimental_data_editor(data_input, num_rows="dynamic")
             with col4:
