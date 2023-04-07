@@ -21,70 +21,63 @@ def load_file():
 
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
+    
+        df = pd.DataFrame(df)
+        df1 = df[['MaMH', 'TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
+        df1 = df1.rename(columns={'MaMH': 'course_id', 'TenMH': 'course_name','ToTH': 'Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name' })
+        df1['Lab'] = df1['Lab'].fillna(0)
+        df1['Lab'] = df1['Lab'].astype(str)
+        df1['prof_id'] = df1['prof_id'].astype(int)
+        df1['course_id'] = df1['course_id'].astype(int)
+
+        for index, row in df1.iterrows():
+            if row['Lab'] == '1.0' or row['Lab'] == '2.0' or row['Lab'] == '3.0' or row['Lab'] == '4.0':
+                df1.at[index, 'Lab'] = 'True'
+            else:
+                df1.at[index, 'Lab'] = ''
+                
+        df1['Lab'] = df1['Lab'].astype(bool)
+        df1.reset_index(inplace=True)
+        df1 = df1.rename(columns={'index': 'group_id'})
+        df1['group_id'] = np.arange(1, len(df) + 1)
+        st.write(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
     else:
-        st.write("Upload Your File")
-    
-    df = pd.DataFrame(df)
-    df1 = df[['MaMH', 'TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
-    df1 = df1.rename(columns={'MaMH': 'course_id', 'TenMH': 'course_name','ToTH': 'Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name' })
-    df1['Lab'] = df1['Lab'].fillna(0)
-    df1['Lab'] = df1['Lab'].astype(str)
-    df1['prof_id'] = df1['prof_id'].astype(int)
-    df1['course_id'] = df1['course_id'].astype(int)
-
-    for index, row in df1.iterrows():
-        if row['Lab'] == '1.0' or row['Lab'] == '2.0' or row['Lab'] == '3.0' or row['Lab'] == '4.0':
-            df1.at[index, 'Lab'] = 'True'
-        else:
-            df1.at[index, 'Lab'] = ''
-            
-    df1['Lab'] = df1['Lab'].astype(bool)
-    df1.reset_index(inplace=True)
-    df1 = df1.rename(columns={'index': 'group_id'})
-    df1['group_id'] = np.arange(1, len(df) + 1)
-
-
     ## create default room
-    room_default = [['A1.309', 90, 0],
-                    ['L107', 40, 0],
-                    ['A2.401', 40, 0],
-                    ['LA1.605', 35, 1],
-                    ['La1.606', 35, 1]
-    ]
-    room_columns = ['room', 'size', 'Lab']
-    df_room = pd.DataFrame(room_default, columns=room_columns)
+        # room_default = [['A1.309', 90, 0],
+        #                 ['L107', 40, 0],
+        #                 ['A2.401', 40, 0],
+        #                 ['LA1.605', 35, 1],
+        #                 ['La1.606', 35, 1]
+        # ]
+        # room_columns = ['room', 'size', 'Lab']
+        # df_room = pd.DataFrame(room_default, columns=room_columns)
 
 
-    ##data input instead of data csv file
-    data_input = [['Data Mining', True, 90, 4, 1, "Nguyen Thi Thanh Sang"]
-                  ,['AOD', True, 90, 4, 1, "Nguyen Thi Thanh Sang"]]
-    room_columns = ['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']
-    data_input = pd.DataFrame(data_input, columns=room_columns)
+        ##data input instead of data csv file
+        df1 = [['Data Mining', True, "A1.605", 35, 4, 1, "Nguyen Thi Thanh Sang"]
+                    ,['AOD', True, "A1.606", 35, 4, 1, "Nguyen Thi Thanh Sang"]
+                    ,['Introduction of Programming', False, "A1.606", 90, 3, 1, "Nguyen Thi Thanh Sang"]]
+        room_columns = ['course_name', 'Lab', 'room', 'size', 'duration', 'prof_id', 'prof_name']
+        df1 = pd.DataFrame(df1, columns=room_columns)
 
 
 
 
-    df_room['Lab'] = df_room['Lab'].astype(str)
-    for index, row in df_room.iterrows():
-        if row['Lab'] == '1':
-            df_room.at[index, 'Lab'] = 'True'
-        else:
-            df_room.at[index, 'Lab'] = ''
-    df_room['Lab'] = df_room['Lab'].astype(bool)
+        df1['Lab'] = df1['Lab'].astype(str)
+        for index, row in df1.iterrows():
+            if row['Lab'] == '1':
+                df1.at[index, 'Lab'] = 'True'
+            else:
+                df1.at[index, 'Lab'] = ''
+        df1['Lab'] = df1['Lab'].astype(bool)
 
 
-    
-    col1, col2 = st.columns(2)
-    with col1:
-        col1.write(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
-
-    with col2:
         with st.expander("Edit your data"):
-            col3, col4 = st.columns([4,2])
+            col3, col4 = st.columns(2)
             with col3:
-                st.experimental_data_editor(data_input, num_rows="dynamic")
+                st.experimental_data_editor(df1, num_rows="dynamic")
             with col4:
-                st.experimental_data_editor(df_room, num_rows="dynamic")
+                st.experimental_data_editor(df1, num_rows="dynamic")
 
     # create list of dictionaries representing each object in the JSON file
     objects = []
@@ -136,7 +129,7 @@ def load_file():
             if class_ not in objects:
                 objects.append(class_)
             
-    for index, row in df_room.iterrows():
+    for index, row in df1.iterrows():
         if row['room'] != '':
             # create room object
             room = {
