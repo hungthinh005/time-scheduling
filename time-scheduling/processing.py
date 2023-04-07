@@ -9,7 +9,7 @@ import traceback
 with st.sidebar:
     option = st.radio(
     "Which option do you want to",
-    ('Typing Data', 'Upload File'))   
+    ('Upload File', 'Typing Data'))   
     st.write('You selected ' + option)
 
 
@@ -151,9 +151,6 @@ def load_file():
 
     # write JSON object to file
     with open('GaSchedule1.json', 'w') as f:
-        if option == "Typing Data":
-            f.write(data_input)
-        else:
             f.write(json_data) 
         
 
