@@ -21,6 +21,8 @@ def load_file():
 
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
+    else:
+        st.write("Upload Your File")
     
     df = pd.DataFrame(df)
     df1 = df[['MaMH', 'TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
