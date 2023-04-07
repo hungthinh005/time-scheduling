@@ -30,7 +30,7 @@ def load_file():
     # df1['Lab'] = df1['ToTH'].fillna(0)
     df1['Lab'] = df1['ToTH_Lab'].astype(str)
     df1['prof_id'] = df1['prof_id'].astype(int)
-    df1['course_id'] = df1['course_id'].astype(int)
+    # df1['course_id'] = df1['course_id'].astype(int)
 
     
     for index, row in df1.iterrows():
