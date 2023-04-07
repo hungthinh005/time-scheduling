@@ -40,8 +40,8 @@ def load_file():
             df1.at[index, 'Lab'] = ''
             
     df1['Lab'] = df1['Lab'].astype(bool)
-    df1.reset_index(inplace=True)
-    df1 = df1.rename(columns={'index': 'group_id'})
+    # df1.reset_index(inplace=True)
+    # df1 = df1.rename(columns={'index': 'group_id'})
     # df1['group_id'] = np.arange(1, len(df) + 1)
 
 
@@ -81,6 +81,8 @@ def load_file():
         df1['course_id'] = df1.sort_values(['ToTH_Lab', 'size', 'duration', 'prof_id', 'prof_name'], ascending=[True,False]) \
             .groupby(['course_name']) \
             .cumcount() + 1
+        df1.reset_index(inplace=True)
+        df1 = df1.rename(columns={'index': 'group_id'})
         df1['group_id'] = np.arange(1, len(df1) + 1)
     with col2:
         with st.expander("Edit your data"):
