@@ -18,9 +18,8 @@ def load_file():
     st.title('Time Scheduling Engine')
 
     if option == "Typing Data":
-        key_disable = True
-    else:
-        key_disable = False
+        key_disable = "disable"
+
         uploaded_file = st.file_uploader("Choose a file", disabled=key_disable)
 
         if uploaded_file is not None:
