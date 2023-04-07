@@ -25,8 +25,8 @@ def load_file():
         uploaded_file = st.file_uploader("Choose a file", key="visibility",
         disabled=key_display)
     
-    if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file)
+        if uploaded_file is not None:
+            df = pd.read_csv(uploaded_file)
     
     # df = pd.read_csv("TKB HKI 2017-2018.csv")
     df = pd.DataFrame(df)
