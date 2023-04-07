@@ -6,28 +6,26 @@ from ConsoleApp import main
 import sys
 import traceback
 
+with st.sidebar:
+    option = st.radio(
+    "Which option do you want to",
+    ('Typing Data', 'Upload File'))   
+    st.write('You selected ' + option)
+
 
 ##load file and processing data
-
 def load_file():
     st.title('Time Scheduling Engine')
-    # if "visibility" not in st.session_state:
-    #     st.session_state.visibility = "visible"
-    #     st.session_state.disabled = False
 
-    # col1, col2 = st.columns(2)
-    # with col1:
-    #     option = st.radio("Which option do you want to", ("Typing Data", "Upload File"))
-    #     if option == "Typing Data":
-    #         key_display = True
-            
-    # with col2:
-    uploaded_file = st.file_uploader("Choose a file", key="visibility")
+    if option == "Typing Data":
+        key_disable = True
+    else:
+        key_disable = False
+        uploaded_file = st.file_uploader("Choose a file", disabled=key_disable)
 
-    if uploaded_file is not None:
-        df = pd.read_csv(uploaded_file)
+        if uploaded_file is not None:
+            df = pd.read_csv(uploaded_file)
     
-    # df = pd.read_csv("TKB HKI 2017-2018.csv")
     df = pd.DataFrame(df)
     df1 = df[['MaMH', 'TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
     df1 = df1.rename(columns={'MaMH': 'course_id', 'TenMH': 'course_name','ToTH': 'Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name' })
@@ -46,7 +44,6 @@ def load_file():
     df1.reset_index(inplace=True)
     df1 = df1.rename(columns={'index': 'group_id'})
     df1['group_id'] = np.arange(1, len(df) + 1)
-
 
 
     ## create default room
@@ -158,7 +155,11 @@ def load_file():
 
     # write JSON object to file
     with open('GaSchedule1.json', 'w') as f:
-            f.write(json_data)
+        if option == "Typing Data":
+            f.write(data_input)
+        else:
+            f.write(json_data) 
+        
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
