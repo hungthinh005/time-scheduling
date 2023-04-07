@@ -41,6 +41,57 @@ def load_file():
         df1 = df1.rename(columns={'index': 'group_id'})
         df1['group_id'] = np.arange(1, len(df) + 1)
         st.write(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
+
+
+
+        objects = []
+        for index, row in df1.iterrows():
+            if row['prof_id'] != '':
+                # create professor object
+                prof = {
+                    "prof": {
+                        "id": row['prof_id'],
+                        "name": row['prof_name']
+                    }
+                }
+                if prof not in objects:
+                    objects.append(prof)
+
+            if row['course_id'] != '':
+                # create course object
+                course = {
+                    "course": {
+                        "id": row['course_id'],
+                        "name": row['course_name']
+                    }
+                }
+                if course not in objects:
+                    objects.append(course)
+
+            if row['group_id'] != '':
+                # create group object
+                group = {
+                    "group": {
+                        "id": row['group_id'],
+                        "size": row['size']
+                    }
+                }
+                if group not in objects:
+                    objects.append(group)
+                    
+            if row['prof_id'] != '' and row['course_id'] != '':
+                # create class object
+                class_ = {
+                    "class": {
+                        "professor": row['prof_id'],
+                        "course": row['course_id'],
+                        "duration": row['duration'],
+                        "group": row['group_id'],
+                        "lab": row['Lab']
+                    }
+                }
+                if class_ not in objects:
+                    objects.append(class_)
     else:
     ## create default room
         # room_default = [['A1.309', 90, 0],
@@ -59,6 +110,9 @@ def load_file():
                     ,['Introduction of Programming', False, "A1.606", 90, 3, 1, "Nguyen Thi Thanh Sang"]]
         room_columns = ['course_name', 'Lab', 'room', 'size', 'duration', 'prof_id', 'prof_name']
         df1 = pd.DataFrame(df1, columns=room_columns)
+        df1.reset_index(inplace=True)
+        df1 = df1.rename(columns={'index': 'group_id'})
+        df1['group_id'] = np.arange(1, len(df) + 1)
 
 
 
@@ -80,66 +134,65 @@ def load_file():
                 st.experimental_data_editor(df1, num_rows="dynamic")
 
     # create list of dictionaries representing each object in the JSON file
-    objects = []
-    for index, row in df1.iterrows():
-        if row['prof_id'] != '':
-            # create professor object
-            prof = {
-                "prof": {
-                    "id": row['prof_id'],
-                    "name": row['prof_name']
+        objects = []
+        for index, row in df1.iterrows():
+            if row['prof_id'] != '':
+                # create professor object
+                prof = {
+                    "prof": {
+                        "id": row['prof_id'],
+                        "name": row['prof_name']
+                    }
                 }
-            }
-            if prof not in objects:
-                objects.append(prof)
+                if prof not in objects:
+                    objects.append(prof)
 
-        if row['course_id'] != '':
-            # create course object
-            course = {
-                "course": {
-                    "id": row['course_id'],
-                    "name": row['course_name']
+            if row['course_id'] != '':
+                # create course object
+                course = {
+                    "course": {
+                        "id": row['course_id'],
+                        "name": row['course_name']
+                    }
                 }
-            }
-            if course not in objects:
-                objects.append(course)
+                if course not in objects:
+                    objects.append(course)
 
-        if row['group_id'] != '':
-            # create group object
-            group = {
-                "group": {
-                    "id": row['group_id'],
-                    "size": row['size']
+            if row['group_id'] != '':
+                    # create group object
+                    group = {
+                        "group": {
+                            "id": row['group_id'],
+                            "size": row['size']
+                        }
+                    }
+                    if group not in objects:
+                        objects.append(group)
+
+            if row['prof_id'] != '' and row['course_id'] != '':
+                # create class object
+                class_ = {
+                    "class": {
+                        "professor": row['prof_id'],
+                        "course": row['course_id'],
+                        "duration": row['duration'],
+                        "group": row['group_id'],
+                        "lab": row['Lab']
+                    }
                 }
-            }
-            if group not in objects:
-                objects.append(group)
+                if class_ not in objects:
+                    objects.append(class_)
                 
-        if row['prof_id'] != '' and row['course_id'] != '':
-            # create class object
-            class_ = {
-                "class": {
-                    "professor": row['prof_id'],
-                    "course": row['course_id'],
-                    "duration": row['duration'],
-                    "group": row['group_id'],
-                    "lab": row['Lab']
+            if row['room'] != '':
+                # create room object
+                room = {
+                    "room": {
+                        "name": row['room'],
+                        "lab": row['Lab'],
+                        "size": row['size']
+                    }
                 }
-            }
-            if class_ not in objects:
-                objects.append(class_)
-            
-    for index, row in df1.iterrows():
-        if row['room'] != '':
-            # create room object
-            room = {
-                "room": {
-                    "name": row['room'],
-                    "lab": row['Lab'],
-                    "size": row['size']
-                }
-            }
-            objects.append(room)    
+                objects.append(room)    
             
     # create JSON object with list of objects
     json_data = json.dumps(objects, sort_keys=False)
