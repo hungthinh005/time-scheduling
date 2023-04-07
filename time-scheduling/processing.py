@@ -43,7 +43,7 @@ def load_file():
     df1.reset_index(inplace=True)
     df1 = df1.rename(columns={'index': 'group_id'})
     df1['group_id'] = np.arange(1, len(df) + 1)
-
+    df1['Rank'] = df1.groupby(by=['course_name'])['group_id'].transform(lambda x: x.rank())
 
     ## create default room
     room_default = [['A1.309', 90, 0],
