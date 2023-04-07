@@ -20,10 +20,10 @@ def load_file():
     if option == "Typing Data":
         key_disable = "disable"
 
-        uploaded_file = st.file_uploader("Choose a file", disabled=key_disable)
+    uploaded_file = st.file_uploader("Choose a file", disabled=key_disable)
 
-        if uploaded_file is not None:
-            df = pd.read_csv(uploaded_file)
+    if uploaded_file is not None:
+        df = pd.read_csv(uploaded_file)
     
     df = pd.DataFrame(df)
     df1 = df[['MaMH', 'TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
