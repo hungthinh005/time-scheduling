@@ -8,25 +8,24 @@ import traceback
 
 
 ##load file and processing data
-st.title('Time Scheduling Engine')
-def load_file():
 
+def load_file():
+    st.title('Time Scheduling Engine')
     # if "visibility" not in st.session_state:
     #     st.session_state.visibility = "visible"
     #     st.session_state.disabled = False
 
-    col1, col2 = st.columns(2)
-    with col1:
-        option = st.radio("Which option do you want to", ("Typing Data", "Upload File"))
-        if option == "Typing Data":
-            key_display = True
+    # col1, col2 = st.columns(2)
+    # with col1:
+    #     option = st.radio("Which option do you want to", ("Typing Data", "Upload File"))
+    #     if option == "Typing Data":
+    #         key_display = True
             
-    with col2:
-        uploaded_file = st.file_uploader("Choose a file", key="visibility",
-        disabled=key_display)
-    
-        if uploaded_file is not None:
-            df = pd.read_csv(uploaded_file)
+    # with col2:
+    uploaded_file = st.file_uploader("Choose a file", key="visibility")
+
+    if uploaded_file is not None:
+        df = pd.read_csv(uploaded_file)
     
     # df = pd.read_csv("TKB HKI 2017-2018.csv")
     df = pd.DataFrame(df)
@@ -84,13 +83,13 @@ def load_file():
     with col1:
         col1.write(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
 
-    
-    with st.expander("Edit your data"):
-        col3, col4 = st.columns(2)
-        with col3:
-            st.experimental_data_editor(data_input, num_rows="dynamic")
-        with col4:
-            st.experimental_data_editor(df_room, num_rows="dynamic")
+    with col2:
+        with st.expander("Edit your data"):
+            col3, col4 = st.columns(2)
+            with col3:
+                st.experimental_data_editor(data_input, num_rows="dynamic")
+            with col4:
+                st.experimental_data_editor(df_room, num_rows="dynamic")
 
     # create list of dictionaries representing each object in the JSON file
     objects = []
@@ -159,9 +158,6 @@ def load_file():
 
     # write JSON object to file
     with open('GaSchedule1.json', 'w') as f:
-        if option == "Typing Data":
-            f.write(data_input)
-        else:
             f.write(json_data)
 
 st.set_page_config(layout="wide")
