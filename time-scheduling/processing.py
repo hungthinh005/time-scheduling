@@ -17,10 +17,7 @@ with st.sidebar:
 def load_file():
     st.title('Time Scheduling Engine')
 
-    if option == "Typing Data":
-        key_disable = "disable"
-
-    uploaded_file = st.file_uploader("Choose a file", disabled=key_disable)
+    uploaded_file = st.file_uploader("Choose a file")
 
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
