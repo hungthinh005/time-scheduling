@@ -25,7 +25,7 @@ def load_file():
     
     df = pd.DataFrame(df)
     df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
-    df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name' })
+    df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name'})
     
     # df1['Lab'] = df1['ToTH'].fillna(0)
     df1['Lab'] = df1['ToTH_Lab'].astype(str)
@@ -78,7 +78,7 @@ def load_file():
     col1, col2 = st.columns(2)
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
-        df1['course_id'] = df1.sort_values(['course_name'], ascending=[True,False]) \
+        df1['course_id'] = df1.sort_values(['ToTH_Lab', 'size', 'duration', 'prof_id', 'prof_name'], ascending=[True,False]) \
             .groupby(['course_name']) \
             .cumcount() + 1
         df1['group_id'] = np.arange(1, len(df1) + 1)
