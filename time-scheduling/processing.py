@@ -58,9 +58,10 @@ def load_file():
 
     col1, col2 = st.columns(2)
     with col1:
-        col1.write(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
+        # col1.write(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
+        st.experimental_data_editor(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']], num_rows="dynamic")
     with col2:
-        df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
+        st.experimental_data_editor(df_room, num_rows="dynamic")
 
     # create list of dictionaries representing each object in the JSON file
     objects = []
