@@ -8,12 +8,22 @@ import traceback
 
 
 ##load file and processing data
-
+st.title('Time Scheduling Engine')
 def load_file():
-    uploaded_file = st.file_uploader("Choose a file")
+
+    if "visibility" not in st.session_state:
+        st.session_state.visibility = "visible"
+        st.session_state.disabled = False
+
+    col1, col2 = st.columns(2)
+    with col1:
+        st.checkbox("Typing Data", key="disabled")
+    uploaded_file = st.file_uploader("Choose a file", key="visibility", label_visibility=st.session_state.visibility,
+        disabled=st.session_state.disabled)
+    
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
-
+    
     # df = pd.read_csv("TKB HKI 2017-2018.csv")
     df = pd.DataFrame(df)
     df1 = df[['MaMH', 'TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
@@ -65,18 +75,18 @@ def load_file():
     df_room['Lab'] = df_room['Lab'].astype(bool)
 
 
-    option = st.selectbox(
-    'Which option do you want to?',
-    ('Typing', 'Upload File'))
-
-    st.write('You selected:', option)
-    col1, col2, col3 = st.columns(2)
+    
+    col1, col2 = st.columns(2)
     with col1:
         col1.write(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
-    with col2:
-        st.experimental_data_editor(data_input, num_rows="dynamic")
-    with col3:
-        st.experimental_data_editor(df_room, num_rows="dynamic")
+
+    
+    with st.expander("Edit your data"):
+        col3, col4 = st.columns(2)
+        with col3:
+            st.experimental_data_editor(data_input, num_rows="dynamic")
+        with col4:
+            st.experimental_data_editor(df_room, num_rows="dynamic")
 
     # create list of dictionaries representing each object in the JSON file
     objects = []
@@ -146,9 +156,9 @@ def load_file():
     # write JSON object to file
     with open('GaSchedule1.json', 'w') as f:
         if option == "Typing":
-            f.write(json_data)
-        else:
             f.write(data_input)
+        else:
+            f.write(json_data)
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
