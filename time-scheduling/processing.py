@@ -24,10 +24,11 @@ def load_file():
 
     
     df = pd.DataFrame(df)
-    df1 = df[['MaMH', 'TenMH', 'ToTH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
-    df1 = df1.rename(columns={'MaMH': 'course_id', 'TenMH': 'course_name','ToTH': 'ToTH', 'ToTH': 'Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name' })
-    df1['Lab'] = df1['Lab'].fillna(0)
-    df1['Lab'] = df1['Lab'].astype(str)
+    df1 = df[['MaMH', 'TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
+    df1 = df1.rename(columns={'MaMH': 'course_id', 'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name' })
+    
+    # df1['Lab'] = df1['ToTH'].fillna(0)
+    df1['Lab'] = df1['ToTH_Lab'].astype(str)
     df1['prof_id'] = df1['prof_id'].astype(int)
     df1['course_id'] = df1['course_id'].astype(int)
 
@@ -75,7 +76,7 @@ def load_file():
     
     col1, col2 = st.columns(2)
     with col1:
-        col1.write(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
+        col1.write(df1[['course_name', 'Lab', 'ToTH_Lab', 'size', 'duration', 'prof_id', 'prof_name']])
 
     with col2:
         with st.expander("Edit your data"):
