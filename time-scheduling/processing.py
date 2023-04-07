@@ -6,11 +6,11 @@ from ConsoleApp import main
 import sys
 import traceback
 
-with st.sidebar:
-    option = st.radio(
-    "Which option do you want to",
-    ('Upload File', 'Typing Data'))   
-    st.write('You selected ' + option)
+# with st.sidebar:
+#     option = st.radio(
+#     "Which option do you want to",
+#     ('Upload File', 'Typing Data'))   
+#     st.write('You selected ' + option)
 
 
 ##load file and processing data
