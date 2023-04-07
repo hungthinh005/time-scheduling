@@ -46,7 +46,15 @@ def load_file():
     room_columns = ['room', 'size', 'Lab']
     df_room = pd.DataFrame(room_default, columns=room_columns)
 
-    
+
+    ##data input instead of data csv file
+    data_input = [['Data Mining', True, 90, 4, 1, "Nguyen Thi Thanh Sang"]
+                  ,['AOD', True, 90, 4, 1, "Nguyen Thi Thanh Sang"]]
+    room_columns = ['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']
+    data_input = pd.DataFrame(data_input, columns=room_columns)
+
+
+
 
     df_room['Lab'] = df_room['Lab'].astype(str)
     for index, row in df_room.iterrows():
@@ -56,11 +64,18 @@ def load_file():
             df_room.at[index, 'Lab'] = ''
     df_room['Lab'] = df_room['Lab'].astype(bool)
 
-    col1, col2 = st.columns(2)
+
+    option = st.selectbox(
+    'Which option do you want to?',
+    ('Typing', 'Upload File'))
+
+    st.write('You selected:', option)
+    col1, col2, col3 = st.columns(2)
     with col1:
-        # col1.write(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
-        st.experimental_data_editor(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']], num_rows="dynamic")
+        col1.write(df1[['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']])
     with col2:
+        st.experimental_data_editor(data_input, num_rows="dynamic")
+    with col3:
         st.experimental_data_editor(df_room, num_rows="dynamic")
 
     # create list of dictionaries representing each object in the JSON file
@@ -130,7 +145,10 @@ def load_file():
 
     # write JSON object to file
     with open('GaSchedule1.json', 'w') as f:
-        f.write(json_data)
+        if option == "Typing":
+            f.write(json_data)
+        else:
+            f.write(data_input)
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
