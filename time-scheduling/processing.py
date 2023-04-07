@@ -24,13 +24,13 @@ def load_file():
 
     
     df = pd.DataFrame(df)
-    df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
-    df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name'})
+    df1 = df[['MaMH', 'TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
+    df1 = df1.rename(columns={'MaMH': 'course_id','TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name'})
     
     # df1['Lab'] = df1['ToTH'].fillna(0)
     df1['Lab'] = df1['ToTH_Lab'].astype(str)
     df1['prof_id'] = df1['prof_id'].astype(int)
-    # df1['course_id'] = df1['course_id'].astype(int)
+    df1['course_id'] = df1['course_id'].astype(int)
 
     
     for index, row in df1.iterrows():
@@ -40,9 +40,9 @@ def load_file():
             df1.at[index, 'Lab'] = ''
             
     df1['Lab'] = df1['Lab'].astype(bool)
-    # df1.reset_index(inplace=True)
-    # df1 = df1.rename(columns={'index': 'group_id'})
-    # df1['group_id'] = np.arange(1, len(df) + 1)
+    df1.reset_index(inplace=True)
+    df1 = df1.rename(columns={'index': 'group_id'})
+    df1['group_id'] = np.arange(1, len(df) + 1)
 
 
     ## create default room
@@ -78,12 +78,6 @@ def load_file():
     col1, col2 = st.columns(2)
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
-        df1['course_id'] = df1.sort_values(['ToTH_Lab', 'size', 'duration', 'prof_id', 'prof_name'], ascending=[True,False]) \
-            .groupby(['course_name']) \
-            .cumcount() + 1
-        df1.reset_index(inplace=True)
-        df1 = df1.rename(columns={'index': 'group_id'})
-        df1['group_id'] = np.arange(1, len(df1) + 1)
     with col2:
         with st.expander("Edit your data"):
             col3, col4 = st.columns([4,2])
