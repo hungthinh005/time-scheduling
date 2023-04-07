@@ -76,7 +76,7 @@ def load_file():
     
     col1, col2 = st.columns(2)
     with col1:
-        col1.write(df1[['course_name', 'Lab', 'ToTH_Lab', 'size', 'duration', 'prof_id', 'prof_name']])
+        st.experimental_data_editor(df1[['course_name', 'Lab', 'ToTH_Lab', 'size', 'duration', 'prof_id', 'prof_name']], num_rows="dynamic")
 
     with col2:
         with st.expander("Edit your data"):
