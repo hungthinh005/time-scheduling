@@ -159,7 +159,7 @@ def load_file():
 
     # write JSON object to file
     with open('GaSchedule1.json', 'w') as f:
-        if option == "Typing":
+        if option == "Typing Data":
             f.write(data_input)
         else:
             f.write(json_data)
