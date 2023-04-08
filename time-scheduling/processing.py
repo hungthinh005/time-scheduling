@@ -40,6 +40,8 @@ def load_file():
         else:
             df1.at[index, 'Lab'] = ''
 
+
+    df1['Lab'] = df1['Lab'].astype(bool)
     ## create default room
     room_default = [['A1.309', 90, 0],
                     ['L107', 40, 0],
