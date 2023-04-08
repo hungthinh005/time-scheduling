@@ -21,6 +21,7 @@ def load_file():
 
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
+
     else:
         df = [['Data Mining', 1, 35, 4, "Nguyen Thi Thanh Sang", 1]
                   ,['AOD', 2, 35, 4, "Nguyen Thi Thanh Sang", 1]
@@ -29,7 +30,6 @@ def load_file():
         room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV', 'Lab']
         df = pd.DataFrame(df, columns=room_columns)
     
-    df = pd.DataFrame(df)
     df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
     df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name'})
     df1['Lab'] = df1['ToTH_Lab']
