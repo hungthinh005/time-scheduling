@@ -95,7 +95,7 @@ def load_file():
         df1['group_id'] = np.arange(1, len(df1) + 1)
 
     with col2:
-        st.experimental_data_editor(df_room, num_rows="dynamic")
+        df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
 
     with col3:
         with st.expander("Instructions for Upload File Standard"):    
