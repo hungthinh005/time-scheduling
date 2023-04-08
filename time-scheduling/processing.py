@@ -71,6 +71,10 @@ def load_file():
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
         list_course = []
         index_count_course_id = 0
+
+        list_prof = []
+        index_count_prof_id = 0
+
         for index, row in df1.iterrows():
             if row['course_name'] not in list_course:
                 df1.at[index, 'course_id'] = index_count_course_id + 1
@@ -79,9 +83,6 @@ def load_file():
             else:
                 df1.at[index, 'course_id'] = index_count_course_id
         
-        list_prof = []
-        index_count_prof_id = 0
-        for index, row in df1.iterrows():
             if row['prof_name'] not in list_prof:
                 df1.at[index, 'prof_id'] = index_count_prof_id + 1
                 index_count_prof_id += 1
