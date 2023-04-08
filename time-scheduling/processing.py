@@ -63,31 +63,7 @@ def load_file():
     col1, col2, col3 = st.columns([5,2,4])
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
-        list_course = []
-        index_count_course_id = 0
-
-        list_prof = []
-        index_count_prof_id = 0
-
-        for index, row in df1.iterrows():
-            if row['course_name'] not in list_course:
-                df1.at[index, 'course_id'] = index_count_course_id + 1
-                index_count_course_id += 1
-                list_course.append(row['course_name'])
-            else:
-                df1.at[index, 'course_id'] = index_count_course_id
         
-            if row['prof_name'] not in list_prof:
-                df1.at[index, 'prof_id'] = index_count_prof_id + 1
-                index_count_prof_id += 1
-                list_course.append(row['prof_name'])
-            else:
-                df1.at[index, 'prof_id'] = index_count_prof_id
-
-        df1.reset_index(inplace=True)
-        df1 = df1.rename(columns={'index': 'group_id'})
-        df1['group_id'] = np.arange(1, len(df1) + 1)
-        df1['Lab'] = df1['Lab'].astype(bool)
 
 
     with col2:
@@ -97,7 +73,32 @@ def load_file():
     with col3:
         with st.expander("Instructions for Upload File Standard"):    
             st.write("- Including: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
+    list_course = []
+    index_count_course_id = 0
 
+    list_prof = []
+    index_count_prof_id = 0
+
+    for index, row in df1.iterrows():
+        if row['course_name'] not in list_course:
+            df1.at[index, 'course_id'] = index_count_course_id + 1
+            index_count_course_id += 1
+            list_course.append(row['course_name'])
+        else:
+            df1.at[index, 'course_id'] = index_count_course_id
+    
+        if row['prof_name'] not in list_prof:
+            df1.at[index, 'prof_id'] = index_count_prof_id + 1
+            index_count_prof_id += 1
+            list_course.append(row['prof_name'])
+        else:
+            df1.at[index, 'prof_id'] = index_count_prof_id
+
+    df1.reset_index(inplace=True)
+    df1 = df1.rename(columns={'index': 'group_id'})
+    df1['group_id'] = np.arange(1, len(df1) + 1)
+    df1['Lab'] = df1['Lab'].astype(bool)
+    
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df1.iterrows():
