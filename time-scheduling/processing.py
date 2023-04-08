@@ -29,7 +29,7 @@ def load_file():
     
     df = pd.DataFrame(df)
     df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
-    df1 = df1.rename(columns={'TenMH': 'Course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'Size', 'SoTiet': 'Duration', 'MaNV': 'Prof_id', 'TenDayDuNV': 'Prof_name'})
+    df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name'})
     
     # df1['Lab'] = df1['ToTH'].fillna(0)
     df1['Lab'] = df1['ToTH_Lab'].astype(str)
