@@ -21,7 +21,11 @@ def load_file():
 
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
-
+    else:
+        df = [['Data Mining', 1, 90, 4, 1, "Nguyen Thi Thanh Sang", 1]
+                  ,['AOD', 2, 90, 4, 1, "Nguyen Thi Thanh Sang", 1]]
+        room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'MaNV', 'TenDayDuNV', 'Lab']
+        df = pd.DataFrame(df, columns=room_columns)
     
     df = pd.DataFrame(df)
     df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
@@ -50,16 +54,6 @@ def load_file():
     ]
     room_columns = ['room', 'size', 'Lab']
     df_room = pd.DataFrame(room_default, columns=room_columns)
-
-
-    ##data input instead of data csv file
-    data_input = [['Data Mining', True, 90, 4, 1, "Nguyen Thi Thanh Sang"]
-                  ,['AOD', True, 90, 4, 1, "Nguyen Thi Thanh Sang"]]
-    room_columns = ['course_name', 'Lab', 'size', 'duration', 'prof_id', 'prof_name']
-    data_input = pd.DataFrame(data_input, columns=room_columns)
-
-
-
 
     df_room['Lab'] = df_room['Lab'].astype(str)
     for index, row in df_room.iterrows():
@@ -91,7 +85,7 @@ def load_file():
         with st.expander("Edit your data"):
             col3, col4 = st.columns([4,2])
             with col3:
-                st.experimental_data_editor(data_input, num_rows="dynamic")
+                st.experimental_data_editor(df, num_rows="dynamic")
             with col4:
                 st.experimental_data_editor(df_room, num_rows="dynamic")
 
