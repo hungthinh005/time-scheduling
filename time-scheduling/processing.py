@@ -94,6 +94,7 @@ def load_file():
                 st.experimental_data_editor(data_input, num_rows="dynamic")
             with col4:
                 st.experimental_data_editor(df_room, num_rows="dynamic")
+    st.write(df1)
 
     # create list of dictionaries representing each object in the JSON file
     objects = []
