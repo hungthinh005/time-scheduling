@@ -64,7 +64,7 @@ def load_file():
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
         df1['course_name'] = df1['course_name'].astype(str)
-        df1['ToTh_Lab', 'size', 'duration'] = df1['ToTh_Lab', 'size', 'duration'].astype(int)
+        df1[['ToTh_Lab', 'size', 'duration']] = df1[['ToTh_Lab', 'size', 'duration']].astype(int)
         df1['prof_name'] = df1['prof_name'].astype(str)
         df1['Lab'] = df1['Lab'].astype(bool)
     with col2:
