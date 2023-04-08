@@ -85,7 +85,7 @@ def load_file():
                 df2.at[index, 'prof_id'] = index_count_prof_id
         df2['group_id'] = np.arange(1, len(df2) + 1)
         df2['Lab'] = df2['Lab'].astype(bool)
-        df1 = pd.concat(df1,df2)
+        df1 = pd.concat([df1,df2])
         st.write(df1)
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
