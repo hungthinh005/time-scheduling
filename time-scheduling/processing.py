@@ -35,7 +35,7 @@ def load_file():
     df1['Lab'] = df1['ToTH_Lab']
 
     for index, row in df1.iterrows():
-        if row['Lab'] == '1' or row['Lab'] == '2' or row['Lab'] == '3' or row['Lab'] == '4':
+        if row['Lab'] == '1.0' or row['Lab'] == '2.0' or row['Lab'] == '3.0' or row['Lab'] == '4.0':
             df1.at[index, 'Lab'] = 'True'
         else:
             df1.at[index, 'Lab'] = ''
