@@ -89,7 +89,7 @@ def load_file():
             else:
                 df1.at[index, 'prof_id'] = index_count_prof_id
 
-        df1.reset_index(inplace=True)
+        df1 = df1.reset_index(inplace=True)
         df1 = df1.rename(columns={'index': 'group_id'})
         df1['group_id'] = np.arange(1, len(df1) + 1)
 
