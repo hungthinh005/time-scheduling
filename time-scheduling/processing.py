@@ -29,7 +29,7 @@ def load_file():
     
     df = pd.DataFrame(df)
     df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
-    df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name'})
+    df1 = df1.rename(columns={'TenMH': 'Course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'Size', 'SoTiet': 'Duration', 'MaNV': 'Prof_id', 'TenDayDuNV': 'Prof_name'})
     
     # df1['Lab'] = df1['ToTH'].fillna(0)
     df1['Lab'] = df1['ToTH_Lab'].astype(str)
@@ -65,7 +65,7 @@ def load_file():
 
 
     
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
         list_course = []
@@ -82,12 +82,11 @@ def load_file():
         df1['group_id'] = np.arange(1, len(df) + 1)
 
     with col2:
-        with st.expander("Edit your data"):
-            col3, col4 = st.columns([4,2])
-            with col3:
-                st.experimental_data_editor(df, num_rows="dynamic")
-            with col4:
-                st.experimental_data_editor(df_room, num_rows="dynamic")
+        st.experimental_data_editor(df_room, num_rows="dynamic")
+
+    with col3:
+        with st.expander("Instructions"):    
+            st.write()
 
     # create list of dictionaries representing each object in the JSON file
     objects = []
