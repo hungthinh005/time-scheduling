@@ -65,7 +65,7 @@ def load_file():
 
 
     
-    col1, col2, col3 = st.columns([5,2,5])
+    col1, col2, col3 = st.columns([5,2,4.5])
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
         list_course = []
