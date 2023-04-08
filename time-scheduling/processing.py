@@ -92,7 +92,7 @@ def load_file():
 
         df1.reset_index(inplace=True)
         df1 = df1.rename(columns={'index': 'group_id'})
-        df1['group_id'] = np.arange(1, len(df) + 1)
+        df1['group_id'] = np.arange(1, len(df1) + 1)
 
     with col2:
         st.experimental_data_editor(df_room, num_rows="dynamic")
