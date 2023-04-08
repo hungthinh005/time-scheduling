@@ -32,14 +32,14 @@ def load_file():
     df = pd.DataFrame(df)
     df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
     df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name'})
-    df1['Lab'] = df1['ToTH_Lab'].astype(str)
+    df1['Lab'] = df1['ToTH_Lab']
 
     for index, row in df1.iterrows():
-        if row['Lab'] == '1.0' or row['Lab'] == '2.0' or row['Lab'] == '3.0' or row['Lab'] == '4.0':
+        if row['Lab'] == '1' or row['Lab'] == '2' or row['Lab'] == '3' or row['Lab'] == '4':
             df1.at[index, 'Lab'] = 'True'
         else:
             df1.at[index, 'Lab'] = ''
-            
+    df1['Lab'] = df1['Lab'].astype(bool)        
 
 
     ## create default room
