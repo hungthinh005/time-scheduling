@@ -56,7 +56,6 @@ def load_file():
     ]
     room_columns = ['room', 'size', 'Lab']
     df_room = pd.DataFrame(room_default, columns=room_columns)
-    df_room['Lab'] = df_room['Lab'].astype(str)
     for index, row in df_room.iterrows():
         if row['Lab'] == '1':
             df_room.at[index, 'Lab'] = 'True'
@@ -93,6 +92,8 @@ def load_file():
         df1.reset_index(inplace=True)
         df1 = df1.rename(columns={'index': 'group_id'})
         df1['group_id'] = np.arange(1, len(df1) + 1)
+        df1['Lab'] = df1['Lab'].astype(bool)
+
 
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
