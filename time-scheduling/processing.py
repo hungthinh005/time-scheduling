@@ -63,7 +63,7 @@ def load_file():
     col1, col2, col3 = st.columns([5,2,4])
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
-        st.write(df1)
+        st.write(type(df1))
 
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
