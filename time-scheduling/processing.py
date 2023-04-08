@@ -62,7 +62,7 @@ def load_file():
     
     col1, col2, col3 = st.columns([5,2,4])
     with col1:
-        df1 = st.experimental_data_editor(df1, num_rows="dynamic")
+        df2 = st.experimental_data_editor(df1, num_rows="dynamic")
         
 
 
@@ -79,28 +79,28 @@ def load_file():
     list_prof = []
     index_count_prof_id = 0
 
-    for index, row in df1.iterrows():
+    for index, row in df2.iterrows():
         if row['course_name'] not in list_course:
-            df1.at[index, 'course_id'] = index_count_course_id + 1
+            df2.at[index, 'course_id'] = index_count_course_id + 1
             index_count_course_id += 1
             list_course.append(row['course_name'])
         else:
-            df1.at[index, 'course_id'] = index_count_course_id
-    for index, row in df1.iterrows():
+            df2.at[index, 'course_id'] = index_count_course_id
+    for index, row in df2.iterrows():
         if row['prof_name'] not in list_prof:
-            df1.at[index, 'prof_id'] = index_count_prof_id + 1
+            df2.at[index, 'prof_id'] = index_count_prof_id + 1
             index_count_prof_id += 1
             list_prof.append(row['prof_name'])
         else:
-            df1.at[index, 'prof_id'] = index_count_prof_id
+            df2.at[index, 'prof_id'] = index_count_prof_id
 
     # df1.reset_index(inplace=True)
     # df1 = df1.rename(columns={'index': 'group_id'})
-    df1['group_id'] = np.arange(1, len(df1) + 1)
-    df1['Lab'] = df1['Lab'].astype(bool)
+    df2['group_id'] = np.arange(1, len(df1) + 1)
+    df2['Lab'] = df2['Lab'].astype(bool)
     # create list of dictionaries representing each object in the JSON file
     objects = []
-    for index, row in df1.iterrows():
+    for index, row in df2.iterrows():
         if row['prof_id'] != '':
             # create professor object
             prof = {
