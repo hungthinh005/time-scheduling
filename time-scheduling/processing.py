@@ -65,7 +65,7 @@ def load_file():
 
 
     
-    col1, col2, col3 = st.columns(3)
+    col1, col2, col3 = st.columns([4,2,4])
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
         list_course = []
@@ -86,7 +86,7 @@ def load_file():
 
     with col3:
         with st.expander("Instructions"):    
-            st.write()
+            st.write("fwfwf")
 
     # create list of dictionaries representing each object in the JSON file
     objects = []
