@@ -22,20 +22,20 @@ def load_file():
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
     else:
-        df = [['Data Mining', 1, 35, 4, 1, "Nguyen Thi Thanh Sang", 1]
-                  ,['AOD', 2, 35, 4, 1, "Nguyen Thi Thanh Sang", 1]
-                  ,['Functional Programming', 0, 90, 3, 1, "Dao Tran Hoang Chau", 0]
-                  ,['Operating Systems', 0, 90, 3, 1, "Tran Manh Ha", 0]]
-        room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'MaNV', 'TenDayDuNV', 'Lab']
+        df = [['Data Mining', 1, 35, 4, "Nguyen Thi Thanh Sang", 1]
+                  ,['AOD', 2, 35, 4, "Nguyen Thi Thanh Sang", 1]
+                  ,['Functional Programming', 0, 90, 3, "Dao Tran Hoang Chau", 0]
+                  ,['Operating Systems', 0, 90, 3, "Tran Manh Ha", 0]]
+        room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV', 'Lab']
         df = pd.DataFrame(df, columns=room_columns)
     
     df = pd.DataFrame(df)
-    df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet','MaNV', 'TenDayDuNV']]
-    df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'MaNV': 'prof_id', 'TenDayDuNV': 'prof_name'})
+    df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
+    df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name'})
     
     # df1['Lab'] = df1['ToTH'].fillna(0)
     df1['Lab'] = df1['ToTH_Lab'].astype(str)
-    df1['prof_id'] = df1['prof_id'].astype(int)
+    # df1['prof_id'] = df1['prof_id'].astype(int)
     # df1['course_id'] = df1['course_id'].astype(int)
 
     for index, row in df1.iterrows():
@@ -71,14 +71,25 @@ def load_file():
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
         list_course = []
-        index_count = 0
+        index_count_course_id = 0
         for index, row in df1.iterrows():
             if row['course_name'] not in list_course:
-                df1.at[index, 'course_id'] = index_count + 1
-                index_count += 1
+                df1.at[index, 'course_id'] = index_count_course_id + 1
+                index_count_course_id += 1
                 list_course.append(row['course_name'])
             else:
-                df1.at[index, 'course_id'] = index_count
+                df1.at[index, 'course_id'] = index_count_course_id
+        
+        list_prof = []
+        index_count_prof_id = 0
+        for index, row in df1.iterrows():
+            if row['prof_name'] not in list_prof:
+                df1.at[index, 'prof_id'] = index_count_prof_id + 1
+                index_count_prof_id += 1
+                list_course.append(row['prof_name'])
+            else:
+                df1.at[index, 'prof_id'] = index_count_prof_id
+
         df1.reset_index(inplace=True)
         df1 = df1.rename(columns={'index': 'group_id'})
         df1['group_id'] = np.arange(1, len(df) + 1)
@@ -87,8 +98,8 @@ def load_file():
         st.experimental_data_editor(df_room, num_rows="dynamic")
 
     with col3:
-        with st.expander("Instructions"):    
-            st.write("fwfwf")
+        with st.expander("Instructions for Upload File Standard"):    
+            st.write("- Including: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
 
     # create list of dictionaries representing each object in the JSON file
     objects = []
