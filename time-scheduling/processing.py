@@ -86,11 +86,11 @@ def load_file():
             list_course.append(row['course_name'])
         else:
             df1.at[index, 'course_id'] = index_count_course_id
-    
+    for index, row in df1.iterrows():
         if row['prof_name'] not in list_prof:
             df1.at[index, 'prof_id'] = index_count_prof_id + 1
             index_count_prof_id += 1
-            list_course.append(row['prof_name'])
+            list_prof.append(row['prof_name'])
         else:
             df1.at[index, 'prof_id'] = index_count_prof_id
 
