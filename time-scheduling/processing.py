@@ -73,9 +73,9 @@ def load_file():
     with col3:
         with st.expander("Instructions for Upload File Standard"):    
             st.write("- Including: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
+    
     list_course = []
     index_count_course_id = 0
-
     list_prof = []
     index_count_prof_id = 0
 
@@ -94,8 +94,8 @@ def load_file():
         else:
             df1.at[index, 'prof_id'] = index_count_prof_id
 
-    df1.reset_index(inplace=True)
-    df1 = df1.rename(columns={'index': 'group_id'})
+    # df1.reset_index(inplace=True)
+    # df1 = df1.rename(columns={'index': 'group_id'})
     df1['group_id'] = np.arange(1, len(df1) + 1)
     df1['Lab'] = df1['Lab'].astype(bool)
     
