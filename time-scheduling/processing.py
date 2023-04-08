@@ -39,8 +39,6 @@ def load_file():
             df1.at[index, 'Lab'] = 'True'
         else:
             df1.at[index, 'Lab'] = ''
-    df1['group_id'] = np.arange(1, len(df1) + 1)
-    df1['Lab'] = df1['Lab'].astype(bool)
 
     ## create default room
     room_default = [['A1.309', 90, 0],
@@ -63,6 +61,8 @@ def load_file():
     col1, col2, col3 = st.columns([5,2,4])
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
+        df1['group_id'] = np.arange(1, len(df1) + 1)
+        df1['Lab'] = df1['Lab'].astype(bool)
         st.write(df1)
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
