@@ -23,15 +23,15 @@ def load_file():
         df = pd.read_csv(uploaded_file)
 
     else:
-        df = [[1, 'Data Mining', 1, 35, 4, "Nguyen Thi Thanh Sang"]
-            ,[2, 'AOD', 2, 35, 4, "Nguyen Thi Thanh Sang"]
-            ,[3, 'Functional Programming', 0, 90, 3, "Dao Tran Hoang Chau"]
-            ,[4, 'Operating Systems', 0, 90, 3, "Tran Manh Ha"]]
+        df = [[1, 'Data Mining', 1, 35, 4, "Nguyen Thi Thanh Sang", 1]
+            ,[2, 'AOD', 2, 35, 4, "Nguyen Thi Thanh Sang", 1]
+            ,[3, 'Functional Programming', 0, 90, 3, "Dao Tran Hoang Chau", 2]
+            ,[4, 'Operating Systems', 0, 90, 3, "Tran Manh Ha",3]]
         room_columns = ['MaMH', 'TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']
         df = pd.DataFrame(df, columns=room_columns)
     
-    df1 = df[['MaMH', 'TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
-    df1 = df1.rename(columns={'MaMH': 'course_id', 'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name'})
+    df1 = df[['MaMH', 'TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV', 'MaNV']]
+    df1 = df1.rename(columns={'MaMH': 'course_id', 'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name', 'MaNV': 'prof_id'})
     df1['Lab'] = df1['ToTH_Lab']
 
     for index, row in df1.iterrows():
