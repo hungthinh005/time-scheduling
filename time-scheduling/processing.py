@@ -22,10 +22,10 @@ def load_file():
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
     else:
-        df = [['Data Mining', 1, 35, 4, "Nguyen Thi Thanh Sang", 1.0]
-                  ,['AOD', 2, 35, 4, "Nguyen Thi Thanh Sang", 1.0]
-                  ,['Functional Programming', 0, 90, 3, "Dao Tran Hoang Chau", 0.0]
-                  ,['Operating Systems', 0, 90, 3, "Tran Manh Ha", 0.0]]
+        df = [['Data Mining', 1, 35, 4, "Nguyen Thi Thanh Sang", 1]
+                  ,['AOD', 2, 35, 4, "Nguyen Thi Thanh Sang", 1]
+                  ,['Functional Programming', 0, 90, 3, "Dao Tran Hoang Chau", 0]
+                  ,['Operating Systems', 0, 90, 3, "Tran Manh Ha", 0]]
         room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV', 'Lab']
         df = pd.DataFrame(df, columns=room_columns)
     
