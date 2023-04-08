@@ -63,8 +63,10 @@ def load_file():
     col1, col2, col3 = st.columns([5,2,4])
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
-        st.write(type(df1))
-
+        df1['course_name'] = df1['course_name'].astype(str)
+        df1['ToTh_Lab', 'size', 'duration'] = df1['ToTh_Lab', 'size', 'duration'].astype(int)
+        df1['prof_name'] = df1['prof_name'].astype(str)
+        df1['Lab'] = df1['Lab'].astype(bool)
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
         df_room['size'] = df_room['size'].astype(int)
@@ -94,7 +96,7 @@ def load_file():
             df1.at[index, 'prof_id'] = index_count_prof_id
  
     df1['group_id'] = np.arange(1, len(df1) + 1)
-    df1['Lab'] = df1['Lab'].astype(bool)
+    
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df1.iterrows():
