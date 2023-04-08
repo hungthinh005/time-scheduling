@@ -177,6 +177,7 @@ if __name__ == "__main__":
         file_name = sys.argv[1]
 
     try:
-        main(file_name)
+        if st.button('Generate'):    
+            main(file_name)
     except:
         traceback.print_exc()
