@@ -56,7 +56,7 @@ def load_file():
     ]
     room_columns = ['room', 'size', 'Lab']
     df_room = pd.DataFrame(room_default, columns=room_columns)
-
+    df_room['size'] = df_room['size'].astype(int)
     df_room['Lab'] = df_room['Lab'].astype(str)
     for index, row in df_room.iterrows():
         if row['Lab'] == '1':
