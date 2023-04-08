@@ -22,14 +22,23 @@ def load_file():
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
     else:
-        df = [['Data Mining', 1, 35, 4, "Nguyen Thi Thanh Sang", 1]
-                  ,['AOD', 2, 35, 4, "Nguyen Thi Thanh Sang", 1]
-                  ,['Functional Programming', 0, 90, 3, "Dao Tran Hoang Chau", 0]
-                  ,['Operating Systems', 0, 90, 3, "Tran Manh Ha", 0]]
+        df = [['Data Mining', 1, 35, 4, "Nguyen Thi Thanh Sang", 1.0]
+                  ,['AOD', 2, 35, 4, "Nguyen Thi Thanh Sang", 1.0]
+                  ,['Functional Programming', 0, 90, 3, "Dao Tran Hoang Chau", 0.0]
+                  ,['Operating Systems', 0, 90, 3, "Tran Manh Ha", 0.0]]
         room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV', 'Lab']
         df = pd.DataFrame(df, columns=room_columns)
     
-    
+    df = pd.DataFrame(df)
+    df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
+    df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name'})
+    df1['Lab'] = df1['ToTH_Lab'].astype(str)
+
+    for index, row in df1.iterrows():
+        if row['Lab'] == '1.0' or row['Lab'] == '2.0' or row['Lab'] == '3.0' or row['Lab'] == '4.0':
+            df1.at[index, 'Lab'] = 'True'
+        else:
+            df1.at[index, 'Lab'] = ''
             
 
 
@@ -88,16 +97,7 @@ def load_file():
     with col3:
         with st.expander("Instructions for Upload File Standard"):    
             st.write("- Including: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
-    df = pd.DataFrame(df)
-    df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
-    df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name'})
-    df1['Lab'] = df1['ToTH_Lab'].astype(str)
 
-    for index, row in df1.iterrows():
-        if row['Lab'] == '1.0' or row['Lab'] == '2.0' or row['Lab'] == '3.0' or row['Lab'] == '4.0':
-            df1.at[index, 'Lab'] = 'True'
-        else:
-            df1.at[index, 'Lab'] = ''
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df1.iterrows():
