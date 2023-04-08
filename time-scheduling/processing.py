@@ -98,7 +98,6 @@ def load_file():
     # df1 = df1.rename(columns={'index': 'group_id'})
     df1['group_id'] = np.arange(1, len(df1) + 1)
     df1['Lab'] = df1['Lab'].astype(bool)
-    st.write(df1)
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df1.iterrows():
