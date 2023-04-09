@@ -71,9 +71,19 @@ def load_file():
 
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
-        df_room['group_id'] = np.arange(1, len(df_room) + 1)
         df_room['size'] = df_room['size'].astype(int)
 
+
+        list_course1 = []
+        index_count_course_id1 = 0
+
+        for index1, row1 in df_room.iterrows():
+            if row1['room'] not in list_course1:
+                df_room.at[index1, 'course_id'] = index_count_course_id1 + 1
+                index_count_course_id1 += 1
+                list_course.append(row1['room'])
+            else:
+                df_room.at[index1, 'course_id'] = index_count_course_id1
         
     with col3:
         with st.expander("Instructions for Upload File Standard"):    
