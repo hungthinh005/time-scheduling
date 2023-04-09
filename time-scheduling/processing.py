@@ -22,13 +22,13 @@ def load_file():
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
 
-    # else:
-    #     df = [['Data Mining', 1, 35, 4, "Nguyen Thi Thanh Sang"]
-    #         ,['AOD', 2, 35, 4, "Nguyen Thi Thanh Sang"]
-    #         ,['Functional Programming', 0, 90, 3, "Dao Tran Hoang Chau"]
-    #         ,['Operating Systems', 0, 90, 3, "Tran Manh Ha"]]
-    #     room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']
-    #     df = pd.DataFrame(df, columns=room_columns)
+    else:
+        df = [['Data Mining', 1, 35, 4, "Nguyen Thi Thanh Sang"]
+            ,['AOD', 2, 35, 4, "Nguyen Thi Thanh Sang"]
+            ,['Functional Programming', 0, 90, 3, "Dao Tran Hoang Chau"]
+            ,['Operating Systems', 0, 90, 3, "Tran Manh Ha"]]
+        room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']
+        df = pd.DataFrame(df, columns=room_columns)
     
     df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
     df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name'})
