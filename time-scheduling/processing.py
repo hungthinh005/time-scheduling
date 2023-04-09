@@ -83,20 +83,20 @@ def load_file():
     list_prof = []
     index_count_prof_id = 0
 
-    for index, row in df1.iterrows():
+    for index1, row in df1.iterrows():
         if row['course_name'] not in list_course:
-            df1.at[index, 'course_id'] = index_count_course_id + 1
+            df1.at[index1, 'course_id'] = index_count_course_id + 1
             index_count_course_id += 1
             list_course.append(row['course_name'])
         else:
-            df1.at[index, 'course_id'] = index_count_course_id
+            df1.at[index1, 'course_id'] = index_count_course_id
 
         if row['prof_name'] not in list_prof:
-            df1.at[index, 'prof_id'] = index_count_prof_id + 1
+            df1.at[index1, 'prof_id'] = index_count_prof_id + 1
             index_count_prof_id += 1
             list_prof.append(row['prof_name'])
         else:
-            df1.at[index, 'prof_id'] = index_count_prof_id
+            df1.at[index1, 'prof_id'] = index_count_prof_id
     
 
     # create list of dictionaries representing each object in the JSON file
