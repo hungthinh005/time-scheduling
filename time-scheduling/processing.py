@@ -66,7 +66,7 @@ def load_file():
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
         df1['group_id'] = np.arange(1, len(df1) + 1)
-        df1['course_name'] = df1['course_name'].astype('str')
+        df1['course_name'] = df1['course_name'].astype(str)
         df1['ToTH_Lab'] = df1['ToTH_Lab'].astype(int)
         df1['size'] = df1['size'].astype(int)
         df1['duration'] = df1['duration'].astype(int)
