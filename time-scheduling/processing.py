@@ -66,11 +66,18 @@ def load_file():
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
         df1['group_id'] = np.arange(1, len(df1) + 1)
-        st.write(type(df1))
+        st.write(type(df1['course_name']))
+        st.write(type(df1['ToTH_Lab']))
+        st.write(type(df1['size']))
+        st.write(type(df1['duration']))
+        st.write(type(df1['prof_name']))
+        st.write(type(df1['Lab']))
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
         df_room['size'] = df_room['size'].astype(int)
-        st.write(type(df_room))
+        st.write(type(df_room['room']))
+        st.write(type(df_room['Lab']))
+        
     with col3:
         with st.expander("Instructions for Upload File Standard"):    
             st.write("- Including: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
