@@ -23,10 +23,10 @@ def load_file():
         df = pd.read_csv(uploaded_file)
 
     else:
-        df = [['Data Mining', 1, 35, 4, 'Nguyen Thi Thanh Sang']
-            ,['AOD', 2, 35, 4, 'Nguyen Thi Thanh Sang']
-            ,['Functional Programming', 0, 90, 3, 'Dao Tran Hoang Chau']
-            ,['Operating Systems', 0, 90, 3, 'Tran Manh Ha']]
+        df = [['Data Mining', 1, 35, 4, 'Nguyen Thi Thanh Sang'],
+            ['AOD', 2, 35, 4, 'Nguyen Thi Thanh Sang'],
+            ['Functional Programming', 0, 90, 3, 'Dao Tran Hoang Chau'],
+            ['Operating Systems', 0, 90, 3, 'Tran Manh Ha']]
         room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']
         df = pd.DataFrame(df, columns=room_columns)
     
@@ -52,6 +52,7 @@ def load_file():
     ]
     room_columns = ['room', 'size', 'Lab']
     df_room = pd.DataFrame(room_default, columns=room_columns)
+    df_room = df_room[['room', 'size', 'Lab']]
     df_room['Lab'] = df_room['Lab'].astype(str)
     for index, row in df_room.iterrows():
         if row['Lab'] == '1':
