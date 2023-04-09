@@ -74,16 +74,16 @@ def load_file():
         df_room['size'] = df_room['size'].astype(int)
 
 
-        list_course1 = []
-        index_count_course_id1 = 0
+        list_course2 = []
+        index_count_course_id2 = 0
 
         for index1, row1 in df_room.iterrows():
-            if row1['room'] not in list_course1:
-                df_room.at[index1, 'course_id'] = index_count_course_id1 + 1
-                index_count_course_id1 += 1
-                list_course.append(row1['room'])
+            if row1['room'] not in list_course2:
+                df_room.at[index1, 'course_id'] = index_count_course_id2 + 1
+                index_count_course_id2 += 1
+                list_course2.append(row1['room'])
             else:
-                df_room.at[index1, 'course_id'] = index_count_course_id1
+                df_room.at[index1, 'course_id'] = index_count_course_id2
         
     with col3:
         with st.expander("Instructions for Upload File Standard"):    
