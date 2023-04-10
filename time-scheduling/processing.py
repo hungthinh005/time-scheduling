@@ -65,8 +65,7 @@ def load_file():
     col1, col2, col3 = st.columns([5,2,4])
     with col1:
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
-        df2['course_id'] = df2['course_id'].astype(int)
-        df2['prof_id'] = df2['prof_id'].astype(int) 
+
             
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
