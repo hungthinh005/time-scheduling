@@ -167,18 +167,15 @@ def load_file():
         json_data = json.dumps(objects, sort_keys=False)
 
         # write JSON object to file
-        with open('D:\\Study\\4th year\\Sem 2\\Thesis\\New folder\\time-scheduling\\time-scheduling\\GaSchedule2.json', 'w') as f:
+        with open('/GaSchedule2.json', 'w') as f:
                 f.write(json_data) 
-        st.json(json_data)
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     load_file()
-    file_name = "D:\\Study\\4th year\\Sem 2\\Thesis\\New folder\\time-scheduling\\time-scheduling\\GaSchedule2.json"
+    file_name = "/GaSchedule2.json"
     if len(sys.argv) > 1:
         file_name = sys.argv[1]
-    st.write(file_name)
-
     try:
         main(file_name)
     except:
