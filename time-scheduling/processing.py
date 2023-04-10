@@ -27,13 +27,11 @@ def load_file():
             ['AOD', 2, 35, 4, 'Nguyen Thi Thanh Sang'],
             ['Functional Programming', 0, 90, 3, 'Dao Tran Hoang Chau'],
             ['Operating Systems', 0, 90, 3, 'Tran Manh Ha']]
-        # room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']
-        room_columns = ['course_name','ToTH_Lab','size','duration','prof_name']
+        room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']
         df = pd.DataFrame(df, columns=room_columns)
     
-    # df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
-    df1 = df[['course_name','ToTH_Lab','size','duration','prof_name']]
-    # df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name'})
+    df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
+    df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name'})
     df1['Lab'] = df1['ToTH_Lab']
     # df1['Lab'] = df1['Lab'].astype(str)
     for index, row in df1.iterrows():
@@ -66,8 +64,8 @@ def load_file():
     
     col1, col2, col3 = st.columns([5,2,4])
     with col1:
-        df1 = st.experimental_data_editor(df1, num_rows="dynamic")
-        df1['group_id'] = np.arange(1, len(df1) + 1)
+        df2 = st.experimental_data_editor(df1, num_rows="dynamic")
+        df2['group_id'] = np.arange(1, len(df2) + 1)
 
 
     with col2:
@@ -84,25 +82,25 @@ def load_file():
     list_prof = []     
     index_count_prof_id = 0
 
-    for index1, row1 in df1.iterrows():
+    for index1, row1 in df2.iterrows():
         if row1['course_name'] not in list_course:
-            df1.at[index1, 'course_id'] = index_count_course_id + 1
+            df2.at[index1, 'course_id'] = index_count_course_id + 1
             index_count_course_id += 1
             list_course.append(row1['course_name'])
         else:
-            df1.at[index1, 'course_id'] = index_count_course_id
+            df2.at[index1, 'course_id'] = index_count_course_id
 
         if row1['prof_name'] not in list_prof:
-            df1.at[index1, 'prof_id'] = index_count_prof_id + 1
+            df2.at[index1, 'prof_id'] = index_count_prof_id + 1
             index_count_prof_id += 1
             list_prof.append(row1['prof_name'])
         else:
-            df1.at[index1, 'prof_id'] = index_count_prof_id
+            df2.at[index1, 'prof_id'] = index_count_prof_id
     
 
     # create list of dictionaries representing each object in the JSON file
     objects = []
-    for index, row in df1.iterrows():       
+    for index, row in df2.iterrows():       
         if row['prof_id'] != '':
             # create professor object
             prof = {
