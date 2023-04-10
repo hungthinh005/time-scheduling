@@ -77,7 +77,7 @@ def load_file():
             st.write("- Including: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
     
     
-    
+def save_data(df2, df_room):    
     if st.button('Save data'):
         df2['group_id'] = np.arange(1, len(df2) + 1)
         list_course = []
@@ -170,15 +170,16 @@ def load_file():
                 f.write(json_data) 
         
 
-    st.set_page_config(layout="wide")
-    if __name__ == "__main__":
-        load_file()
-        file_name = "/GaSchedule1.json"
-        if len(sys.argv) > 1:
-            file_name = sys.argv[1]
+st.set_page_config(layout="wide")
+if __name__ == "__main__":
+    load_file()
+    save_data()
+    file_name = "/GaSchedule1.json"
+    if len(sys.argv) > 1:
+        file_name = sys.argv[1]
 
-        try:
-            if st.button('Generate'):    
-                main(file_name)
-        except:
-            traceback.print_exc()
+    try:
+        if st.button('Generate'):    
+            main(file_name)
+    except:
+        traceback.print_exc()
