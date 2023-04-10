@@ -65,7 +65,7 @@ def load_file():
     col1, col2, col3 = st.columns([5,2,4])
     with col1:
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
-
+        df2['group_id'] = np.arange(1, len(df2) + 1)
             
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
@@ -76,30 +76,28 @@ def load_file():
         with st.expander("Instructions for Upload File Standard"):    
             st.write("- Including: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
     
-    
-    if st.button('Save data'):
-        df2['group_id'] = np.arange(1, len(df2) + 1)
-        list_course = []
-        index_count_course_id = 0
-        list_prof = []     
-        index_count_prof_id = 0
+     
+    list_course = []
+    index_count_course_id = 0
+    list_prof = []     
+    index_count_prof_id = 0
 
-        for index1, row1 in df2.iterrows():
-            if row1['course_name'] not in list_course:
-                df2.at[index1, 'course_id'] = index_count_course_id + 1
-                index_count_course_id += 1
-                list_course.append(row1['course_name'])
-            else:
-                df2.at[index1, 'course_id'] = index_count_course_id
+    for index1, row1 in df2.iterrows():
+        if row1['course_name'] not in list_course:
+            df2.at[index1, 'course_id'] = index_count_course_id + 1
+            index_count_course_id += 1
+            list_course.append(row1['course_name'])
+        else:
+            df2.at[index1, 'course_id'] = index_count_course_id
 
-            if row1['prof_name'] not in list_prof:
-                df2.at[index1, 'prof_id'] = index_count_prof_id + 1
-                index_count_prof_id += 1
-                list_prof.append(row1['prof_name'])
-            else:
-                df2.at[index1, 'prof_id'] = index_count_prof_id
+        if row1['prof_name'] not in list_prof:
+            df2.at[index1, 'prof_id'] = index_count_prof_id + 1
+            index_count_prof_id += 1
+            list_prof.append(row1['prof_name'])
+        else:
+            df2.at[index1, 'prof_id'] = index_count_prof_id
 
-        st.write(df2)
+
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df2.iterrows():       
@@ -166,13 +164,13 @@ def load_file():
     json_data = json.dumps(objects, sort_keys=False)
 
     # write JSON object to file
-    with open('/GaSchedule1.json', 'w') as f:
+    with open('\GaSchedule1.json', 'w') as f:
         f.write(json_data) 
 
-    st.set_page_config(layout="wide")
+st.set_page_config(layout="wide")
 if __name__ == "__main__":
     load_file()
-    file_name = "/GaSchedule1.json"
+    file_name = "\GaSchedule1.json"
     if len(sys.argv) > 1:
         file_name = sys.argv[1]
     try:
