@@ -98,8 +98,7 @@ def load_file():
                 list_prof.append(row1['prof_name'])
             else:
                 df2.at[index1, 'prof_id'] = index_count_prof_id
-        df2['course_id'] = df2['course_id'].astype(int)
-        df2['prof_id'] = df2['prof_id'].astype(int)
+
         st.write(df2)
     # create list of dictionaries representing each object in the JSON file
     objects = []
