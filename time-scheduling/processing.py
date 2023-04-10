@@ -86,7 +86,6 @@ def load_file():
                     list_prof.append(row1['prof_name'])
                 else:
                     df2.at[index1, 'prof_id'] = index_count_prof_id
-            df2['prof_id'] = df2['prof_id'].astype(int)
 
             st.write(df2)
 
