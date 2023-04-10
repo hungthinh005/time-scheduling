@@ -76,28 +76,29 @@ def load_file():
         with st.expander("Instructions for Upload File Standard"):    
             st.write("- Including: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
     
-    df2['group_id'] = np.arange(1, len(df2) + 1)
-    list_course = []
-    index_count_course_id = 0
-    list_prof = []     
-    index_count_prof_id = 0
-
-    for index1, row1 in df2.iterrows():
-        if row1['course_name'] not in list_course:
-            df2.at[index1, 'course_id'] = index_count_course_id + 1
-            index_count_course_id += 1
-            list_course.append(row1['course_name'])
-        else:
-            df2.at[index1, 'course_id'] = index_count_course_id
-
-        if row1['prof_name'] not in list_prof:
-            df2.at[index1, 'prof_id'] = index_count_prof_id + 1
-            index_count_prof_id += 1
-            list_prof.append(row1['prof_name'])
-        else:
-            df2.at[index1, 'prof_id'] = index_count_prof_id
+    
     
     if st.button('Save data'):
+        df2['group_id'] = np.arange(1, len(df2) + 1)
+        list_course = []
+        index_count_course_id = 0
+        list_prof = []     
+        index_count_prof_id = 0
+
+        for index1, row1 in df2.iterrows():
+            if row1['course_name'] not in list_course:
+                df2.at[index1, 'course_id'] = index_count_course_id + 1
+                index_count_course_id += 1
+                list_course.append(row1['course_name'])
+            else:
+                df2.at[index1, 'course_id'] = index_count_course_id
+
+            if row1['prof_name'] not in list_prof:
+                df2.at[index1, 'prof_id'] = index_count_prof_id + 1
+                index_count_prof_id += 1
+                list_prof.append(row1['prof_name'])
+            else:
+                df2.at[index1, 'prof_id'] = index_count_prof_id
     # create list of dictionaries representing each object in the JSON file
         objects = []
         for index, row in df2.iterrows():       
