@@ -180,6 +180,7 @@ if __name__ == "__main__":
 
     try:
         if st.button('Generate'):    
+            load_file()
             main(file_name)
     except:
         traceback.print_exc()
