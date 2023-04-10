@@ -77,7 +77,6 @@ def load_file():
             st.write("- Including: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
     
     
-def save_data(df2, df_room):    
     if st.button('Save data'):
         df2['group_id'] = np.arange(1, len(df2) + 1)
         list_course = []
@@ -99,6 +98,8 @@ def save_data(df2, df_room):
                 list_prof.append(row1['prof_name'])
             else:
                 df2.at[index1, 'prof_id'] = index_count_prof_id
+        df2['course_id'] = df2['course_id'].astype(int)
+        df2['prof_id'] = df2['prof_id'].astype(int)
         st.write(df2)
     # create list of dictionaries representing each object in the JSON file
         objects = []
@@ -173,7 +174,6 @@ def save_data(df2, df_room):
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     load_file()
-    save_data(df2=any,df_room=any)
     file_name = "/GaSchedule1.json"
     if len(sys.argv) > 1:
         file_name = sys.argv[1]
