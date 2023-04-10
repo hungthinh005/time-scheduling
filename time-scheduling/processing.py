@@ -169,7 +169,7 @@ def load_file():
         # write JSON object to file
         with open('GaSchedule1.json', 'w') as f:
                 f.write(json_data) 
-        
+        st.json(json_data)
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
@@ -180,7 +180,6 @@ if __name__ == "__main__":
 
     try:
         if st.button('Generate'):    
-            load_file()
             main(file_name)
     except:
         traceback.print_exc()
