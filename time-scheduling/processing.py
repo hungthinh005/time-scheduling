@@ -100,6 +100,7 @@ def load_file():
             else:
                 df2.at[index1, 'prof_id'] = index_count_prof_id
         st.write(df2)
+        st.write(df2.info())
     # create list of dictionaries representing each object in the JSON file
         objects = []
         for index, row in df2.iterrows():       
