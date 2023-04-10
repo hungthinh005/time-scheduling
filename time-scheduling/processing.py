@@ -66,7 +66,6 @@ def load_file():
     with col1:
         df1 = st.experimental_data_editor(df1, num_rows="dynamic")
         df1['group_id'] = np.arange(1, len(df1) + 1)
-        df1['size'] = df1['size'].astype(int)
 
 
     with col2:
