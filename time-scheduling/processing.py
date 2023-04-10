@@ -174,7 +174,7 @@ def load_file():
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     load_file()
-    file_name = "/GaSchedule1.json"
+    file_name = "D:\\Study\\4th year\\Sem 2\\Thesis\\New folder\\time-scheduling\\time-scheduling\\GaSchedule1.json"
     if len(sys.argv) > 1:
         file_name = sys.argv[1]
 
