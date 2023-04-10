@@ -105,7 +105,7 @@ def load_file():
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df2.iterrows():       
-        if row['prof_id'] != '1':
+        if row['prof_id'] != '':
             # create professor object
             prof = {
                 "prof": {
