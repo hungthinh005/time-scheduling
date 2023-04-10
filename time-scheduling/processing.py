@@ -103,7 +103,7 @@ def load_file():
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df2.iterrows():       
-        if row['prof_id'] != 9999:
+        if row['prof_id'] != '':
             # create professor object
             prof = {
                 "prof": {
@@ -125,7 +125,7 @@ def load_file():
             if course not in objects:
                 objects.append(course)
 
-        if row['group_id'] != 9999:
+        if row['group_id'] != '':
             # create group object
             group = {
                 "group": {
