@@ -67,7 +67,7 @@ def load_file():
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
         if st.button('Save data'):
             df2['group_id'] = np.arange(1, len(df2) + 1)
-
+            st.write(df2)
 
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
