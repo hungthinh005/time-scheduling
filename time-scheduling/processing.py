@@ -65,7 +65,8 @@ def load_file():
     col1, col2, col3 = st.columns([5,2,4])
     with col1:
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
-        df2['group_id'] = np.arange(1, len(df2) + 1)
+        with st.button('Save data'):
+            df2['group_id'] = np.arange(1, len(df2) + 1)
 
 
     with col2:
