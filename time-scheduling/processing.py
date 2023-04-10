@@ -102,73 +102,73 @@ def load_file():
         df2['prof_id'] = df2['prof_id'].astype(int)
         st.write(df2)
     # create list of dictionaries representing each object in the JSON file
-        objects = []
-        for index, row in df2.iterrows():       
-            if row['prof_id'] != '':
-                # create professor object
-                prof = {
-                    "prof": {
-                        "id": row['prof_id'],
-                        "name": row['prof_name']
-                    }
+    objects = []
+    for index, row in df2.iterrows():       
+        if row['prof_id'] != '':
+            # create professor object
+            prof = {
+                "prof": {
+                    "id": row['prof_id'],
+                    "name": row['prof_name']
                 }
-                if prof not in objects:
-                    objects.append(prof)
+            }
+            if prof not in objects:
+                objects.append(prof)
 
-            if row['course_id'] != '':
-                # create course object
-                course = {
-                    "course": {
-                        "id": row['course_id'],
-                        "name": row['course_name']
-                    }
+        if row['course_id'] != '':
+            # create course object
+            course = {
+                "course": {
+                    "id": row['course_id'],
+                    "name": row['course_name']
                 }
-                if course not in objects:
-                    objects.append(course)
+            }
+            if course not in objects:
+                objects.append(course)
 
-            if row['group_id'] != 9999:
-                # create group object
-                group = {
-                    "group": {
-                        "id": row['group_id'],
-                        "size": row['size']
-                    }
+        if row['group_id'] != 9999:
+            # create group object
+            group = {
+                "group": {
+                    "id": row['group_id'],
+                    "size": row['size']
                 }
-                # if group not in objects:
-                objects.append(group)
-                    
-            if row['prof_id'] != '' and row['course_id'] != '':
-                # create class object
-                class_ = {
-                    "class": {
-                        "professor": row['prof_id'],
-                        "course": row['course_id'],
-                        "duration": row['duration'],
-                        "group": row['group_id'],
-                        "lab": row['Lab']
-                    }
-                }
-                if class_ not in objects:
-                    objects.append(class_)
+            }
+            # if group not in objects:
+            objects.append(group)
                 
-        for index, row in df_room.iterrows():
-            if row['room'] != '':
-                # create room object
-                room = {
-                    "room": {
-                        "name": row['room'],
-                        "lab": row['Lab'],
-                        "size": row['size']
-                    }
+        if row['prof_id'] != '' and row['course_id'] != '':
+            # create class object
+            class_ = {
+                "class": {
+                    "professor": row['prof_id'],
+                    "course": row['course_id'],
+                    "duration": row['duration'],
+                    "group": row['group_id'],
+                    "lab": row['Lab']
                 }
-                objects.append(room)    
-                
-        # create JSON object with list of objects
-        json_data = json.dumps(objects, sort_keys=False)
+            }
+            if class_ not in objects:
+                objects.append(class_)
+            
+    for index, row in df_room.iterrows():
+        if row['room'] != '':
+            # create room object
+            room = {
+                "room": {
+                    "name": row['room'],
+                    "lab": row['Lab'],
+                    "size": row['size']
+                }
+            }
+            objects.append(room)    
+            
+    # create JSON object with list of objects
+    json_data = json.dumps(objects, sort_keys=False)
 
-        # write JSON object to file
-        with open('\GaSchedule1.json', 'w') as f:
-                f.write(json_data) 
+    # write JSON object to file
+    with open('\GaSchedule1.json', 'w') as f:
+            f.write(json_data) 
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
