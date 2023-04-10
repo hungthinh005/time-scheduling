@@ -177,7 +177,7 @@ if __name__ == "__main__":
     file_name = "D:\\Study\\4th year\\Sem 2\\Thesis\\New folder\\time-scheduling\\time-scheduling\\GaSchedule1.json"
     if len(sys.argv) > 1:
         file_name = sys.argv[1]
-        st.write(file_name)
+    st.write(file_name)
 
     try:
         main(file_name)
