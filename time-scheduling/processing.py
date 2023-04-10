@@ -173,7 +173,7 @@ def save_data(df2, df_room):
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     load_file()
-    save_data()
+    save_data(df2=any,df_room=any)
     file_name = "/GaSchedule1.json"
     if len(sys.argv) > 1:
         file_name = sys.argv[1]
