@@ -144,7 +144,7 @@ def load_file():
             if course not in objects:
                 objects.append(course)
 
-        if row['group_id'] != '':
+        if row['group_id'] != 9999:
             # create group object
             group = {
                 "group": {
