@@ -164,7 +164,7 @@ def load_file():
     json_data = json.dumps(objects, sort_keys=False)
 
     # write JSON object to file
-    with open('\GaSchedule1.json', 'w') as f:
+    with open('GaSchedule1.json', 'w') as f:
         f.write(json_data) 
 
 st.set_page_config(layout="wide")
