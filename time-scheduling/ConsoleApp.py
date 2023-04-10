@@ -24,7 +24,7 @@ def main(file_name):
 
     configuration = Configuration()
     target_file = str(pathlib.Path().absolute()) + file_name
-    configuration.parseFile(target_file)
+    configuration.parseFile(file_name)
     alg = NsgaII(configuration)
     # alg = Hgasso(configuration)
     alg.run()
