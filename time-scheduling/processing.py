@@ -27,11 +27,13 @@ def load_file():
             ['AOD', 2, 35, 4, 'Nguyen Thi Thanh Sang'],
             ['Functional Programming', 0, 90, 3, 'Dao Tran Hoang Chau'],
             ['Operating Systems', 0, 90, 3, 'Tran Manh Ha']]
-        room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']
+        # room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']
+        room_columns = ['course_name','ToTH_Lab','size','duration','prof_name']
         df = pd.DataFrame(df, columns=room_columns)
     
-    df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
-    df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name'})
+    # df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
+    df1 = df[['course_name','ToTH_Lab','size','duration','prof_name']]
+    # df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name'})
     df1['Lab'] = df1['ToTH_Lab']
     # df1['Lab'] = df1['Lab'].astype(str)
     for index, row in df1.iterrows():
@@ -79,7 +81,7 @@ def load_file():
     
     list_course = []
     index_count_course_id = 0
-    list_prof = []
+    list_prof = []     
     index_count_prof_id = 0
 
     for index1, row1 in df1.iterrows():
