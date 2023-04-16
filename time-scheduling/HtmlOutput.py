@@ -154,7 +154,8 @@ class HtmlOutput:
                     sb.append("<tr>")
                     for dayId in range(HtmlOutput.ROOM_COLUMN_NUMBER):
                         if dayId == 0:
-                            sb.append("<th style='border: .1em solid black; padding: .25em' scope='row' colspan='2'>")
+                            # sb.append("<th style='border: .1em solid black; padding: .25em' scope='row' colspan='2'>")
+                            sb.append("<td style='color=:#ADD8E6'")
                             sb.append(HtmlOutput.PERIODS[periodId])
                             sb.append("</th>\n")
                             continue
