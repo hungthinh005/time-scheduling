@@ -113,7 +113,7 @@ class HtmlOutput:
         if content is None:
             return ""
         sb = []
-        if rowspan > 1:
+        if rowspan >= 1:
             sb.append("<td style='border: .05em solid white; padding: .25em' rowspan='")
             sb.append(rowspan)
             sb.append("'>")
