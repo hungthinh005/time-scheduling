@@ -45,7 +45,6 @@ def load_file():
     ## create default room
     room_default = [['A1.309', 90, 0],
                     ['L107', 40, 0],
-                    ['A2.401', 40, 0],
                     ['LA1.605', 35, 1],
                     ['La1.606', 35, 1]
     ]
