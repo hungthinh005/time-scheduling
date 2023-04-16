@@ -26,9 +26,9 @@ class HtmlOutput:
 
         # sb = ["MH: ", cc.Course.Name, "<br />GV: ", cc.Professor.Name, "<br />Room: ", "/".join(map(lambda grp: grp.Name, cc.Groups)),"<br />"]
         sb = []
-        sb.append(" <span style='color:#D0CDE9' title=''> <b>MH: <b/> </span>")
+        sb.append(" <span style='color:#917AFF' title=''> <b>MH: <b/> </span>")
         sb.append(cc.Course.Name)
-        sb.append("<br /> <span style='color:#D0CDE9' title=''> <b>GV: <b/> </span>")
+        sb.append("<br /> <span style='color:#917AFF' title=''> <b>GV: <b/> </span>")
         sb.append(cc.Professor.Name)
         # sb.append("<br /> <span style='color:#00008B' title=''> <b>Room: <b/> </span>")
         # sb.append("/".join(map(lambda grp: grp.Name, cc.Groups)),)
@@ -151,7 +151,7 @@ class HtmlOutput:
                     sb.append("<tr>")
                     for dayId in range(HtmlOutput.ROOM_COLUMN_NUMBER):
                         if dayId == 0:
-                            sb.append("<th style='color: #D0CDE9; border: .1em solid black; text-align: center; padding: .25em' scope='row' colspan='2'>")
+                            sb.append("<th style='color: #917AFF; border: .1em solid black; text-align: center; padding: .25em' scope='row' colspan='2'>")
                             sb.append(HtmlOutput.PERIODS[periodId])
                             sb.append("</th>\n")
                             continue
@@ -170,17 +170,17 @@ class HtmlOutput:
 
     @staticmethod
     def getTableHeader(room):
-        sb = ["<tr><th style='color:#D0CDE9; border: .1em solid black' scope='col' colspan='2'>Room: ", room.Name, "</th>\n"]
+        sb = ["<tr><th style='color:#917AFF; border: .1em solid black' scope='col' colspan='2'>Room: ", room.Name, "</th>\n"]
         for weekDay in HtmlOutput.WEEK_DAYS:
-            sb.append("<th style='color: #D0CDE9; border: .1em solid black; padding: .25em; width: 15%; text-align: center' scope='col' rowspan='2'>")
+            sb.append("<th style='color: #917AFF; border: .1em solid black; padding: .25em; width: 15%; text-align: center' scope='col' rowspan='2'>")
             sb.append(weekDay)
             sb.append("</th>\n")
         sb.append("</tr>\n")
         sb.append("<tr>\n")
-        sb.append("<th style='color:#D0CDE9; border: .1em solid black; padding: .25em'>Lab: ")
+        sb.append("<th style='color:#917AFF; border: .1em solid black; padding: .25em'>Lab: ")
         sb.append("Yes" if room.Lab else "No")
         sb.append("</th>\n")
-        sb.append("<th style='color:#D0CDE9; border: .1em solid black; padding: .25em'>Seats: ")
+        sb.append("<th style='color:#917AFF; border: .1em solid black; padding: .25em'>Seats: ")
         sb.append(room.NumberOfSeats)
         sb.append("</th>\n")
         sb.append("</tr>\n")
