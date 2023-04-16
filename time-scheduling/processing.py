@@ -30,7 +30,7 @@ def load_file():
         df = pd.DataFrame(df, columns=room_columns)
     
     df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
-    df1 = df1.rename(columns={'TenMH': 'Course_name', 'ToTH': 'Group_Lab', 'TongSoSV': 'Size', 'SoTiet': 'Duration', 'TenDayDuNV': 'Prof_name'})
+    df1 = df1.rename(columns={'TenMH': 'Course_Name', 'ToTH': 'Group_Lab', 'TongSoSV': 'Size_Course', 'SoTiet': 'Duration', 'TenDayDuNV': 'Prof_Name'})
     df1['Lab'] = df1['Group_Lab']
     # df1['Lab'] = df1['Lab'].astype(str)
     for index, row in df1.iterrows():
@@ -48,7 +48,7 @@ def load_file():
                     ['LA1.605', 35, 1],
                     ['La1.606', 35, 1]
     ]
-    room_columns = ['room', 'size', 'Lab']
+    room_columns = ['Room', 'Size_Room', 'Lab']
     df_room = pd.DataFrame(room_default, columns=room_columns)
     df_room['Lab'] = df_room['Lab'].astype(str)
     for index, row in df_room.iterrows():
@@ -67,7 +67,7 @@ def load_file():
             
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
-        df_room['size'] = df_room['size'].astype(int)
+        df_room['Size_Room'] = df_room['Size_Room'].astype(int)
 
         
     with col3:
@@ -86,17 +86,17 @@ def load_file():
     index_count_prof_id = 0
 
     for index1, row1 in df2.iterrows():
-        if row1['Course_name'] not in list_course:
+        if row1['Course_Name'] not in list_course:
             df2.at[index1, 'Course_id'] = index_count_course_id + 1
             index_count_course_id += 1
-            list_course.append(row1['Course_name'])
+            list_course.append(row1['Course_Name'])
         else:
             df2.at[index1, 'Course_id'] = index_count_course_id
 
-        if row1['Prof_name'] not in list_prof:
+        if row1['Prof_Name'] not in list_prof:
             df2.at[index1, 'Prof_id'] = index_count_prof_id + 1
             index_count_prof_id += 1
-            list_prof.append(row1['Prof_name'])
+            list_prof.append(row1['Prof_Name'])
         else:
             df2.at[index1, 'Prof_id'] = index_count_prof_id
 
@@ -109,7 +109,7 @@ def load_file():
             prof = {
                 "prof": {
                     "id": row['Prof_id'],
-                    "name": row['Prof_name']
+                    "name": row['Prof_Name']
                 }
             }
             if prof not in objects:
@@ -120,7 +120,7 @@ def load_file():
             course = {
                 "course": {
                     "id": row['Course_id'],
-                    "name": row['Course_name']
+                    "name": row['Course_Name']
                 }
             }
             if course not in objects:
@@ -131,7 +131,7 @@ def load_file():
             group = {
                 "group": {
                     "id": row['Group_id'],
-                    "size": row['Size']
+                    "size": row['Size_Course']
                 }
             }
             # if group not in objects:
@@ -152,13 +152,13 @@ def load_file():
                 objects.append(class_)
             
     for index, row in df_room.iterrows():
-        if row['room'] != '':
+        if row['Room'] != '':
             # create room object
             room = {
                 "room": {
-                    "name": row['room'],
+                    "name": row['Room'],
                     "lab": row['Lab'],
-                    "size": row['size']
+                    "size": row['Size_Room']
                 }
             }
             objects.append(room)    
