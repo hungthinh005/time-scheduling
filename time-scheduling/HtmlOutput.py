@@ -141,7 +141,7 @@ class HtmlOutput:
                 if periodId == 0:
                     sb.append("<div id='room_")
                     sb.append(room.Name)
-                    sb.append("' style='padding: 0.1em'>\n")
+                    sb.append("' style='padding: 0.5em'>\n")
                     sb.append("<table style=' border: .1em solid white; text-align: center; width: 100%'>\n")
                     sb.append(HtmlOutput.getTableHeader(room))
                 else:
