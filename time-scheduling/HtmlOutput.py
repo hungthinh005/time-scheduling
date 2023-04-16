@@ -170,7 +170,8 @@ class HtmlOutput:
 
     @staticmethod
     def getTableHeader(room):
-        sb = ["<tr><th style='color:#00008B; border: .1em solid black' scope='col' colspan='2'>Room: ", room.Name, "</th>\n"]
+        sb = ["<tr><th style='color:#00008B; border: .1em solid black' scope='col' colspan='2'>Room: </th>\n"]
+        sb.append(room.Name)
         for weekDay in HtmlOutput.WEEK_DAYS:
             sb.append("<th style='color: #00008B; border: .1em solid black; padding: .25em; width: 15%; text-align: center' scope='col' rowspan='2'>")
             sb.append(weekDay)
@@ -178,10 +179,10 @@ class HtmlOutput:
         sb.append("</tr>\n")
         sb.append("<tr>\n")
         sb.append("<th style='color:#00008B; border: .1em solid black; padding: .25em'>Lab: ")
+        sb.append("</th>\n")
         sb.append("Yes" if room.Lab else "No")
-        sb.append("</th>\n")
         sb.append("<th style='color:#00008B; border: .1em solid black; padding: .25em'>Seats: ")
-        sb.append(room.NumberOfSeats)
         sb.append("</th>\n")
+        sb.append(room.NumberOfSeats)
         sb.append("</tr>\n")
         return "".join(str(v) for v in sb)
