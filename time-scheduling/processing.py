@@ -15,8 +15,7 @@ import traceback
 
 ##load file and processing data
 def load_file():
-    st.title('Time Scheduling Engine')
-
+    st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
     uploaded_file = st.file_uploader('')
 
     if uploaded_file is not None:
