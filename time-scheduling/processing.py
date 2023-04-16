@@ -74,7 +74,7 @@ def load_file():
         with st.expander("Descriptions for Data Input"):    
             st.write("- Must Include: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
             st.write("- Details:")
-            st.write("  - course_name: name of a subject")
+            st.write("-- course_name: name of a subject")
             st.write("  :")
             st.write("- Size of Course, Period (Duration of Course), Professor Name")
             st.write("- Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
