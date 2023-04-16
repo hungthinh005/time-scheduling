@@ -145,7 +145,7 @@ class HtmlOutput:
                     sb.append("<div id='room_")
                     sb.append(room.Name)
                     # sb.append("' style='padding: 0.5em'>\n")
-                    sb.append("' style='color=:#ADD8E6'>\n")
+                    sb.append("' style='color=:#ADD8E6; padding: 0.5em'>\n")
                     sb.append("<table style='border-collapse: collapse; width: 95%'>\n")
                     sb.append(HtmlOutput.getTableHeader(room))
                 else:
