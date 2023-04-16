@@ -118,7 +118,7 @@ class HtmlOutput:
             sb.append(rowspan)
             sb.append("'>")
         else:
-            sb.append("<td style='border: .05em solid white; padding: .25em' rowspan='>")
+            sb.append("<td style='border: .05em solid white; padding: .25em'>")
         sb.append(content)
         sb.append("</td>")
         return "".join(str(v) for v in sb)
@@ -142,7 +142,7 @@ class HtmlOutput:
                     sb.append("<div id='room_")
                     sb.append(room.Name)
                     sb.append("' style='padding: 0.5em'>\n")
-                    sb.append("<table style=' border: .1em solid white; text-align: center; width: 100%'>\n")
+                    sb.append("<table style=' border: .1em solid white; text-align: center; width: 100%'>")
                     sb.append(HtmlOutput.getTableHeader(room))
                 else:
                     key = (periodId, roomId)
