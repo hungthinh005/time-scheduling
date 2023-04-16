@@ -118,9 +118,7 @@ class HtmlOutput:
             sb.append(rowspan)
             sb.append("'>")
         else:
-            sb.append("<td style='border: .1em solid black; padding: .25em' rowspan=' colspan='")
-            sb.append(rowspan)
-            sb.append("'>")
+            sb.append("<td style='border: .1em solid black; padding: .25em' rowspan=' colspan='>")
         sb.append(content)
         sb.append("</td>")
         return "".join(str(v) for v in sb)
