@@ -114,7 +114,7 @@ class HtmlOutput:
             return ""
         sb = []
         if rowspan > 1:
-            sb.append("<td style='border: .1em solid black; padding: .25em' rowspan=' colspan='")
+            sb.append("<td style='border: .1em solid black; padding: .25em' rowspan='")
             sb.append(rowspan)
             sb.append("'>")
         else:
