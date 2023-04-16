@@ -26,9 +26,9 @@ class HtmlOutput:
 
         # sb = ["MH: ", cc.Course.Name, "<br />GV: ", cc.Professor.Name, "<br />Room: ", "/".join(map(lambda grp: grp.Name, cc.Groups)),"<br />"]
         sb = []
-        sb.append(" <span style='color:#00008B' title=''> <b>MH: <b/> </span>")
+        sb.append(" <span style='color:#D0CDE9' title=''> <b>MH: <b/> </span>")
         sb.append(cc.Course.Name)
-        sb.append("<br /> <span style='color:#00008B' title=''> <b>GV: <b/> </span>")
+        sb.append("<br /> <span style='color:#D0CDE9' title=''> <b>GV: <b/> </span>")
         sb.append(cc.Professor.Name)
         # sb.append("<br /> <span style='color:#00008B' title=''> <b>Room: <b/> </span>")
         # sb.append("/".join(map(lambda grp: grp.Name, cc.Groups)),)

@@ -74,7 +74,7 @@ def load_file():
         
     with col3:
         with st.expander("Instructions for Upload File Standard"):    
-            st.write("- Including: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
+            st.write("- Must Include: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
     
      
     list_course = []
