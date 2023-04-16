@@ -142,7 +142,7 @@ class HtmlOutput:
                     sb.append("<div id='room_")
                     sb.append(room.Name)
                     sb.append("' style='padding: 0.5em'>\n")
-                    sb.append("<table style=' border-collapse: collapse; text-align: center; width: 100%'>\n")
+                    sb.append("<table style='border: .1em solid black;; text-align: center; width: 100%'>\n")
                     sb.append(HtmlOutput.getTableHeader(room))
                 else:
                     key = (periodId, roomId)
@@ -170,7 +170,7 @@ class HtmlOutput:
 
     @staticmethod
     def getTableHeader(room):
-        sb = ["<tr><th style='color:#00008B; border: 1em solid black' scope='col' colspan='2'>Room: ", room.Name, "</th>\n"]
+        sb = ["<tr><th style='color:#00008B; border: .1em solid black' scope='col' colspan='2'>Room: ", room.Name, "</th>\n"]
         for weekDay in HtmlOutput.WEEK_DAYS:
             sb.append("<th style='color: #00008B; border: .1em solid black; padding: .25em; width: 15%; text-align: center' scope='col' rowspan='2'>")
             sb.append(weekDay)
