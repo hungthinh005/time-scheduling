@@ -17,7 +17,7 @@ import traceback
 def load_file():
     st.title('Time Scheduling Engine')
 
-    uploaded_file = st.file_uploader("Choose a file")
+    uploaded_file = st.file_uploader()
 
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
