@@ -142,7 +142,7 @@ class HtmlOutput:
                     sb.append("<div id='room_")
                     sb.append(room.Name)
                     sb.append("' style='padding: 0.5em'>\n")
-                    sb.append("<table style=' border-collapse: collapse; width: 95%'>\n")
+                    sb.append("<table style=' border-collapse: collapse; width: 100%'>\n")
                     sb.append(HtmlOutput.getTableHeader(room))
                 else:
                     key = (periodId, roomId)
@@ -151,7 +151,7 @@ class HtmlOutput:
                     sb.append("<tr>")
                     for dayId in range(HtmlOutput.ROOM_COLUMN_NUMBER):
                         if dayId == 0:
-                            sb.append("<th style='color: #D0CDE9; border: .1em solid black; text-align: center; padding: .25em' scope='row' colspan='3'>")
+                            sb.append("<th style='color: #D0CDE9; border: .1em solid black; text-align: center; padding: .25em' scope='row' colspan='2'>")
                             sb.append(HtmlOutput.PERIODS[periodId])
                             sb.append("</th>\n")
                             continue
