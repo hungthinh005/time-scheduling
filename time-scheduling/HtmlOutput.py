@@ -112,10 +112,6 @@ class HtmlOutput:
 
         if content is None:
             return ""
-        else:
-            sb.append("<td style='color: #ADD8E6'")
-            sb.append(content)
-            sb.append("'>")
         sb = []
         if rowspan > 1:
             sb.append("<td style='border: .1em solid black; padding: .25em' rowspan='")
