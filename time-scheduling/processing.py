@@ -30,8 +30,8 @@ def load_file():
         df = pd.DataFrame(df, columns=room_columns)
     
     df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
-    df1 = df1.rename(columns={'TenMH': 'course_name', 'ToTH': 'ToTH_Lab', 'TongSoSV': 'size', 'SoTiet': 'duration', 'TenDayDuNV': 'prof_name'})
-    df1['Lab'] = df1['ToTH_Lab']
+    df1 = df1.rename(columns={'TenMH': 'Course_name', 'ToTH': 'Group_Lab', 'TongSoSV': 'Size', 'SoTiet': 'Duration', 'TenDayDuNV': 'Prof_name'})
+    df1['Lab'] = df1['Group_Lab']
     # df1['Lab'] = df1['Lab'].astype(str)
     for index, row in df1.iterrows():
         if row['Lab'] == 1 or row['Lab'] == 2 or row['Lab'] == 3 or row['Lab'] == 4:
@@ -63,7 +63,7 @@ def load_file():
     col1, col2, col3 = st.columns([5,2,4])
     with col1:
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
-        df2['group_id'] = np.arange(1, len(df2) + 1)
+        df2['Group_id'] = np.arange(1, len(df2) + 1)
             
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
@@ -71,9 +71,14 @@ def load_file():
 
         
     with col3:
-        with st.expander("Instructions for Upload File Standard"):    
+        with st.expander("Descriptions for Data Input"):    
             st.write("- Must Include: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
-    
+            st.write("- Details:")
+            st.write("- course_name: name of a subject")
+            st.write("  :")
+            st.write("- Size of Course, Period (Duration of Course), Professor Name")
+            st.write("- Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
+            st.write("- Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
      
     list_course = []
     index_count_course_id = 0
@@ -81,65 +86,65 @@ def load_file():
     index_count_prof_id = 0
 
     for index1, row1 in df2.iterrows():
-        if row1['course_name'] not in list_course:
-            df2.at[index1, 'course_id'] = index_count_course_id + 1
+        if row1['Course_name'] not in list_course:
+            df2.at[index1, 'Course_id'] = index_count_course_id + 1
             index_count_course_id += 1
-            list_course.append(row1['course_name'])
+            list_course.append(row1['Course_name'])
         else:
-            df2.at[index1, 'course_id'] = index_count_course_id
+            df2.at[index1, 'Course_id'] = index_count_course_id
 
-        if row1['prof_name'] not in list_prof:
-            df2.at[index1, 'prof_id'] = index_count_prof_id + 1
+        if row1['Prof_name'] not in list_prof:
+            df2.at[index1, 'Prof_id'] = index_count_prof_id + 1
             index_count_prof_id += 1
-            list_prof.append(row1['prof_name'])
+            list_prof.append(row1['Prof_name'])
         else:
-            df2.at[index1, 'prof_id'] = index_count_prof_id
+            df2.at[index1, 'Prof_id'] = index_count_prof_id
 
 
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df2.iterrows():       
-        if row['prof_id'] != '':
+        if row['Prof_id'] != '':
             # create professor object
             prof = {
                 "prof": {
-                    "id": row['prof_id'],
-                    "name": row['prof_name']
+                    "id": row['Prof_id'],
+                    "name": row['Prof_name']
                 }
             }
             if prof not in objects:
                 objects.append(prof)
 
-        if row['course_id'] != '':
+        if row['Course_id'] != '':
             # create course object
             course = {
                 "course": {
-                    "id": row['course_id'],
-                    "name": row['course_name']
+                    "id": row['Course_id'],
+                    "name": row['Course_name']
                 }
             }
             if course not in objects:
                 objects.append(course)
 
-        if row['group_id'] != '':
+        if row['Group_id'] != '':
             # create group object
             group = {
                 "group": {
-                    "id": row['group_id'],
-                    "size": row['size']
+                    "id": row['Group_id'],
+                    "size": row['Size']
                 }
             }
             # if group not in objects:
             objects.append(group)
                 
-        if row['prof_id'] != '' and row['course_id'] != '':
+        if row['Prof_id'] != '' and row['Course_id'] != '':
             # create class object
             class_ = {
                 "class": {
-                    "professor": row['prof_id'],
-                    "course": row['course_id'],
-                    "duration": row['duration'],
-                    "group": row['group_id'],
+                    "professor": row['Prof_id'],
+                    "course": row['Course_id'],
+                    "duration": row['Duration'],
+                    "group": row['Group_id'],
                     "lab": row['Lab']
                 }
             }

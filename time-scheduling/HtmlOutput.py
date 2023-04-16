@@ -35,7 +35,7 @@ class HtmlOutput:
         
         if cc.LabRequired:
             # sb.append(" Lab <br />")
-            sb.append(" <br /><span style='color:#00FFFF' title=''> <b>Lab: <b/> </span>")
+            sb.append(" <br /><span style='color:#00FFFF' title=''> <b>Lab <b/> </span>")
         # for i in range(length_CRITERIAS):
         #     sb.append("<span style='color:")
         #     if criterias[ci + i]:
