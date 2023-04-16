@@ -3,7 +3,7 @@ class CourseClass:
     _next_class_id = 0
 
     # Initializes class object
-    def __init__(self, professor, course, requires_lab, duration, groups, group_lab):
+    def __init__(self, professor, course, requires_lab, duration, groups):
         self.Id = CourseClass._next_class_id
         CourseClass._next_class_id += 1
         # Return pointer to professor who teaches
@@ -18,8 +18,6 @@ class CourseClass:
         self.Duration = duration
         # Returns reference to list of student groups who attend class
         self.Groups = set(groups)
-
-        self.Group_lab = group_lab
         # bind professor to class
         self.Professor.addCourseClass(self)
 
