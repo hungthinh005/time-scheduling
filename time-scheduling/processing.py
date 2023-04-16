@@ -142,7 +142,8 @@ def load_file():
                     "course": row['course_id'],
                     "duration": row['duration'],
                     "group": row['group_id'],
-                    "lab": row['Lab']
+                    "lab": row['Lab'],
+                    "group_lab": row['ToTH_Lab']
                 }
             }
             if class_ not in objects:
