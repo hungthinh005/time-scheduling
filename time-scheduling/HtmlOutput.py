@@ -17,7 +17,7 @@ class HtmlOutput:
     WEEK_DAYS = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday")
 
     @staticmethod
-    def getCourseClass(cc, criterias, ci):
+    def getCourseClass(cc):
         # COLOR1 = HtmlOutput.COLOR1
         # COLOR2 = HtmlOutput.COLOR2
         # CRITERIAS = HtmlOutput.CRITERIAS
@@ -115,11 +115,11 @@ class HtmlOutput:
 
         sb = []
         if rowspan > 1:
-            sb.append("<td style='border: .1em solid black; padding: .25em' rowspan='")
+            sb.append("<td style='border: .1em solid white; padding: .25em' rowspan='")
             sb.append(rowspan)
             sb.append("'>")
         else:
-            sb.append("<td style='border: .1em solid black; padding: .25em'>")
+            sb.append("<td style='border: .1em solid white; padding: .25em'>")
         sb.append(content)
         sb.append("</td>")
         return "".join(str(v) for v in sb)
@@ -143,8 +143,7 @@ class HtmlOutput:
                     sb.append("<div id='room_")
                     sb.append(room.Name)
                     sb.append("' style='padding: 0.5em'>\n")
-                    # sb.append("<table style='border-collapse: collapse; width: 95%'>\n")
-                    sb.append("<table style='color:ADD8E6'>\n")
+                    sb.append("<table style='border-collapse: collapse; width: 95%'>\n")
                     sb.append(HtmlOutput.getTableHeader(room))
                 else:
                     key = (periodId, roomId)
