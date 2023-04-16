@@ -142,7 +142,7 @@ class HtmlOutput:
                     sb.append("<div id='room_")
                     sb.append(room.Name)
                     sb.append("' style='padding: 0.5em'>\n")
-                    sb.append("<table style=' border-collapse: collapse; width: 100%'>\n")
+                    sb.append("<table style=' border-collapse: collapse; text-align: center; width: 100%'>\n")
                     sb.append(HtmlOutput.getTableHeader(room))
                 else:
                     key = (periodId, roomId)
