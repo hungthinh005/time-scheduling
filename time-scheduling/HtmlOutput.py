@@ -115,13 +115,11 @@ class HtmlOutput:
 
         sb = []
         if rowspan > 1:
-            # sb.append("<td style='border: .1em solid black; padding: .25em' rowspan='")
-            sb.append("<td style='color=:#ADD8E6'")
+            sb.append("<td style='border: .1em solid black; padding: .25em' rowspan='")
             sb.append(rowspan)
             sb.append("'>")
         else:
-            # sb.append("<td style='border: .1em solid black; padding: .25em'>")
-            sb.append("<td style='color=:#ADD8E6'")
+            sb.append("<td style='border: .1em solid black; padding: .25em'>")
         sb.append(content)
         sb.append("</td>")
         return "".join(str(v) for v in sb)
