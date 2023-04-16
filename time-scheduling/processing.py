@@ -72,13 +72,9 @@ def load_file():
         
     with col3:
         with st.expander("Descriptions for Data Input"):    
-            st.write("- Must Include: Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
-            st.write("- Details:")
-            st.write("+ course_name: name of a subject")
-            st.write("  :")
-            st.write("- Size of Course, Period (Duration of Course), Professor Name")
-            st.write("- Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
-            st.write("- Course Name, Lab Group, Size of Course, Period (Duration of Course), Professor Name")
+            st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
+            st.write("- In the case of the course with 4 periods, 1 room in 1 week can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
+
      
     list_course = []
     index_count_course_id = 0
