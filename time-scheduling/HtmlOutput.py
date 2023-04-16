@@ -170,7 +170,7 @@ class HtmlOutput:
 
     @staticmethod
     def getTableHeader(room):
-        sb = ["<tr><th style='border: .1em solid black' scope='col' colspan='2'>Room: ", room.Name, "</th>\n"]
+        sb = ["<tr><th style='color:#D0CDE9; border: .1em solid black' scope='col' colspan='2'>Room: ", room.Name, "</th>\n"]
         for weekDay in HtmlOutput.WEEK_DAYS:
             sb.append("<th style='color: #D0CDE9; border: .1em solid black; padding: .25em; width: 15%; text-align: center' scope='col' rowspan='2'>")
             sb.append(weekDay)
