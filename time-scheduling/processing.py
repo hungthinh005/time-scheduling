@@ -61,7 +61,7 @@ def load_file():
     col1, col2, col3 = st.columns([5.5,2,4])
     with col1:
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
-        df2['Group_id'] = np.arange(1, len(df2) + 1)    
+        
 
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
@@ -72,7 +72,7 @@ def load_file():
         with st.expander("Descriptions for Data Input"):    
             st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
             st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
-
+    df2['Group_id'] = np.arange(1, len(df2) + 1)   
     list_course = []
     index_count_course_id = 0
     list_prof = []     
@@ -91,7 +91,8 @@ def load_file():
             list_prof.append(row1['Prof_Name'])
         else:
             df2.at[index1, 'Prof_id'] = index_count_prof_id
-
+    df2['Course_Name'] = df2['Course_Name'].astype(str) 
+    df2['Prof_Name'] = df2['Prof_Name'].astype(str) 
     st.write(df2)
     # create list of dictionaries representing each object in the JSON file
     objects = []
