@@ -57,11 +57,6 @@ def load_file():
         else:
             df_room.at[index, 'Lab'] = ''
     df_room['Lab'] = df_room['Lab'].astype(bool)
-
-    list_course = []
-    index_count_course_id = 0
-    list_prof = []     
-    index_count_prof_id = 0
     
     col1, col2, col3 = st.columns([5.5,2,4])
     with col1:
@@ -78,10 +73,12 @@ def load_file():
             st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
             st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
 
-     
-    
 
     for index1, row1 in df2.iterrows():
+        list_course = []
+        index_count_course_id = 0
+        list_prof = []     
+        index_count_prof_id = 0
         if row1['Course_Name'] not in list_course:
             df2.at[index1, 'Course_id'] = index_count_course_id + 1
             index_count_course_id += 1
