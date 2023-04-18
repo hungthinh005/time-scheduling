@@ -46,7 +46,7 @@ def load_file():
     room_default = [['A1.309', 90, 0],
                     ['L107', 40, 0],
                     ['LA1.605', 35, 1],
-                    ['La1.606', 35, 1]
+                    ['La1.607', 35, 1]
     ]
     room_columns = ['Room', 'Size_Room', 'Lab']
     df_room = pd.DataFrame(room_default, columns=room_columns)
