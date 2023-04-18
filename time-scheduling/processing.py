@@ -37,7 +37,7 @@ def load_file():
         if row['Lab'] == 1 or row['Lab'] == 2 or row['Lab'] == 3 or row['Lab'] == 4:
             df1.at[index, 'Lab'] = 'True'
         else:
-            df1.at[index, 'Lab'] = ''
+            df1.at[index, 'Lab'] = 'False'
     df1['Lab'] = df1['Lab'].astype(bool)
     
 
@@ -64,10 +64,6 @@ def load_file():
     with col1:
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
         df2['Group_id'] = np.arange(1, len(df2) + 1)    
-
-        for index, row in df2.iterrows():
-            if row['Lab'] == True and row['Group_Lab'] == 0:
-                df2.at[index, 'Group_Lab'] = 1
 
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
