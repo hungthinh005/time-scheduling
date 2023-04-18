@@ -75,7 +75,7 @@ def load_file():
             st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
             st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
 
-    st.write(df2) 
+     
     list_course = []
     index_count_course_id = 0
     list_prof = []     
@@ -96,7 +96,7 @@ def load_file():
         else:
             df2.at[index1, 'Prof_id'] = index_count_prof_id
 
-
+    st.write(df2)
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df2.iterrows():       
