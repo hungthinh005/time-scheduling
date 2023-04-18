@@ -97,6 +97,7 @@ def load_file():
             df2.at[index1, 'Prof_id'] = index_count_prof_id
 
     st.write(df2)
+    df2.to_csv('test.csv')
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df2.iterrows():       
