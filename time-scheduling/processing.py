@@ -58,7 +58,10 @@ def load_file():
             df_room.at[index, 'Lab'] = ''
     df_room['Lab'] = df_room['Lab'].astype(bool)
 
-
+    list_course = []
+    index_count_course_id = 0
+    list_prof = []     
+    index_count_prof_id = 0
     
     col1, col2, col3 = st.columns([5.5,2,4])
     with col1:
@@ -76,10 +79,7 @@ def load_file():
             st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
 
      
-    list_course = []
-    index_count_course_id = 0
-    list_prof = []     
-    index_count_prof_id = 0
+    
 
     for index1, row1 in df2.iterrows():
         if row1['Course_Name'] not in list_course:
@@ -97,7 +97,6 @@ def load_file():
             df2.at[index1, 'Prof_id'] = index_count_prof_id
 
     st.write(df2)
-    df2.to_csv('test.csv')
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df2.iterrows():       
