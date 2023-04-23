@@ -14,7 +14,6 @@ import traceback
 
 
 ##load file and processing data
-st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
 
 def load_file():
     uploaded_file = st.file_uploader('')
@@ -163,6 +162,7 @@ def load_file():
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
+    st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
     tab1, tab2 = st.tabs(["Schedule", "Student"])
     with tab1:
         load_file()
