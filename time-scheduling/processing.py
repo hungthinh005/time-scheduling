@@ -174,7 +174,7 @@ def for_stu():
     with col1:
         if input:
             df_stu = df_stu.loc[df_stu['MaSV'] == input]
-            list_subject_have_done = df_stu['TenMH']
+            list_subject_have_done = df_stu['NHHK', 'HK', 'TenMH', 'SoTinChi'].hide_index()
             st.write(list_subject_have_done, unsafe_allow_html=True)
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
