@@ -165,12 +165,12 @@ def for_stu():
     df_stu = df_stu[['MaSV', 'NHHK', 'HK', 'MaMH', 'TenMH', 'SoTinChi', 'DiemHP']]
     df_stu = df_stu.dropna()
     df_stu['NHHK'] = df_stu['NHHK'].astype(str).str[:-1]
-    input = st.text_input()
+    input = st.text_input(value="")
 
     # m1 = df_stu["MaSV"].str.contains(text_search, case = False)
     # m2 = df_stu["TenMH"].str.contains(text_search, case = False)
     # df_search = df_stu(m1|m2)
-    if st.buttton('Search'):
+    if input:
         list_subject_have_done = df_stu.loc[df_stu['MaSV'] == input]
         st.write(list_subject_have_done['TenMH'])
 st.set_page_config(layout="wide")
