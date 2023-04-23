@@ -161,7 +161,7 @@ def load_file():
         f.write(json_data) 
 
 def for_stu():
-    df_stu = pd.read_csv("/data_stu.csv")
+    df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_stu = df_stu[['MaSV', 'NHHK', 'HK', 'MaMH', 'TenMH', 'SoTinChi', 'DiemHP']]
     # df_stu = df_stu.dropna()
     df_stu['NHHK'] = df_stu['NHHK'].astype(str).str[:-1]
