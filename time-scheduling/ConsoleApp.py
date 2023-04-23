@@ -29,11 +29,12 @@ def main(file_name):
     # alg = Hgasso(configuration)
     alg.run()
     html_result = HtmlOutput.getResult(alg.result)
-    alg.to_csv('test.csv')
+   
     # temp_file_path = tempfile.gettempdir() + file_name.replace(".json", ".html")
     # writer = codecs.open(temp_file_path, "w", "utf-8")
 
     st.markdown(html_result, unsafe_allow_html=True)
+    st.markdown(alg)
     # writer.write(html_result)
     # writer.close()
 
