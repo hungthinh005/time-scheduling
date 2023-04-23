@@ -170,10 +170,12 @@ def for_stu():
     # m1 = df_stu["MaSV"].str.contains(text_search, case = False)
     # m2 = df_stu["TenMH"].str.contains(text_search, case = False)
     # df_search = df_stu(m1|m2)
-    if input:
-        df_stu = df_stu.loc[df_stu['MaSV'] == input]
-        list_subject_have_done = df_stu['TenMH']
-        st.write(list_subject_have_done)
+    col1, col2, col3 = st.columns(5)
+    with col1:
+        if input:
+            df_stu = df_stu.loc[df_stu['MaSV'] == input]
+            list_subject_have_done = df_stu['TenMH']
+            st.write(list_subject_have_done.to_html(), unsafe_allow_html=True)
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
