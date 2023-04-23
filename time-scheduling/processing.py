@@ -14,8 +14,9 @@ import traceback
 
 
 ##load file and processing data
+st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
+
 def load_file():
-    st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
     uploaded_file = st.file_uploader('')
 
     if uploaded_file is not None:
@@ -164,7 +165,6 @@ st.set_page_config(layout="wide")
 if __name__ == "__main__":
     tab1, tab2 = st.tabs(["Schedule", "Student"])
     with tab1:
-        st.header("Schedule")
         load_file()
         file_name = "/GaSchedule1.json"
         if len(sys.argv) > 1:
