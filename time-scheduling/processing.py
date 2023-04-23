@@ -174,7 +174,7 @@ def for_stu():
     with col1:
         if input:
             df_stu = df_stu.loc[df_stu['MaSV'] == input]
-            list_subject_have_done = df_stu['NHHK', 'HK', 'TenMH', 'SoTinChi']
+            list_subject_have_done = df_stu[['NHHK', 'HK', 'TenMH', 'SoTinChi']]
             hide_dataframe_row_index = """
             <style>
             .row_heading.level0 {display:none}
