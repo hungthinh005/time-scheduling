@@ -182,7 +182,7 @@ def for_stu():
             </style>
             """
             st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
-            st.dataframe(list_subject_have_done)
+            st.write(list_subject_have_done)
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
