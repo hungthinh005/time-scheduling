@@ -1,7 +1,7 @@
 from model.Constant import Constant
 from model.Reservation import Reservation
 from collections import defaultdict
-from streamlit import st
+import streamlit as st
 
 class HtmlOutput:
     ROOM_COLUMN_NUMBER = Constant.DAYS_NUM + 1
