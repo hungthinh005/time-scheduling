@@ -162,12 +162,17 @@ def load_file():
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
-    load_file()
-    file_name = "/GaSchedule1.json"
-    if len(sys.argv) > 1:
-        file_name = sys.argv[1]
-    try:
-        if st.button('Generate'): 
-            main(file_name)
-    except:
-        traceback.print_exc()
+    tab1, tab2 = st.tabs(["Schedule", "Student"])
+    with tab1:
+        st.header("Schedule")
+        load_file()
+        file_name = "/GaSchedule1.json"
+        if len(sys.argv) > 1:
+            file_name = sys.argv[1]
+        try:
+            if st.button('Generate'): 
+                main(file_name)
+        except:
+            traceback.print_exc()
+    with tab2:
+        st.header("Student Recommend")
