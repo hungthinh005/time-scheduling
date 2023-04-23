@@ -161,16 +161,16 @@ def load_file():
         f.write(json_data) 
 
 def for_stu():
-    df_stu = pd.read_csv('D:/Study/4th year/Sem 2/Thesis/New folder/time-scheduling/time-scheduling/data_stu.csv')
+    df_stu = pd.read_csv('/time-scheduling/data_stu.csv')
     df_stu = df_stu[['MaSV', 'NHHK', 'HK', 'MaMH', 'TenMH', 'SoTinChi', 'DiemHP']]
-    df_stu = df_stu.dropna()
+    # df_stu = df_stu.dropna()
     df_stu['NHHK'] = df_stu['NHHK'].astype(str).str[:-1]
 
 
     text_search = st.text_input("Search...")
-    m1 = df_stu["MaSV"].str.contains(text_search, case = False)
-    m2 = df_stu["TenMH"].str.contains(text_search, case = False)
-    df_search = df_stu(m1|m2)
+    # m1 = df_stu["MaSV"].str.contains(text_search, case = False)
+    # m2 = df_stu["TenMH"].str.contains(text_search, case = False)
+    # df_search = df_stu(m1|m2)
 
 
 st.set_page_config(layout="wide")
