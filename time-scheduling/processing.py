@@ -170,7 +170,7 @@ def for_stu():
     # m1 = df_stu["MaSV"].str.contains(text_search, case = False)
     # m2 = df_stu["TenMH"].str.contains(text_search, case = False)
     # df_search = df_stu(m1|m2)
-    col1, col2, col3 = st.columns(5)
+    col1, col2, col3 = st.columns(3)
     with col1:
         if input:
             df_stu = df_stu.loc[df_stu['MaSV'] == input]
