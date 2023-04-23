@@ -175,14 +175,14 @@ def for_stu():
         if input:
             df_stu = df_stu.loc[df_stu['MaSV'] == input]
             list_subject_have_done = df_stu[['NHHK', 'HK', 'TenMH', 'SoTinChi']]
-            hide_dataframe_row_index = """
+            hide_table_row_index = """
             <style>
-            .row_heading.level0 {display:none}
-            .blank {display:none}
+            thead tr th:first-child {display:none}
+            tbody th {display:none}
             </style>
             """
-            st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
-            st.write(list_subject_have_done)
+            st.markdown(hide_table_row_index, unsafe_allow_html=True)
+            st.table(list_subject_have_done)
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
