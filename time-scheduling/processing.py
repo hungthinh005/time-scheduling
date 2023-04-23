@@ -163,11 +163,9 @@ def load_file():
 def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_stu = df_stu[['MaSV', 'NHHK', 'HK', 'MaMH', 'TenMH', 'SoTinChi', 'DiemHP']]
-    # df_stu = df_stu.dropna()
+    df_stu = df_stu.dropna()
     df_stu['NHHK'] = df_stu['NHHK'].astype(str).str[:-1]
-
-
-    st.text_input("Search...")
+    input = st.text_input("Search...")
     # m1 = df_stu["MaSV"].str.contains(text_search, case = False)
     # m2 = df_stu["TenMH"].str.contains(text_search, case = False)
     # df_search = df_stu(m1|m2)
