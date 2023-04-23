@@ -165,7 +165,7 @@ def for_stu():
     df_stu = df_stu[['MaSV', 'NHHK', 'HK', 'MaMH', 'TenMH', 'SoTinChi', 'DiemHP']]
     df_stu = df_stu.dropna()
     df_stu['NHHK'] = df_stu['NHHK'].astype(str).str[:-1]
-    input = st.text_input(value="")
+    input = st.text_input("Type Student ID", value="")
 
     # m1 = df_stu["MaSV"].str.contains(text_search, case = False)
     # m2 = df_stu["TenMH"].str.contains(text_search, case = False)
