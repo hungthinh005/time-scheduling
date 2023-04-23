@@ -58,7 +58,7 @@ def load_file():
             df_room.at[index, 'Lab'] = ''
     df_room['Lab'] = df_room['Lab'].astype(bool)
     
-    col1, col2, col3 = st.columns([5.5,2,4])
+    col1, col2, col3 = st.columns([6,2,4])
     with col1:
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
         
@@ -167,9 +167,6 @@ def for_stu():
     df_stu['NHHK'] = df_stu['NHHK'].astype(str).str[:-1]
     input = st.text_input("Type Student ID", value="")
 
-    # m1 = df_stu["MaSV"].str.contains(text_search, case = False)
-    # m2 = df_stu["TenMH"].str.contains(text_search, case = False)
-    # df_search = df_stu(m1|m2)
     col1, col2, col3 = st.columns(3)
     with col1:
         if input:
