@@ -173,6 +173,7 @@ def for_stu():
             df_stu = df_stu.loc[df_stu['MaSV'].str.lower() == input.lower()]
             list_subject_have_done = df_stu[['TenMH','HK', 'NHHK', 'SoTinChi']]
             list_subject_have_done[''] = np.arange(1, len(list_subject_have_done) + 1) 
+            list_subject_have_done = list_subject_have_done.reindex(columns=['', 'TenMH','HK', 'NHHK', 'SoTinChi'])
             list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits'}) 
             hide_table_row_index = """
             <style>
