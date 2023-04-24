@@ -162,6 +162,8 @@ def load_file():
 
 def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
+    df_ctdt = pd.read_csv("time-scheduling/data_ctdt.csv")
+    df_ctdt = df_ctdt[['Course Name', 'Sem', 'Year', 'Credits']]
     df_stu = df_stu[['MaSV', 'NHHK', 'HK', 'MaMH', 'TenMH', 'SoTinChi', 'DiemHP']]
     df_stu = df_stu.dropna()
     df_stu['NHHK'] = df_stu['NHHK'].astype(str).str[:-1]
@@ -184,8 +186,11 @@ def for_stu():
             st.markdown(hide_table_row_index, unsafe_allow_html=True)
             with st.expander("List of subjects have done"):  
                 st.table(list_subject_have_done)
-
-        
+    with col2:
+        if input:
+            df_ctdt = df_ctdt[~df_ctdt['Course Name'].isin(list_subject_have_done['Course Name'])]
+            with st.expander("List of subjects haven't done yet"):  
+                st.table(df_ctdt)
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
