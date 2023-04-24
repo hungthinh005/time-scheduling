@@ -190,7 +190,8 @@ def for_stu():
         if input:
             list_subject_havent_done_yet = df_ctdt[~df_ctdt['Course Name'].isin(list_subject_have_done['Course Name'])]
             with st.expander("List of subjects haven't done yet"):  
-                st.write(list_subject_havent_done_yet)
+                st.markdown(hide_table_row_index, unsafe_allow_html=True)
+                st.table(list_subject_havent_done_yet)
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
