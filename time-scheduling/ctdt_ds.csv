@@ -1,0 +1,58 @@
+﻿STT,Mã môn học,Course Name,Credits,Số TCHP,Year,Sem,BB tự chọn,Đã học
+1,EN072IU,Reading & Writing IE1,11,11,2019,1,FALSE,X
+2,EN073IU,Listening & Speaking IE1,11,11,2019,1,FALSE,X
+3,PT001IU,Physical Training 1,3,3,2019,1,FALSE,X
+4,EN074IU,Reading & Writing IE2,8,8,2019,2,FALSE,X
+5,EN075IU,Listening & Speaking IE2,8,8,2019,2,FALSE,X
+6,PT002IU,Physical Training 2,3,3,2019,2,FALSE,X
+7,IT149IU,Fundamentals of Programming,4,4,2019,2,FALSE,IT116IU
+8,MA001IU,Calculus 1,4,4,2019,3,FALSE,X
+9,IT135IU,Introduction to Data Science,3,3,2019,3,FALSE,X
+10,PE015IU,Philosophy of Marxism and Leninism,3,3,2019,3,FALSE,X
+11,PE016IU,Political economics of Marxism and Leninism,2,2,2019,3,FALSE,X
+12,CH011IU,Chemistry for Engineers,3,3,2020,1,FALSE,X
+13,IT069IU,Object-Oriented Programming,4,4,2020,1,FALSE,X
+14,PE017IU,Scientific socialism,2,2,2020,1,FALSE,X
+15,CH012IU,Chemistry Laboratory,1,1,2020,1,FALSE,X
+16,PH013IU,Physics 1,2,2,2020,1,FALSE,X
+17,MA003IU,Calculus 2,4,4,2020,1,FALSE,X
+18,IT137IU,Data Analysis,4,4,2020,1,FALSE,X
+19,IT013IU,Algorithms & Data Structures,4,4,2020,2,FALSE,X
+20,IT090IU,Object-Oriented Analysis and Design,4,4,2020,2,FALSE,X
+21,IT079IU,Principles of Database Management,4,4,2020,2,FALSE,X
+22,IT136IU,Regression Analysis,4,4,2020,2,FALSE,X
+23,IT138IU,Data Science and Data Visualization,4,4,2020,2,FALSE,X
+24,IT151IU,Statistical Methods,3,3,2020,2,FALSE,X
+25,EN008IU,Listening AE1,2,2,2020,3,FALSE,X
+26,PH014IU,Physics 2,2,2,2020,3,FALSE,X
+27,PE018IU,History of Vietnamese Communist Party,2,2,2020,3,FALSE,X
+28,EN007IU,Writing AE1,2,2,2020,3,FALSE,X
+29,EN012IU,Speaking AE2,2,2,2021,1,FALSE,X
+30,EN011IU,Writing AE2,2,2,2021,1,FALSE,X
+31,IT139IU,Scalable and Distributed Computing,4,4,2021,1,FALSE,X
+32,IT140IU,Fundamental Concepts of Data Security,4,4,2021,1,FALSE,X
+33,MA026IU,"Probability, Statistic & Random Process",3,3,2021,1,FALSE,X
+34,PE008IU,Critical Thinking,3,3,2021,1,FALSE,X
+35,PE019IU,Ho Chi Minh's Thoughts,2,2,2021,1,FALSE,X
+36,IT154IU,Linear Algebra,3,3,2021,1,FALSE,X
+37,IT097IU,Introduction to Artificial Intelligence,4,4,2021,2,FALSE,X
+38,IT142IU,Analytics for Observational Data,4,4,2021,2,FALSE,X
+39,IT132IU,Introduction to Data Mining,4,4,2021,2,FALSE,X
+40,IT082IU,Internship,3,3,2021,3,FALSE,X
+41,PE014IU,Environmental Science,3,3,2022,1,FALSE,X
+42,IS021IU,Deterministic models in Operations Research,3,3,2022,1,TRUE,
+43,IT145IU,Decision Support System,4,4,2022,1,TRUE,X
+44,IT083IU,Special Study of the Field,3,3,2022,1,FALSE,X
+45,IT144IU,Business Process Analysis,4,4,2022,1,TRUE,
+46,IT146IU,Theory of Networks,4,4,2022,1,TRUE,
+47,IT143IU,Fundamentals of Big Data Technology,4,4,2022,1,FALSE,X
+48,IT148IU,Experimental Design,4,4,2022,2,TRUE,
+49,IT150IU,Blockchain,4,4,2022,2,TRUE,
+50,ISME105IU,Optimization,3,3,2022,2,TRUE,
+51,IT058IU,Thesis,10,10,2022,2,FALSE,X
+52,IT094IU,Information System Management,4,4,2022,2,TRUE,X
+53,IT120IU,Entrepreneurship,3,3,2022,2,TRUE,X
+54,IT141IU,Big Data Applications: Machine Learning at Scale,4,4,2022,2,TRUE,
+55,IT056IU,IT Project Management,4,4,2022,2,TRUE,
+56,IT152IU,Data Mining for IoT,4,4,2022,2,TRUE,
+57,IT147IU,Mobile Cloud Computing,4,4,2022,2,TRUE,
