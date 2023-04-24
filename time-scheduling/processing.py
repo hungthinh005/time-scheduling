@@ -170,7 +170,7 @@ def for_stu():
     col1, col2, col3 = st.columns(3)
     with col1:
         if input:
-            df_stu = df_stu.loc[df_stu['MaSV'] == input]
+            df_stu = df_stu.loc[df_stu['MaSV'].lower() == input.lower()]
             list_subject_have_done = df_stu[['NHHK', 'HK', 'TenMH', 'SoTinChi']]
             hide_table_row_index = """
             <style>
@@ -181,6 +181,9 @@ def for_stu():
             st.markdown(hide_table_row_index, unsafe_allow_html=True)
             with st.expander("List of subjects have done"):  
                 st.table(list_subject_have_done)
+
+    with col2:
+        
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
