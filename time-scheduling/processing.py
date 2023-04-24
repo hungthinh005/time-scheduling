@@ -172,6 +172,7 @@ def for_stu():
         if input:
             df_stu = df_stu.loc[df_stu['MaSV'].str.lower() == input.lower()]
             list_subject_have_done = df_stu[['NHHK', 'HK', 'TenMH', 'SoTinChi']]
+            list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits'}) 
             hide_table_row_index = """
             <style>
             thead tr th:first-child {display:none}
