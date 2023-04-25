@@ -185,8 +185,9 @@ def for_stu():
             .blank {display:none}
             </style>
             """
-            st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
+            
             with st.expander("List of subjects have done"):  
+                st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
                 st.dataframe(list_subject_have_done)
     with col2:
         if input:
