@@ -179,30 +179,36 @@ def for_stu():
             list_subject_have_done[''] = np.arange(1, len(list_subject_have_done) + 1) 
             list_subject_have_done = list_subject_have_done.reindex(columns=['', 'MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi'])
             list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits'}) 
-            hide_dataframe_row_index = """
-                                    <style>
-                                    .row_heading.level0 {display:none}
-                                    .blank {display:none}
-                                    </style>
-                                    """
+            # hide_dataframe_row_index = """
+            #                         <style>
+            #                         .row_heading.level0 {display:none}
+            #                         .blank {display:none}
+            #                         </style>
+            #                         """
             
             # with st.expander("List of subjects have done"):  
-            st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
-            st.dataframe(list_subject_have_done)
+            # st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
+            list_subject_have_done = list_subject_have_done.style.hide_index()
+
+            st.write(list_subject_have_done.to_html(), unsafe_allow_html=True)
+            # st.dataframe(list_subject_have_done)
     with col2:
         if input:
             list_subject_havent_done_yet = df_ctdt[~df_ctdt['MaMH'].isin(list_subject_have_done['MaMH'])]
             list_subject_havent_done_yet[''] = np.arange(1, len(list_subject_havent_done_yet) + 1) 
             list_subject_havent_done_yet = list_subject_havent_done_yet.reindex(columns=['', 'MaMH', 'Course Name','Sem', 'Year', 'Credits'])
             with st.expander("List of subjects haven't done yet"):  
-                hide_dataframe_row_index = """
-                <style>
-                .row_heading.level0 {display:none}
-                .blank {display:none}
-                </style>
-                """
-                st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
-                st.dataframe(list_subject_havent_done_yet)
+                # hide_dataframe_row_index = """
+                # <style>
+                # .row_heading.level0 {display:none}
+                # .blank {display:none}
+                # </style>
+                # """
+                # st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
+                # st.dataframe(list_subject_havent_done_yet)
+                list_subject_havent_done_yet = list_subject_havent_done_yet.style.hide_index()
+
+                st.write(list_subject_havent_done_yet.to_html(), unsafe_allow_html=True)
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
