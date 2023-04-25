@@ -58,7 +58,7 @@ def load_file():
             df_room.at[index, 'Lab'] = ''
     df_room['Lab'] = df_room['Lab'].astype(bool)
     
-    col1, col2, col3 = st.columns([6,2,4])
+    col1, col2, col3 = st.columns([6,3,4])
     with col1:
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
         
@@ -160,6 +160,9 @@ def load_file():
     with open('GaSchedule1.json', 'w') as f:
         f.write(json_data) 
 
+def highlight_survived(list_subject_have_done):
+    return ['background-color: red']*len(list_subject_have_done) if list_subject_have_done['Score'] < 50 else ['background-color: black']*len(list_subject_have_done)
+
 def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_ctdt = pd.read_csv("time-scheduling/ctdt_ds.csv")
@@ -177,17 +180,17 @@ def for_stu():
             df_stu = df_stu.loc[df_stu['MaSV'].str.lower() == input.lower()]
             list_subject_have_done = df_stu[['MaMH', 'TenMH', 'HK', 'NHHK', 'SoTinChi']]
             list_subject_have_done[''] = np.arange(1, len(list_subject_have_done) + 1) 
-            list_subject_have_done = list_subject_have_done.reindex(columns=['', 'MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi'])
-            list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits'})           
+            list_subject_have_done = list_subject_have_done.reindex(columns=['', 'MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi', 'DiemHP'])
+            list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits', 'DiemHP': 'Score'})           
             with st.expander("List of subjects have done"):  
-                st.dataframe(list_subject_have_done.assign().set_index(''))
+                st.dataframe(list_subject_have_done.assign().set_index('').style.apply(highlight_survived, axis=1))
     with col2:
         if input:
             list_subject_havent_done_yet = df_ctdt[~df_ctdt['MaMH'].isin(list_subject_have_done['MaMH'])]
             list_subject_havent_done_yet['Year'] = list_subject_havent_done_yet['Year'].astype(str)
             list_subject_havent_done_yet['Elective'] = list_subject_havent_done_yet['Elective'].astype(bool)
             list_subject_havent_done_yet[''] = np.arange(1, len(list_subject_havent_done_yet) + 1) 
-            list_subject_havent_done_yet = list_subject_havent_done_yet.reindex(columns=['', 'MaMH', 'Course Name', 'Credits', 'Elective'])
+            list_subject_havent_done_yet = list_subject_havent_done_yet.reindex(columns=['', 'MaMH', 'Course Name', 'Credits', 'Elective', 'Sem'])
             with st.expander("List of subjects haven't done yet"):  
                 st.dataframe(list_subject_havent_done_yet.assign().set_index(''))
 
