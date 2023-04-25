@@ -164,14 +164,14 @@ def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_ctdt = pd.read_csv("time-scheduling/ctdt_ds.csv")
 
-    df_ctdt = df_ctdt[['MaMH', 'Course Name', 'Sem', 'Year', 'Credits']]
+    df_ctdt = df_ctdt[['MaMH', 'Course Name', 'Sem', 'Year', 'Credits', 'Elective']]
 
     df_stu = df_stu[['MaSV', 'NHHK', 'HK', 'MaMH', 'TenMH', 'SoTinChi', 'DiemHP']]
     df_stu = df_stu.dropna()
     df_stu['NHHK'] = df_stu['NHHK'].astype(str).str[:-1]
     input = st.text_input("Type Student ID", value="")
 
-    col1, col2, col3 = st.columns(3)
+    col1, col2= st.columns([4,6])
     with col1:
         if input:
             df_stu = df_stu.loc[df_stu['MaSV'].str.lower() == input.lower()]
