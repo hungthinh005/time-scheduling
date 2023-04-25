@@ -194,6 +194,7 @@ def for_stu():
     with col2:
         if input:
             list_subject_havent_done_yet = df_ctdt[~df_ctdt['MaMH'].isin(list_subject_have_done['MaMH'])]
+            list_subject_havent_done_yet['Year'] = list_subject_havent_done_yet['Year'].astype(int)
             list_subject_havent_done_yet[''] = np.arange(1, len(list_subject_havent_done_yet) + 1) 
             list_subject_havent_done_yet = list_subject_havent_done_yet.reindex(columns=['', 'MaMH', 'Course Name','Sem', 'Year', 'Credits'])
             with st.expander("List of subjects haven't done yet"):  
