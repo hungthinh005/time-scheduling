@@ -189,8 +189,7 @@ def for_stu():
             # with st.expander("List of subjects have done"):  
             # st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
             list_subject_have_done = list_subject_have_done.style.hide_index()
-
-            st.write(list_subject_have_done.to_html(), unsafe_allow_html=True)
+            st.dataframe(list_subject_have_done.to_html(), unsafe_allow_html=True)
             # st.dataframe(list_subject_have_done)
     with col2:
         if input:
@@ -207,8 +206,7 @@ def for_stu():
                 # st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
                 # st.dataframe(list_subject_havent_done_yet)
                 list_subject_havent_done_yet = list_subject_havent_done_yet.style.hide_index()
-
-                st.write(list_subject_havent_done_yet.to_html(), unsafe_allow_html=True)
+                st.dataframe(list_subject_havent_done_yet.to_html(), unsafe_allow_html=True)
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
