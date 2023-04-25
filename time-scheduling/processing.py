@@ -160,6 +160,9 @@ def load_file():
     with open('GaSchedule1.json', 'w') as f:
         f.write(json_data) 
 
+def highlight(val):
+    color = 'red' if val < 50 else 'black'
+    return f'background-color: {color}'
 
 def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
@@ -180,8 +183,9 @@ def for_stu():
             list_subject_have_done[''] = np.arange(1, len(list_subject_have_done) + 1) 
             list_subject_have_done = list_subject_have_done.reindex(columns=['', 'MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi', 'DiemHP'])
             list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits', 'DiemHP': 'Score'})           
+
             with st.expander("List of subjects have done"):  
-                st.dataframe(list_subject_have_done.assign().set_index(''))
+                st.dataframe(list_subject_have_done.set_index('').style.applymap(highlight, subset=['Score']))
     with col2:
         if input:
             list_subject_havent_done_yet = df_ctdt[~df_ctdt['MaMH'].isin(list_subject_have_done['MaMH'])]
