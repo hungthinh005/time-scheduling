@@ -163,7 +163,9 @@ def load_file():
 def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_ctdt = pd.read_csv("time-scheduling/ctdt_ds.csv")
+
     df_ctdt = df_ctdt[['MaMH', 'Course Name', 'Sem', 'Year', 'Credits']]
+
     df_stu = df_stu[['MaSV', 'NHHK', 'HK', 'MaMH', 'TenMH', 'SoTinChi', 'DiemHP']]
     df_stu = df_stu.dropna()
     df_stu['NHHK'] = df_stu['NHHK'].astype(str).str[:-1]
@@ -173,7 +175,7 @@ def for_stu():
     with col1:
         if input:
             df_stu = df_stu.loc[df_stu['MaSV'].str.lower() == input.lower()]
-            list_subject_have_done = df_stu[['MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi']]
+            list_subject_have_done = df_stu[['MaMH', 'TenMH', 'HK', 'NHHK', 'SoTinChi']]
             list_subject_have_done[''] = np.arange(1, len(list_subject_have_done) + 1) 
             list_subject_have_done = list_subject_have_done.reindex(columns=['', 'MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi'])
             list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits'}) 
