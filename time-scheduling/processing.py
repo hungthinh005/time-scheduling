@@ -179,23 +179,29 @@ def for_stu():
             list_subject_have_done[''] = np.arange(1, len(list_subject_have_done) + 1) 
             list_subject_have_done = list_subject_have_done.reindex(columns=['', 'MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi'])
             list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits'}) 
-            hide_table_row_index = """
+            hide_dataframe_row_index = """
             <style>
-            thead tr th:first-child {display:none}
-            tbody th {display:none}
+            .row_heading.level0 {display:none}
+            .blank {display:none}
             </style>
             """
-            st.markdown(hide_table_row_index, unsafe_allow_html=True)
+            st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
             with st.expander("List of subjects have done"):  
-                st.table(list_subject_have_done)
+                st.dataframe(list_subject_have_done)
     with col2:
         if input:
             list_subject_havent_done_yet = df_ctdt[~df_ctdt['MaMH'].isin(list_subject_have_done['MaMH'])]
             list_subject_havent_done_yet[''] = np.arange(1, len(list_subject_havent_done_yet) + 1) 
             list_subject_havent_done_yet = list_subject_havent_done_yet.reindex(columns=['', 'MaMH', 'Course Name','Sem', 'Year', 'Credits'])
             with st.expander("List of subjects haven't done yet"):  
-                st.markdown(hide_table_row_index, unsafe_allow_html=True)
-                st.table(list_subject_havent_done_yet)
+                hide_dataframe_row_index = """
+                <style>
+                .row_heading.level0 {display:none}
+                .blank {display:none}
+                </style>
+                """
+                st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
+                st.dataframe(list_subject_havent_done_yet)
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
