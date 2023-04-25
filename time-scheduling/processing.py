@@ -196,7 +196,7 @@ def for_stu():
             list_subject_havent_done_yet = df_ctdt[~df_ctdt['MaMH'].isin(list_subject_have_done['MaMH'])]
             list_subject_havent_done_yet['Year'] = list_subject_havent_done_yet['Year'].astype(str)
             list_subject_havent_done_yet[''] = np.arange(1, len(list_subject_havent_done_yet) + 1) 
-            list_subject_havent_done_yet = list_subject_havent_done_yet.reindex(columns=['', 'MaMH', 'Course Name','Sem', 'Year', 'Credits'])
+            list_subject_havent_done_yet = list_subject_havent_done_yet.reindex(columns=['', 'MaMH', 'Course Name', 'Credits'])
             with st.expander("List of subjects haven't done yet"):  
                 # hide_dataframe_row_index = """
                 # <style>
