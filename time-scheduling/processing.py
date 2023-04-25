@@ -185,8 +185,8 @@ def for_stu():
             list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits', 'DiemHP': 'Score'})           
 
             with st.expander("List of subjects have done"):  
-                
-                st.dataframe(list_subject_have_done.style.applymap(highlight, subset=['Score']))
+                list_subject_have_done = list_subject_have_done.applymap(highlight, subset=['Score'])
+                st.dataframe(list_subject_have_done.assign().set_index(''))
     with col2:
         if input:
             list_subject_havent_done_yet = df_ctdt[~df_ctdt['MaMH'].isin(list_subject_have_done['MaMH'])]
