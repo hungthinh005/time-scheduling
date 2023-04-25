@@ -180,15 +180,15 @@ def for_stu():
             list_subject_have_done = list_subject_have_done.reindex(columns=['', 'MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi'])
             list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits'}) 
             hide_dataframe_row_index = """
-            <style>
-            .row_heading.level0 {display:none}
-            .blank {display:none}
-            </style>
-            """
+                                    <style>
+                                    .row_heading.level0 {display:none}
+                                    .blank {display:none}
+                                    </style>
+                                    """
             
-            with st.expander("List of subjects have done"):  
-                st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
-                st.dataframe(list_subject_have_done)
+            # with st.expander("List of subjects have done"):  
+            st.markdown(hide_dataframe_row_index, unsafe_allow_html=True)
+            st.dataframe(list_subject_have_done)
     with col2:
         if input:
             list_subject_havent_done_yet = df_ctdt[~df_ctdt['MaMH'].isin(list_subject_have_done['MaMH'])]
