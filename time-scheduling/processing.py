@@ -178,8 +178,8 @@ def for_stu():
             df_stu = df_stu.loc[df_stu['MaSV'].str.lower() == input.lower()]
             list_subject_have_done = df_stu[['MaMH', 'TenMH', 'HK', 'NHHK', 'SoTinChi', 'DiemHP']]
             list_subject_have_done[''] = np.arange(1, len(list_subject_have_done) + 1) 
-            list_subject_have_done = list_subject_have_done.reindex(columns=['', 'MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi', 'DiemHP'])
-            list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Actual Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits', 'DiemHP': 'Score'})           
+            list_subject_have_done = list_subject_have_done.reindex(columns=['', 'MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi'])
+            list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Actual Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits'})           
             
             with st.expander("List of subjects have done"):  
                 st.dataframe(list_subject_have_done.set_index(''))
