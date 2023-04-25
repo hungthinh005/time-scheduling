@@ -161,7 +161,10 @@ def load_file():
         f.write(json_data) 
 
 def highlight(val):
-    color = 'red' if val < 50 else 'black'
+    if val < 50:
+        color = 'red' 
+    else:
+        color = 'black'
     return f'background-color: {color}'
 
 def for_stu():
