@@ -179,20 +179,22 @@ def for_stu():
             list_subject_have_done[''] = np.arange(1, len(list_subject_have_done) + 1) 
             list_subject_have_done = list_subject_have_done.reindex(columns=['', 'MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi'])
             list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits'}) 
-            hide_table_row_index = """
-            <style>
-            thead tr th:first-child {display:none}
-            tbody th {display:none}
-            </style>
-            """
-            st.markdown(hide_table_row_index, unsafe_allow_html=True)
+            # hide_table_row_index = """
+            # <style>
+            # thead tr th:first-child {display:none}
+            # tbody th {display:none}
+            # </style>
+            # """
+            # st.markdown(hide_table_row_index, unsafe_allow_html=True)
             with st.expander("List of subjects have done"):  
                 st.dataframe(list_subject_have_done)
     with col2:
         if input:
             list_subject_havent_done_yet = df_ctdt[~df_ctdt['MaMH'].isin(list_subject_have_done['MaMH'])]
+            list_subject_havent_done_yet[''] = np.arange(1, len(list_subject_havent_done_yet) + 1) 
+            list_subject_havent_done_yet = list_subject_havent_done_yet.reindex(columns=['', 'MaMH', 'Course Name','Sem', 'Year', 'Credits'])
             with st.expander("List of subjects haven't done yet"):  
-                st.markdown(hide_table_row_index, unsafe_allow_html=True)
+                # st.markdown(hide_table_row_index, unsafe_allow_html=True)
                 st.dataframe(list_subject_havent_done_yet)
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
