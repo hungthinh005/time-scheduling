@@ -165,7 +165,7 @@ def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_ctdt = pd.read_csv("time-scheduling/ctdt_ds.csv")
 
-    df_ctdt = df_ctdt[['MaMH', 'Course Name', 'Sem', 'Year', 'Credits', 'Elective']]
+    df_ctdt = df_ctdt[['MaMH', 'Course Name', 'Sem', 'Expect Year', 'Credits', 'Elective']]
 
     df_stu = df_stu[['MaSV', 'NHHK', 'HK', 'MaMH', 'TenMH', 'SoTinChi', 'DiemHP']]
     df_stu = df_stu.dropna()
