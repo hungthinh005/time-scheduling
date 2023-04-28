@@ -14,9 +14,9 @@ import traceback
 
 
 ##load file and processing data
-uploaded_file = st.file_uploader('')
 
-def load_file(uploaded_file):
+def load_file():
+    uploaded_file = st.file_uploader('')
 
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
@@ -91,7 +91,7 @@ def load_file(uploaded_file):
             list_prof.append(row1['Prof_Name'])
         else:
             df2.at[index1, 'Prof_id'] = index_count_prof_id
-
+            
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df2.iterrows():       
@@ -199,8 +199,8 @@ def for_stu():
             with st.expander("List of subjects haven't done yet"):  
                 st.dataframe(list_subject_havent_done_yet.set_index(''))       
 
-    df2 = load_file()
-    df_unique = df2[['Course Name']].unique()
+    df3 = load_file()
+    df_unique = df3[['Course Name']].unique()
     with st.expander("List of recommend subjects"):  
         if input:
             st.dataframe(df_unique.set_index(''))
@@ -210,7 +210,7 @@ if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
     tab1, tab2 = st.tabs(["Schedule", "Student"])
     with tab1:
-        load_file(uploaded_file)
+        load_file()
         file_name = "/GaSchedule1.json"
         if len(sys.argv) > 1:
             file_name = sys.argv[1]
