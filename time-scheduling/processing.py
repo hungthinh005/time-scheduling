@@ -16,7 +16,7 @@ import traceback
 ##load file and processing data
 
 def load_file():
-    
+
     uploaded_file = st.file_uploader('')
 
     if uploaded_file is not None:
@@ -162,7 +162,6 @@ def load_file():
     with open('GaSchedule1.json', 'w') as f:
         f.write(json_data) 
 
-    return df2
 
 def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
@@ -199,12 +198,6 @@ def for_stu():
             
             with st.expander("List of subjects haven't done yet"):  
                 st.dataframe(list_subject_havent_done_yet.set_index(''))       
-
-    df3 = load_file()
-    df_unique = df3[['Course Name']].unique()
-    with st.expander("List of recommend subjects"):  
-        if input:
-            st.dataframe(df_unique.set_index(''))
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
