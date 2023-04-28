@@ -159,9 +159,9 @@ def load_file():
     # write JSON object to file
     with open('GaSchedule1.json', 'w') as f:
         f.write(json_data) 
+    return df2
 
-
-def for_stu(df2):
+def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_ctdt = pd.read_csv("time-scheduling/ctdt_ds.csv")
 
@@ -196,9 +196,11 @@ def for_stu(df2):
             
             with st.expander("List of subjects haven't done yet"):  
                 st.dataframe(list_subject_havent_done_yet.set_index(''))
-    df_unique = df2[['Course Name']].unique()
+    df_unique = load_file()            
+    df_unique = df_unique[['Course Name']].unique()
     with st.expander("List of recommend subjects"):  
         st.dataframe(df_unique.set_index(''))
+
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
@@ -215,3 +217,4 @@ if __name__ == "__main__":
             traceback.print_exc()
     with tab2:
         for_stu()
+
