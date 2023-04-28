@@ -58,7 +58,7 @@ def load_file():
             df_room.at[index, 'Lab'] = ''
     df_room['Lab'] = df_room['Lab'].astype(bool)
     
-    col1, col2, col3 = st.columns([7,3,5])
+    col1, col2, col3 = st.columns([7,2.5,5])
     with col1:
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
         
