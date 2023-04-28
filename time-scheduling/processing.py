@@ -16,7 +16,7 @@ import traceback
 ##load file and processing data
 uploaded_file = st.file_uploader('')
 
-def load_file():
+def load_file(uploaded_file):
 
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
@@ -210,7 +210,7 @@ if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
     tab1, tab2 = st.tabs(["Schedule", "Student"])
     with tab1:
-        load_file()
+        load_file(uploaded_file)
         file_name = "/GaSchedule1.json"
         if len(sys.argv) > 1:
             file_name = sys.argv[1]
