@@ -37,7 +37,7 @@ def load_file():
         if row['Lab'] == 1 or row['Lab'] == 2 or row['Lab'] == 3 or row['Lab'] == 4:
             df1.at[index, 'Lab'] = 'True'
         else:
-            df1.at[index, 'Lab'] = 'False'
+            df1.at[index, 'Lab'] = ''
     df1['Lab'] = df1['Lab'].astype(bool)
     
 
@@ -58,7 +58,7 @@ def load_file():
             df_room.at[index, 'Lab'] = ''
     df_room['Lab'] = df_room['Lab'].astype(bool)
     
-    col1, col2, col3 = st.columns([6,3,4])
+    col1, col2, col3 = st.columns([4,4,4])
     with col1:
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
         
