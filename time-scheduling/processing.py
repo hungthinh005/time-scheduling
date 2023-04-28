@@ -159,7 +159,8 @@ def load_file():
     # write JSON object to file
     with open('GaSchedule1.json', 'w') as f:
         f.write(json_data) 
-@st.cache
+
+
 def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_ctdt = pd.read_csv("time-scheduling/ctdt_ds.csv")
