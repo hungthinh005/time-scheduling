@@ -14,7 +14,7 @@ import traceback
 
 
 ##load file and processing data
-
+@st.cache_data
 def load_file():
     uploaded_file = st.file_uploader('')
 
@@ -160,7 +160,7 @@ def load_file():
     with open('GaSchedule1.json', 'w') as f:
         f.write(json_data) 
 
-
+@st.cache_data
 def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_ctdt = pd.read_csv("time-scheduling/ctdt_ds.csv")
