@@ -91,6 +91,9 @@ def load_file():
             list_prof.append(row1['Prof_Name'])
         else:
             df2.at[index1, 'Prof_id'] = index_count_prof_id
+
+    def data(df2):
+        return df2
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df2.iterrows():       
@@ -161,6 +164,9 @@ def load_file():
         f.write(json_data) 
     return df2
 
+def data(df2):
+    pass
+
 def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_ctdt = pd.read_csv("time-scheduling/ctdt_ds.csv")
@@ -196,7 +202,7 @@ def for_stu():
             
             with st.expander("List of subjects haven't done yet"):  
                 st.dataframe(list_subject_havent_done_yet.set_index(''))
-    df_unique = load_file()            
+    df_unique = data()            
     df_unique = df_unique[['Course Name']].unique()
     with st.expander("List of recommend subjects"):  
         st.dataframe(df_unique.set_index(''))
