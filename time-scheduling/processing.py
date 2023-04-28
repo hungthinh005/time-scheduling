@@ -14,7 +14,7 @@ import traceback
 
 
 ##load file and processing data
-@st.cache_data
+@st.cache_data(suppress_st_warning=True)
 def load_file():
     uploaded_file = st.file_uploader('')
 
