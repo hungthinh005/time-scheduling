@@ -92,8 +92,7 @@ def load_file():
         else:
             df2.at[index1, 'Prof_id'] = index_count_prof_id
 
-    def data(df2):
-        return df2
+    df2.to_csv('schedule_data.csv')
     # create list of dictionaries representing each object in the JSON file
     objects = []
     for index, row in df2.iterrows():       
@@ -162,14 +161,12 @@ def load_file():
     # write JSON object to file
     with open('GaSchedule1.json', 'w') as f:
         f.write(json_data) 
-    return df2
 
-def data(df2):
-    return df2
 
 def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_ctdt = pd.read_csv("time-scheduling/ctdt_ds.csv")
+    df_schedule = pd.read_csv("time-scheduling/schedule_data.csv")
 
     df_ctdt = df_ctdt[['MaMH', 'Course Name', 'Sem', 'Expect Year', 'Credits', 'Elective']]
 
@@ -201,9 +198,9 @@ def for_stu():
             list_subject_havent_done_yet = list_subject_havent_done_yet.reindex(columns=['', 'MaMH', 'Course Name', 'Credits', 'Elective', 'Expect Year', 'Sem'])
             
             with st.expander("List of subjects haven't done yet"):  
-                st.dataframe(list_subject_havent_done_yet.set_index(''))
-    df_unique = data()            
-    df_unique = df_unique[['Course Name']].unique()
+                st.dataframe(list_subject_havent_done_yet.set_index(''))       
+
+    df_unique = df_schedule[['Course Name']].unique()
     with st.expander("List of recommend subjects"):  
         st.dataframe(df_unique.set_index(''))
 
