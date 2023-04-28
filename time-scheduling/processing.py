@@ -175,7 +175,7 @@ def for_stu():
     col1, col2= st.columns([5,6])
     with col1:
         if input:
-            list_subject_have_done = df_stu.loc[(df_stu['MaSV'].str.lower() == input.lower()) & (df_stu['DiemHP'] > 50) ]
+            list_subject_have_done = df_stu.loc[(df_stu['MaSV'].str.lower() == input.lower() & df_stu['DiemHP'] > 50)]
             list_subject_have_done[''] = np.arange(1, len(list_subject_have_done) + 1) 
             list_subject_have_done = list_subject_have_done.reindex(columns=['', 'MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi'])
             list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Actual Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits'})           
