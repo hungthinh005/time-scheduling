@@ -161,12 +161,7 @@ def load_file():
     with open('GaSchedule1.json', 'w') as f:
         f.write(json_data) 
     return df2
-
-def schedule_data():
-    df2 = load_file()
-    return df2
-
-def for_stu():
+def for_stu(df2):
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_ctdt = pd.read_csv("time-scheduling/ctdt_ds.csv")
 
@@ -202,10 +197,10 @@ def for_stu():
             with st.expander("List of subjects haven't done yet"):  
                 st.dataframe(list_subject_havent_done_yet.set_index(''))       
 
-    df_unique = schedule_data()
-    df_unique = df_unique[['Course Name']].unique()
+    df_unique = df2[['Course Name']].unique()
     with st.expander("List of recommend subjects"):  
-        st.dataframe(df_unique.set_index(''))
+        if input:
+            st.dataframe(df_unique.set_index(''))
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
@@ -222,5 +217,5 @@ if __name__ == "__main__":
         except:
             traceback.print_exc()
     with tab2:
-        for_stu()
+        for_stu(load_file())
 
