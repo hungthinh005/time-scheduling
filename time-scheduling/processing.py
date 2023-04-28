@@ -14,9 +14,9 @@ import traceback
 
 
 ##load file and processing data
+uploaded_file = st.file_uploader('')
 
 def load_file():
-    uploaded_file = st.file_uploader('')
 
     if uploaded_file is not None:
         df = pd.read_csv(uploaded_file)
