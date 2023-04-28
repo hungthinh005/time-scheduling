@@ -165,7 +165,7 @@ def load_file():
     return df2
 
 def data(df2):
-    pass
+    return df2
 
 def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
