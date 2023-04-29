@@ -29,7 +29,7 @@ def data():
         room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']
         df = pd.DataFrame(df, columns=room_columns)
     
-    df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
+    df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV', 'MaMH']]
     df1 = df1.rename(columns={'TenMH': 'Course_Name', 'ToTH': 'Group_Lab', 'TongSoSV': 'Size_Course', 'SoTiet': 'Duration', 'TenDayDuNV': 'Prof_Name'})
     df1['Lab'] = df1['Group_Lab']
     # df1['Lab'] = df1['Lab'].astype(str)
@@ -266,9 +266,10 @@ def for_stu():
                 st.dataframe(list_subject_havent_done_yet.set_index(''))  
 
     df2, df_room = data()
-    df_unique = df2[['Course Name']].drop_duplicates()
+    df2['MaMH'] = df2['MaMH'].drop_duplicates()
+    df_unique = df2[['MaMH', 'Course Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course']]
     df_unique = pd.DataFrame(df_unique)
-    list_recommend_subjects = df_unique[df_unique['Course Name'].isin(list_subject_havent_done_yet['Course Name'])]
+    list_recommend_subjects = df_unique[df_unique['MaMH'].isin(list_subject_havent_done_yet['MaMH'])]
     with st.expander("List of recommend subjects in this semester"):    
         st.dataframe(list_recommend_subjects.set_index(''))  
 
