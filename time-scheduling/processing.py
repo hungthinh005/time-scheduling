@@ -170,7 +170,7 @@ def load_file():
 
 
 
-def for_stu(data):
+def for_stu():
     df_stu = pd.read_csv("time-scheduling/data_stu.csv")
     df_ctdt = pd.read_csv("time-scheduling/ctdt_ds.csv")
 
@@ -207,7 +207,7 @@ def for_stu(data):
                 st.dataframe(list_subject_havent_done_yet.set_index(''))  
 
     with col3:
-        df_unique = data.drop_duplicates(subset= ['MaMH', 'Course Name'], inplace=False)
+        df_unique = df2.drop_duplicates(subset= ['MaMH', 'Course Name'], inplace=False)
         df_unique = df_unique[['MaMH', 'Course Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course']]
         list_recommend_subjects = df_unique[df_unique['MaMH'].isin(list_subject_havent_done_yet['MaMH'])]
         list_recommend_subjects[''] = np.arange(1, len(list_recommend_subjects) + 1) 
@@ -287,5 +287,5 @@ if __name__ == "__main__":
         except:
             traceback.print_exc()
     with tab2:
-        for_stu(df2)
+        for_stu()
 
