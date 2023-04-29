@@ -207,7 +207,8 @@ def for_stu():
                 st.dataframe(list_subject_havent_done_yet.set_index(''))  
 
     with col3:
-        df_unique = df2.drop_duplicates(subset= ['MaMH', 'Course Name'], inplace=False)
+        df_unique = df2.dropna()
+        df_unique = df_unique[df_unique['ToTH'] == 1.0]
         df_unique = df_unique[['MaMH', 'Course Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course']]
         list_recommend_subjects = df_unique[df_unique['MaMH'].isin(list_subject_havent_done_yet['MaMH'])]
         list_recommend_subjects[''] = np.arange(1, len(list_recommend_subjects) + 1) 
