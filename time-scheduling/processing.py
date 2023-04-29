@@ -265,9 +265,9 @@ def for_stu():
             with st.expander("List of subjects haven't done yet"):  
                 st.dataframe(list_subject_havent_done_yet.set_index(''))  
 
-    df2, df_room = data()
-    df2['MaMH'] = df2['MaMH'].drop_duplicates()
-    df_unique = df2[['MaMH', 'Course Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course']]
+    df_unique, df_room = data()
+    df_unique['MaMH'] = df_unique['MaMH'].drop_duplicates()
+    df_unique = df_unique[['MaMH', 'Course Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course']]
     df_unique = pd.DataFrame(df_unique)
     list_recommend_subjects = df_unique[df_unique['MaMH'].isin(list_subject_havent_done_yet['MaMH'])]
     with st.expander("List of recommend subjects in this semester"):    
