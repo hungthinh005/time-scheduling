@@ -61,7 +61,7 @@ def data():
     col1, col2, col3 = st.columns([7,2.4,4.5])
     with col1:
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
-        
+        df2['Group_id'] = np.arange(1, len(df2) + 1)
 
     with col2:
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
@@ -72,7 +72,7 @@ def data():
         with st.expander("Descriptions for Data Input"):    
             st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
             st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
-    df2['Group_id'] = np.arange(1, len(df2) + 1)
+    
 
     return df2, df_room
 
@@ -240,7 +240,7 @@ def for_stu():
     df_stu['NHHK'] = df_stu['NHHK'].astype(str).str[:-1]
     input = st.text_input("Type Student ID", value="")
 
-    col1, col2= st.columns([5,6])
+    col1, col2, col3 = st.columns([5,6,5])
     with col1:
         if input:
 
@@ -265,14 +265,16 @@ def for_stu():
             with st.expander("List of subjects haven't done yet"):  
                 st.dataframe(list_subject_havent_done_yet.set_index(''))  
 
-    df_unique, df_room = data()
-    df_unique['MaMH'] = df_unique['MaMH'].drop_duplicates()
-    df_unique = df_unique[['MaMH', 'Course Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course']]
-    df_unique = pd.DataFrame(df_unique)
-    list_recommend_subjects = df_unique[df_unique['MaMH'].isin(list_subject_havent_done_yet['MaMH'])]
-    if input:    
-        with st.expander("List of recommend subjects in this semester"):    
-            st.dataframe(list_recommend_subjects.set_index(''))  
+    with col3:
+        if input:
+            df_unique, df_room = data()
+            df_unique['MaMH'] = df_unique['MaMH'].drop_duplicates()
+            df_unique = df_unique[['MaMH', 'Course Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course']]
+            df_unique = pd.DataFrame(df_unique)
+            list_recommend_subjects = df_unique[df_unique['MaMH'].isin(list_subject_havent_done_yet['MaMH'])]
+        
+            with st.expander("List of recommend subjects in this semester"):    
+                st.dataframe(list_recommend_subjects.set_index(''))  
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
