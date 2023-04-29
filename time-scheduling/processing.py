@@ -210,10 +210,9 @@ def for_stu(data):
         if input:
             df_unique = data.drop_duplicates(subset= ['MaMH', 'Course Name'], inplace=False)
             df_unique = df_unique[['MaMH', 'Course Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course']]
-            df_unique = pd.DataFrame(df_unique)
             list_recommend_subjects = df_unique[df_unique['MaMH'].isin(list_subject_havent_done_yet['MaMH'])]
             list_recommend_subjects[''] = np.arange(1, len(list_recommend_subjects) + 1) 
-            list_recommend_subjects = list_recommend_subjects.reindex(columns=['', 'MaMH', 'Course Name', 'Prof_Name', 'Duration', 'Group_Lab Year', 'Size_Course'])
+            list_recommend_subjects = list_recommend_subjects.reindex(columns=['', 'MaMH', 'Course Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course'])
             with st.expander("List of recommend subjects in this semester"):    
                 st.dataframe(list_recommend_subjects.set_index(''))  
 
