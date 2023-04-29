@@ -22,11 +22,11 @@ def data():
         df = pd.read_csv(uploaded_file)
 
     else:
-        df = [['Data Mining', 1, 35, 4, 'Nguyen Thi Thanh Sang'],
-            ['AOD', 2, 35, 4, 'Nguyen Thi Thanh Sang'],
-            ['Functional Programming', 0, 90, 3, 'Dao Tran Hoang Chau'],
-            ['Operating Systems', 0, 90, 3, 'Tran Manh Ha']]
-        room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']
+        df = [['Data Mining', 1, 35, 4, 'Nguyen Thi Thanh Sang', 'ITDS'],
+            ['AOD', 2, 35, 4, 'Nguyen Thi Thanh Sang', 'ITDS'],
+            ['Functional Programming', 0, 90, 3, 'Dao Tran Hoang Chau', 'ITDS'],
+            ['Operating Systems', 0, 90, 3, 'Tran Manh Ha', 'ITDS']]
+        room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV', 'MaMH']
         df = pd.DataFrame(df, columns=room_columns)
     
     df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV', 'MaMH']]
