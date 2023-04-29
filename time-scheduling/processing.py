@@ -208,7 +208,7 @@ def for_stu(data):
 
     with col3:
         if input:
-            df_unique['MaMH'] = data['MaMH'].drop_duplicates()
+            df_unique = data.drop_duplicates(subset= ['MaMH', 'Course Name'], inplace=False)
             df_unique = df_unique[['MaMH', 'Course Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course']]
             df_unique = pd.DataFrame(df_unique)
             list_recommend_subjects = df_unique[df_unique['MaMH'].isin(list_subject_havent_done_yet['MaMH'])]
