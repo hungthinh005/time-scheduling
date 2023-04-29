@@ -30,7 +30,7 @@ def data():
         df = pd.DataFrame(df, columns=room_columns)
     
     df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV', 'MaMH']]
-    df1 = df1.rename(columns={'TenMH': 'Course_Name', 'ToTH': 'Group_Lab', 'TongSoSV': 'Size_Course', 'SoTiet': 'Duration', 'TenDayDuNV': 'Prof_Name'})
+    df1 = df1.rename(columns={'TenMH': 'Course_Name', 'ToTH': 'Group_Lab', 'TongSoSV': 'Size_Course', 'SoTiet': 'Duration', 'TenDayDuNV': 'Prof_Name', 'MaMH': 'MaMH'})
     df1['Lab'] = df1['Group_Lab']
     # df1['Lab'] = df1['Lab'].astype(str)
     for index, row in df1.iterrows():
