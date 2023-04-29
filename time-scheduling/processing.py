@@ -15,8 +15,7 @@ import traceback
 
 ##load file and processing data
 
-def load_file():
-
+def data():
     uploaded_file = st.file_uploader('')
 
     if uploaded_file is not None:
@@ -58,7 +57,53 @@ def load_file():
         else:
             df_room.at[index, 'Lab'] = ''
     df_room['Lab'] = df_room['Lab'].astype(bool)
+    return df1, df_room
+
+
+def load_file():
+
+    # uploaded_file = st.file_uploader('')
+
+    # if uploaded_file is not None:
+    #     df = pd.read_csv(uploaded_file)
+
+    # else:
+    #     df = [['Data Mining', 1, 35, 4, 'Nguyen Thi Thanh Sang'],
+    #         ['AOD', 2, 35, 4, 'Nguyen Thi Thanh Sang'],
+    #         ['Functional Programming', 0, 90, 3, 'Dao Tran Hoang Chau'],
+    #         ['Operating Systems', 0, 90, 3, 'Tran Manh Ha']]
+    #     room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']
+    #     df = pd.DataFrame(df, columns=room_columns)
     
+    # df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
+    # df1 = df1.rename(columns={'TenMH': 'Course_Name', 'ToTH': 'Group_Lab', 'TongSoSV': 'Size_Course', 'SoTiet': 'Duration', 'TenDayDuNV': 'Prof_Name'})
+    # df1['Lab'] = df1['Group_Lab']
+    # # df1['Lab'] = df1['Lab'].astype(str)
+    # for index, row in df1.iterrows():
+    #     if row['Lab'] == 1 or row['Lab'] == 2 or row['Lab'] == 3 or row['Lab'] == 4:
+    #         df1.at[index, 'Lab'] = 'True'
+    #     else:
+    #         df1.at[index, 'Lab'] = ''
+    # df1['Lab'] = df1['Lab'].astype(bool)
+    
+
+
+    # ## create default room
+    # room_default = [['A1.309', 90, 0],
+    #                 ['L107', 40, 0],
+    #                 ['LA1.605', 35, 1],
+    #                 ['La1.607', 35, 1]
+    # ]
+    # room_columns = ['Room', 'Size_Room', 'Lab']
+    # df_room = pd.DataFrame(room_default, columns=room_columns)
+    # df_room['Lab'] = df_room['Lab'].astype(str)
+    # for index, row in df_room.iterrows():
+    #     if row['Lab'] == '1':
+    #         df_room.at[index, 'Lab'] = 'True'
+    #     else:
+    #         df_room.at[index, 'Lab'] = ''
+    # df_room['Lab'] = df_room['Lab'].astype(bool)
+    df1, df_room = data()
     col1, col2, col3 = st.columns([7,2.4,4.5])
     with col1:
         df2 = st.experimental_data_editor(df1, num_rows="dynamic")
@@ -161,6 +206,8 @@ def load_file():
     # write JSON object to file
     with open('GaSchedule1.json', 'w') as f:
         f.write(json_data) 
+
+
 
 
 def for_stu():
