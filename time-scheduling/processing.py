@@ -57,7 +57,24 @@ def data():
         else:
             df_room.at[index, 'Lab'] = ''
     df_room['Lab'] = df_room['Lab'].astype(bool)
-    return df1, df_room
+
+    col1, col2, col3 = st.columns([7,2.4,4.5])
+    with col1:
+        df2 = st.experimental_data_editor(df1, num_rows="dynamic")
+        
+
+    with col2:
+        df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
+        df_room['Size_Room'] = df_room['Size_Room'].astype(int)
+
+        
+    with col3:
+        with st.expander("Descriptions for Data Input"):    
+            st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
+            st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
+    df2['Group_id'] = np.arange(1, len(df2) + 1)
+
+    return df2, df_room
 
 
 def load_file():
@@ -103,22 +120,24 @@ def load_file():
     #     else:
     #         df_room.at[index, 'Lab'] = ''
     # df_room['Lab'] = df_room['Lab'].astype(bool)
-    df1, df_room = data()
-    col1, col2, col3 = st.columns([7,2.4,4.5])
-    with col1:
-        df2 = st.experimental_data_editor(df1, num_rows="dynamic")
+    
+    # col1, col2, col3 = st.columns([7,2.4,4.5])
+    # with col1:
+    #     df2 = st.experimental_data_editor(df1, num_rows="dynamic")
         
 
-    with col2:
-        df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
-        df_room['Size_Room'] = df_room['Size_Room'].astype(int)
+    # with col2:
+    #     df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
+    #     df_room['Size_Room'] = df_room['Size_Room'].astype(int)
 
         
-    with col3:
-        with st.expander("Descriptions for Data Input"):    
-            st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
-            st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
-    df2['Group_id'] = np.arange(1, len(df2) + 1)   
+    # with col3:
+    #     with st.expander("Descriptions for Data Input"):    
+    #         st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
+    #         st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
+    # df2['Group_id'] = np.arange(1, len(df2) + 1)   
+    df2, df_room = data()
+    
     list_course = []
     index_count_course_id = 0
     list_prof = []     
@@ -244,7 +263,13 @@ def for_stu():
             list_subject_havent_done_yet = list_subject_havent_done_yet.reindex(columns=['', 'MaMH', 'Course Name', 'Credits', 'Elective', 'Expect Year', 'Sem'])
             
             with st.expander("List of subjects haven't done yet"):  
-                st.dataframe(list_subject_havent_done_yet.set_index(''))       
+                st.dataframe(list_subject_havent_done_yet.set_index(''))  
+
+    df2, df_room = data()
+    df_unique = df2[['Course Name']].unique()
+    list_recommend_subjects = list_subject_havent_done_yet[list_subject_havent_done_yet['Course Name'].isin(df_unique['Course Name'])]
+    with st.expander("List of recommend subjects in this semester"):    
+        st.dataframe(list_recommend_subjects.set_index(''))  
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
