@@ -270,8 +270,9 @@ def for_stu():
     df_unique = df_unique[['MaMH', 'Course Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course']]
     df_unique = pd.DataFrame(df_unique)
     list_recommend_subjects = df_unique[df_unique['MaMH'].isin(list_subject_havent_done_yet['MaMH'])]
-    with st.expander("List of recommend subjects in this semester"):    
-        st.dataframe(list_recommend_subjects.set_index(''))  
+    if input:    
+        with st.expander("List of recommend subjects in this semester"):    
+            st.dataframe(list_recommend_subjects.set_index(''))  
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
