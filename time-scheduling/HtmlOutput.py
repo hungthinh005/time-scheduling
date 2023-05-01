@@ -103,7 +103,7 @@ class HtmlOutput:
 
             room_schedule[dayId] = "".join(getCourseClass(cc, solution.criteria, ci))
             ci += len(HtmlOutput.CRITERIAS)
-        st.dataframe(time_table)
+        st.dataframe(room_schedule)
         return time_table
     
     @staticmethod
