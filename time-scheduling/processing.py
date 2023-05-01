@@ -184,7 +184,7 @@ def for_stu():
                 
     
 
-    col1, col2, col3 = st.columns([5,6,5])
+    col1, col2, col3 = st.columns(3)
     with col1:
         if input:
 
@@ -230,10 +230,10 @@ if __name__ == "__main__":
             df = pd.read_csv(uploaded_file)
 
         else:
-            df = [['Data Mining', 1, 35, 4, 'Nguyen Thi Thanh Sang', 'ITDS'],
-                ['AOD', 2, 35, 4, 'Nguyen Thi Thanh Sang', 'ITDS'],
-                ['Functional Programming', 0, 90, 3, 'Dao Tran Hoang Chau', 'ITDS'],
-                ['Operating Systems', 0, 90, 3, 'Tran Manh Ha', 'ITDS']]
+            df = [['Data Mining', 1, 35, 4, 'Nguyen Thi Thanh Sang', 'IT132IU'],
+                ['Analytics for Observational Data', 2, 35, 4, 'Nguyen Thi Thanh Sang', 'IT142IU'],
+                ['Fundamentals of Programming', 0, 90, 3, 'Dao Tran Hoang Chau', 'IT149IU'],
+                ['Object-Oriented Analysis and Design', 0, 90, 4, 'Ha Viet Uyen Synh', 'IT090IU']]
             room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV', 'MaMH']
             df = pd.DataFrame(df, columns=room_columns)
 
