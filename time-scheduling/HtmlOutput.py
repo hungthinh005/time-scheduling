@@ -103,7 +103,6 @@ class HtmlOutput:
 
             room_schedule[dayId] = "".join(getCourseClass(cc, solution.criteria, ci))
             ci += len(HtmlOutput.CRITERIAS)
-        st.json(time_table)
         return time_table
     
     @staticmethod
@@ -132,6 +131,8 @@ class HtmlOutput:
 
         slot_table = defaultdict(list)
         time_table = HtmlOutput.generateTimeTable(solution, slot_table)  # Tuple[0] = time, Tuple[1] = roomId
+        st.json(time_table)
+
         if not slot_table or not time_table:
             return ""
 
