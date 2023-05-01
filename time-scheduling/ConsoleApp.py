@@ -8,7 +8,6 @@ import traceback
 from model.Configuration import Configuration
 from algorithm.NsgaII import NsgaII
 import streamlit as st
-
 # from algorithm.GeneticAlgorithm import GeneticAlgorithm
 # from algorithm.APNsgaIII import APNsgaIII
 # from algorithm.NsgaIII import NsgaIII
@@ -40,7 +39,6 @@ def main(file_name):
     seconds = (int(round(time.time() * 1000)) - start_time) / 1000.0
     st.write("\nCompleted in {} secs.\n".format(seconds))
         # os.startfile(temp_file_path)
-    st.write(HtmlOutput.solution)
 # if __name__ == "__main__":
 #     file_name = "/GaSchedule3.json"
 #     if len(sys.argv) > 1:

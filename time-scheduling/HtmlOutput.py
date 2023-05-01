@@ -1,7 +1,7 @@
 from model.Constant import Constant
 from model.Reservation import Reservation
 from collections import defaultdict
-
+import streamlit as st
 
 class HtmlOutput:
     ROOM_COLUMN_NUMBER = Constant.DAYS_NUM + 1
@@ -103,8 +103,9 @@ class HtmlOutput:
 
             room_schedule[dayId] = "".join(getCourseClass(cc, solution.criteria, ci))
             ci += len(HtmlOutput.CRITERIAS)
+        st.write(time_table)
         return time_table
-
+    
     @staticmethod
     def getHtmlCell(content, rowspan):
         if rowspan == 0:
