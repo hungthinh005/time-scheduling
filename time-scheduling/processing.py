@@ -213,7 +213,7 @@ def for_stu():
         if input:
             df_unique = df2[df2['Group_Lab'] == 1.0]
             df_unique = df_unique[['MaMH', 'Course_Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course']]
-            list_recommend_subjects = list_subject_havent_done_yet[list_subject_havent_done_yet['MaMH'].isin(df_unique['MaMH'])]
+            list_recommend_subjects = df_unique[df_unique['MaMH'].isin(list_subject_havent_done_yet['MaMH'])]
             list_recommend_subjects[''] = np.arange(1, len(list_recommend_subjects) + 1) 
             list_recommend_subjects = list_recommend_subjects.reindex(columns=['', 'MaMH', 'Course_Name', 'Prof_Name', 'Duration', 'Group_Lab', 'Size_Course'])
             with st.expander("List of recommend subjects in this semester"):    
