@@ -291,5 +291,4 @@ if __name__ == "__main__":
         except:
             traceback.print_exc()
     with tab2:
-        
         for_stu()
