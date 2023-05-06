@@ -164,7 +164,7 @@ def load_file():
     json_data = json.dumps(objects, sort_keys=False)
 
     # write JSON object to file
-    with open('GaSchedule1.json', 'w') as f:
+    with open('GaSchedule.json', 'w') as f:
         f.write(json_data) 
 
 
@@ -282,7 +282,7 @@ if __name__ == "__main__":
     
 
         load_file()
-        file_name = "/GaSchedule1.json"
+        file_name = "/GaSchedule.json"
         if len(sys.argv) > 1:
             file_name = sys.argv[1]
         try:
