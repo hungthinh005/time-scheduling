@@ -228,7 +228,7 @@ if __name__ == "__main__":
         uploaded_file = st.file_uploader('')
         if uploaded_file is not None:
             df = pd.read_csv(uploaded_file)
-
+ 
         else:
             df = [['Data Mining', 1, 35, 4, 'Nguyen Thi Thanh Sang', 'IT132IU'],
                 ['Analytics for Observational Data', 2, 35, 4, 'Nguyen Thi Thanh Sang', 'IT142IU'],
