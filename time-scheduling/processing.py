@@ -159,11 +159,45 @@ def load_file():
     json_data = json.dumps(objects, sort_keys=False)
 
     # write JSON object to file
-    with open('GaSchedule1.json', 'w') as f:
+    with open('time-scheduling/GaSchedule1.json', 'w') as f:
         f.write(json_data) 
 
 
-  
+def for_stu():
+    df_stu = pd.read_csv("time-scheduling/data_stu.csv")
+    df_ctdt = pd.read_csv("time-scheduling/ctdt_ds.csv")
+
+    df_ctdt = df_ctdt[['MaMH', 'Course Name', 'Sem', 'Expect Year', 'Credits', 'Elective']]
+
+    df_stu = df_stu[['MaSV', 'NHHK', 'HK', 'MaMH', 'TenMH', 'SoTinChi', 'DiemHP']]
+    df_stu = df_stu.dropna()
+    df_stu['NHHK'] = df_stu['NHHK'].astype(str).str[:-1]
+    input = st.text_input("Type Student ID", value="")
+
+    col1, col2= st.columns([5,6])
+    with col1:
+        if input:
+
+            # Convert 'DiemHP' column to numeric type, ignoring non-numeric values
+            df_stu['DiemHP'] = pd.to_numeric(df_stu['DiemHP'], errors='coerce')
+
+            list_subject_have_done = df_stu.loc[(df_stu['MaSV'].str.lower() == input.lower()) & (df_stu['DiemHP'].gt(50))]
+            list_subject_have_done[''] = np.arange(1, len(list_subject_have_done) + 1) 
+            list_subject_have_done = list_subject_have_done.reindex(columns=['', 'MaMH', 'TenMH','HK', 'NHHK', 'SoTinChi'])
+            list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Actual Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits'})           
+            
+            with st.expander("List of subjects have done"):  
+                st.dataframe(list_subject_have_done.set_index(''))
+    with col2:
+        if input:
+            list_subject_havent_done_yet = df_ctdt[~df_ctdt['MaMH'].isin(list_subject_have_done['MaMH'])]
+            list_subject_havent_done_yet['Expect Year'] = list_subject_havent_done_yet['Expect Year'].astype(str)
+            list_subject_havent_done_yet['Elective'] = list_subject_havent_done_yet['Elective'].astype(bool)
+            list_subject_havent_done_yet[''] = np.arange(1, len(list_subject_havent_done_yet) + 1) 
+            list_subject_havent_done_yet = list_subject_havent_done_yet.reindex(columns=['', 'MaMH', 'Course Name', 'Credits', 'Elective', 'Expect Year', 'Sem'])
+            
+            with st.expander("List of subjects haven't done yet"):  
+                st.dataframe(list_subject_havent_done_yet.set_index(''))       
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
@@ -175,6 +209,9 @@ if __name__ == "__main__":
         if len(sys.argv) > 1:
             file_name = sys.argv[1]
         try:
-            main(file_name)
+            if st.button('Generate'): 
+                main(file_name)
         except:
             traceback.print_exc()
+    with tab2:
+        for_stu()
