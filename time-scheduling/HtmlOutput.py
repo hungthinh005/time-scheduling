@@ -131,8 +131,6 @@ class HtmlOutput:
 
         slot_table = defaultdict(list)
         time_table = HtmlOutput.generateTimeTable(solution, slot_table)  # Tuple[0] = time, Tuple[1] = roomId
-        st.dataframe(nr)
-        st.dataframe(getRoomById)
 
 
         if not slot_table or not time_table:
