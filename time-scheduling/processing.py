@@ -187,7 +187,7 @@ def for_stu():
             list_subject_have_done = list_subject_have_done.rename(columns={'NHHK': 'Actual Year', 'HK': 'Sem', 'TenMH': 'Course Name', 'SoTinChi': 'Credits'})           
             
             with st.expander("List of subjects have done"):  
-                st.dataframe(list_subject_have_done.set_index(''))
+                st.dataframe(list_subject_have_done.set_index(''), label_visibility=False )
     with col2:
         if input:
             list_subject_havent_done_yet = df_ctdt[~df_ctdt['MaMH'].isin(list_subject_have_done['MaMH'])]
@@ -197,7 +197,7 @@ def for_stu():
             list_subject_havent_done_yet = list_subject_havent_done_yet.reindex(columns=['', 'MaMH', 'Course Name', 'Credits', 'Elective', 'Expect Year', 'Sem'])
             
             with st.expander("List of subjects haven't done yet"):  
-                st.dataframe(list_subject_havent_done_yet.set_index(''))       
+                st.dataframe(list_subject_havent_done_yet.set_index(''), label_visibility=False)       
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
