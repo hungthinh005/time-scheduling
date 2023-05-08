@@ -46,4 +46,4 @@ class Criteria:
 #                             return po, go
 
 #             timeId += Constant.DAY_HOURS
-        return po, go
+#         return po, go
