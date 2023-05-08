@@ -24,26 +24,26 @@ class Criteria:
         return cc.LabRequired == r.Lab
 
     # check overlapping of classes for professors and student groups
-    @staticmethod
-    def isOverlappedProfStudentGrp(slots, cc, numberOfRooms, timeId):
-        po = go = False
+#     @staticmethod
+#     def isOverlappedProfStudentGrp(slots, cc, numberOfRooms, timeId):
+#         po = go = False
 
-        dur = cc.Duration
-        for i in range(numberOfRooms, 0, -1):
-            # for each hour of class
-            for j in range(timeId, timeId + dur):
-                cl = slots[j]
-                for cc1 in cl:
-                    if cc != cc1:
-                        # professor overlaps?
-                        if not po and cc.professorOverlaps(cc1):
-                            po = True
-                        # student group overlaps?
-                        if not go and cc.groupsOverlap(cc1):
-                            go = True
-                        # both type of overlapping? no need to check more
-                        if po and go:
-                            return po, go
+#         dur = cc.Duration
+#         for i in range(numberOfRooms, 0, -1):
+#             # for each hour of class
+#             for j in range(timeId, timeId + dur):
+#                 cl = slots[j]
+#                 for cc1 in cl:
+#                     if cc != cc1:
+#                         # professor overlaps?
+#                         if not po and cc.professorOverlaps(cc1):
+#                             po = True
+#                         # student group overlaps?
+#                         if not go and cc.groupsOverlap(cc1):
+#                             go = True
+#                         # both type of overlapping? no need to check more
+#                         if po and go:
+#                             return po, go
 
-            timeId += Constant.DAY_HOURS
+#             timeId += Constant.DAY_HOURS
         return po, go
