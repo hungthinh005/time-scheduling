@@ -211,14 +211,11 @@ class Configuration:
         self._courses = {}
         self._rooms = {}
         self._courseClasses = []
-
         Room.restartIDs()
         CourseClass.restartIDs()
-
         with codecs.open(fileName, "r", "utf-8") as f:
             # read file into a string and deserialize JSON to a type
             data = json.load(f)
-
         for dictConfig in data:
             for key in dictConfig:
                 if key == 'prof':
@@ -236,5 +233,4 @@ class Configuration:
                 elif key == 'class':
                     courseClass = self.__parseCourseClass(dictConfig[key])
                     self._courseClasses.append(courseClass)
-
         self._isEmpty = False

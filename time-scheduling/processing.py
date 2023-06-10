@@ -111,7 +111,6 @@ def load_file():
             }
             if prof not in objects:
                 objects.append(prof)
-
         if row['Course_id'] != '':
             # create course object
             course = {
@@ -122,7 +121,6 @@ def load_file():
             }
             if course not in objects:
                 objects.append(course)
-
         if row['Group_id'] != '':
             # create group object
             group = {
@@ -133,7 +131,6 @@ def load_file():
             }
             # if group not in objects:
             objects.append(group)
-                
         if row['Prof_id'] != '' and row['Course_id'] != '':
             # create class object
             class_ = {
@@ -251,9 +248,9 @@ if __name__ == "__main__":
 
         ## create default room
         room_default = [['A1.309', 90, 0],
-                        ['L107', 40, 0],
-                        ['LA1.605', 35, 1],
-                        ['La1.607', 35, 1]
+                        ['L107', 90, 0],
+                        ['LA1.605', 60, 1],
+                        ['La1.607', 60, 1]
         ]
         room_columns = ['Room', 'Size_Room', 'Lab']
         df_room = pd.DataFrame(room_default, columns=room_columns)
