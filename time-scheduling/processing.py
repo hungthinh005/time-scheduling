@@ -265,7 +265,9 @@ if __name__ == "__main__":
         col1, col2, col3 = st.columns([7,2.4,4.5])
         with col1:
             df2 = st.experimental_data_editor(df1, num_rows="dynamic")
+            df2['Size_Course'] = df2['Size_Course'].astype(int)
             df2['Group_id'] = np.arange(1, len(df2) + 1)
+
 
         with col2:
             df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
