@@ -73,7 +73,7 @@ class Schedule:
             reservation_index = hash(reservation)
 
             # fill time-space slots, for each hour of class
-            for i in range(dur - 1, -1):
+            for i in range(dur - 1, -1, -1):
                 new_chromosome_slots[reservation_index + i].append(c)
 
             # insert in class table of chromosome
