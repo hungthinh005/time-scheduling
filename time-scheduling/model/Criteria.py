@@ -23,7 +23,7 @@ class Criteria:
         # return (not cc.LabRequired) or (cc.LabRequired and r.Lab)
         return cc.LabRequired == r.Lab
 
-    # check overlapping of classes for professors and student groups
+    # check overlapping of classes for professors and student groups (size of course)
     @staticmethod
     def isOverlappedProfStudentGrp(slots, cc, numberOfRooms, timeId):
         po = go = False

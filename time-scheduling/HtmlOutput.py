@@ -73,11 +73,13 @@ class HtmlOutput:
                     periodId = 1
                 else:
                     periodId = 7
-            else:
+            elif dur == 4 or dur == 5:
                 if periodId <= 6:
                     periodId = 1
                 else:
                     periodId = 7
+            else:
+                periodId = 1
             roomId = reservation.Room
             
             key = (periodId, roomId)

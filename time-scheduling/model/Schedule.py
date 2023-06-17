@@ -267,6 +267,7 @@ class Schedule:
 
     # Calculates fitness value of chromosome
     def calculateFitness(self):
+        
         # increment value when criteria violation occurs
         self._objectives = np.zeros(len(Criteria.weights))
 
@@ -297,13 +298,14 @@ class Schedule:
             criteria[ci + 0] = not ro
 
             r = getRoomById(room)
+
             # does current room have enough seats
             criteria[ci + 1] = Criteria.isSeatEnough(r, cc)
 
             # does current room have computers if they are required
             criteria[ci + 2] = Criteria.isComputerEnough(r, cc)
 
-            # check overlapping of classes for professors and student groups
+            # check overlapping of classes for professors
             timeId = day * daySize + time
             po, go = Criteria.isOverlappedProfStudentGrp(slots, cc, numberOfRooms, timeId)
 
