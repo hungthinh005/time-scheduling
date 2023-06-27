@@ -219,7 +219,12 @@ def for_stu():
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
-    
+    with st.sidebar:
+        options = st.multiselect(
+      'Room Filter',
+      list_filter,
+      ['Yellow', 'Red'])
+
     tab1, tab2 = st.tabs(["Schedule", "Student"])
     with tab1:
 
@@ -274,19 +279,14 @@ if __name__ == "__main__":
         with col2:
             df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
             df_room['Size_Room'] = df_room['Size_Room'].astype(int)
-
+            list_filter = df_room['Room'].to_list()
             
         with col3:
             with st.expander("Descriptions for Data Input"):    
                 st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
                 st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
     
-        with st.sidebar:
-        options = st.multiselect(
-      'Room Filter',
-      ['Green', 'Yellow', 'Red', 'Blue'],
-      ['Yellow', 'Red'])
-
+        
         load_file()
         file_name = "/GaSchedule1.json"
         if len(sys.argv) > 1:
