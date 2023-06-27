@@ -270,12 +270,13 @@ if __name__ == "__main__":
             df2['Duration'] = df2['Duration'].astype(int)
             df2['Group_id'] = np.arange(1, len(df2) + 1)
 
-        with col2:                
-            filter = df_room['Room'].to_list()
-            list_filter = st.multiselect('Room Filter', filter )
-            df_room['Room'] = pd.DataFrame(list_filter)
+        with col2:                          
             df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
             df_room['Size_Room'] = df_room['Size_Room'].astype(int)
+            filter = df_room['Room'].to_list()
+            list_filter = st.multiselect('Room Filter', filter )
+            df_room['Room'] = list_filter
+     
          
         with col3:
             with st.expander("Descriptions for Data Input"):    
