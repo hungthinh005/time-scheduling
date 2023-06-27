@@ -145,7 +145,7 @@ def load_file():
             if class_ not in objects:
                 objects.append(class_)
             
-    for index, row in df_room.iterrows():
+    for index, row in df_room_filter.iterrows():
         if row['Room'] != '':
             # create room object
             room = {
@@ -275,7 +275,7 @@ if __name__ == "__main__":
             df_room['Size_Room'] = df_room['Size_Room'].astype(int)
             filter = df_room['Room'].to_list()
             list_filter = st.multiselect('Room Filter', filter )
-            df_room['Room'] = list_filter
+            df_room_filter['Room'] = list_filter
      
          
         with col3:
