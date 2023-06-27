@@ -140,8 +140,8 @@ class HtmlOutput:
 
         sb = []
         for roomId in range(nr):
-            st.write(roomId)
             room = getRoomById(roomId)
+            st.write(room)
             for periodId in range(HtmlOutput.ROOM_ROW_NUMBER):
                 if periodId == 0:
                     sb.append("<div id='room_")
