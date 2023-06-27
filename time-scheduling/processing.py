@@ -220,7 +220,7 @@ st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
     with st.sidebar:
-        list_filter = []
+        list_filter = ['L107']
         options = st.multiselect(
       'Room Filter',
       list_filter,
