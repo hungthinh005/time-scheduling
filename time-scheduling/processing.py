@@ -219,12 +219,6 @@ def for_stu():
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
-    with st.sidebar:
-        list_filter = ['L107']
-        options = st.multiselect(
-      'Room Filter',
-      ['Yellow', 'Red'],
-      ['Yellow', 'Red'])
 
     tab1, tab2 = st.tabs(["Schedule", "Student"])
     with tab1:
@@ -280,7 +274,9 @@ if __name__ == "__main__":
         with col2:
             df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
             df_room['Size_Room'] = df_room['Size_Room'].astype(int)
+            
             list_filter = df_room['Room'].to_list()
+            st.multiselect('Room Filter', list_filter )
             st.write(list_filter)
         with col3:
             with st.expander("Descriptions for Data Input"):    
