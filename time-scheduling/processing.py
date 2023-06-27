@@ -278,7 +278,7 @@ if __name__ == "__main__":
             # list_filter[''] = np.arange(1, len(list_filter) + 1) 
             df_room_filter = df_room
             df_room_filter['Room'] = list_filter
-            st.write(df_room_filter.type())
+            st.write(df_room_filter)
          
         with col3:
             with st.expander("Descriptions for Data Input"):    
