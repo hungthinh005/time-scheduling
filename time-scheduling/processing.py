@@ -277,7 +277,7 @@ if __name__ == "__main__":
             list_filter = st.multiselect('Room Filter', filter )
             df_room_filter = df_room
             df_room_filter['Room'] = list_filter
-     
+            st.write(df_room_filter)
          
         with col3:
             with st.expander("Descriptions for Data Input"):    
