@@ -279,8 +279,7 @@ if __name__ == "__main__":
             df_room_filter = df_room
             num = len(list_filter)
             df_room_filter = df_room_filter[0:num]
-            st.write(df_room_filter)
-         
+            df_room = df_room_filter
         with col3:
             with st.expander("Descriptions for Data Input"):    
                 st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
