@@ -140,6 +140,7 @@ class HtmlOutput:
 
         sb = []
         for roomId in range(nr):
+            st.write(roomId)
             room = getRoomById(roomId)
             for periodId in range(HtmlOutput.ROOM_ROW_NUMBER):
                 if periodId == 0:
