@@ -223,7 +223,7 @@ if __name__ == "__main__":
         list_filter = ['L107']
         options = st.multiselect(
       'Room Filter',
-      list_filter,
+      ['Yellow', 'Red'],
       ['Yellow', 'Red'])
 
     tab1, tab2 = st.tabs(["Schedule", "Student"])
