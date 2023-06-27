@@ -277,7 +277,8 @@ if __name__ == "__main__":
             list_filter = st.multiselect('Room Filter', filter )
             # list_filter[''] = np.arange(1, len(list_filter) + 1) 
             df_room_filter = df_room
-            df_room_filter['Room'] = list_filter
+            num = len(list_filter)
+            df_room_filter = df_room_filter[0:num]
             st.write(df_room_filter)
          
         with col3:
