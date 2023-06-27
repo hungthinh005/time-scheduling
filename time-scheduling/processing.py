@@ -281,7 +281,7 @@ if __name__ == "__main__":
                 st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
                 st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
     
-    with st.sidebar:
+        with st.sidebar:
         options = st.multiselect(
       'Room Filter',
       ['Green', 'Yellow', 'Red', 'Blue'],
