@@ -219,6 +219,7 @@ def for_stu():
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
+    
     tab1, tab2 = st.tabs(["Schedule", "Student"])
     with tab1:
 
@@ -280,6 +281,11 @@ if __name__ == "__main__":
                 st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
                 st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
     
+    with st.sidebar:
+        options = st.multiselect(
+      'Room Filter',
+      ['Green', 'Yellow', 'Red', 'Blue'],
+      ['Yellow', 'Red'])
 
         load_file()
         file_name = "/GaSchedule1.json"
