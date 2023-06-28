@@ -7,6 +7,9 @@ from ConsoleApp import main
 import sys
 import traceback
 from bs4 import BeautifulSoup
+from session_state import SessionState
+
+
 
 def load_file():
     
@@ -163,6 +166,9 @@ st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
 
+    #test session state
+    session_state = SessionState.get(html_result="")
+
     tab1, tab2, tab3 = st.tabs(["Schedule", "Student", "Filter"])
     with tab1:
 
@@ -233,6 +239,7 @@ if __name__ == "__main__":
         # try:
         if st.button('Generate'): 
             html_result = main(file_name)
+            session_state.html_result = html_result
             st.markdown(html_result, unsafe_allow_html=True)
 
 
@@ -243,10 +250,11 @@ if __name__ == "__main__":
         for_stu()
 
     with tab3:
-        filter = df_room['Room'].to_list()
-        list_filter = st.sidebar.multiselect('', filter, filter)
-        if st.sidebar.button('Room Filter'): 
 
-            filtered = get_filter(html_result, list_filter)
-            # html_result = main(file_name)
-            st.markdown(filtered, unsafe_allow_html=True)
+        filter = df_room['Room'].to_list()
+        list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
+        if st.sidebar.button('Get Filter'): 
+            if session_state.html_result:
+                filtered = get_filter(session_state.html_result, list_filter)
+                # html_result = main(file_name)
+                st.markdown(filtered, unsafe_allow_html=True)
