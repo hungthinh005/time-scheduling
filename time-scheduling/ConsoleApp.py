@@ -38,12 +38,14 @@ def filter(html_result, list_filter):
     soup = BeautifulSoup(html_result, 'html.parser')
     # Find all div elements with id starting with 'room_'
     div_elements = soup.find_all('div', id=lambda x: x and x.startswith('room_'))
-    
+
+    filtered_html = ''
     # Filter and display the schedule for specific rooms
     for div in div_elements:
         room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
         if room_id in list_filter:
-            st.markdown(div, unsafe_allow_html=True)
+            filtered_html += str(div)
+    st.markdown(filtered_html, unsafe_allow_html=True)
         
     
     # writer.write(html_result)
