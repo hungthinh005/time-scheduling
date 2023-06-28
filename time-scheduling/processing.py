@@ -153,10 +153,11 @@ def get_filter(html_result, list_filter):
     # Find all div elements with id starting with 'room_'
     div_elements = soup.find_all('div', id=lambda x: x and x.startswith('room_'))
     # Filter and display the schedule for specific rooms
+    filtered = ''
     for div in div_elements:
         room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
         if room_id in list_filter:
-            st.write(div)
+            return filtered.append(div)
     
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
@@ -246,5 +247,5 @@ if __name__ == "__main__":
 
         if st.button('Get Filter'):
             if 'html_result' in locals():
-                get_filter(html_result, list_filter)
-
+                filtered = get_filter(html_result, list_filter)
+                st.markdown(filtered, unsafe_allow_html=True)
