@@ -3,7 +3,7 @@ import numpy as np
 import json
 import streamlit as st
 from ConsoleApp import main
-from ConsoleApp import filter
+from ConsoleApp import get_filter
 import sys
 import traceback
 
@@ -302,4 +302,4 @@ if __name__ == "__main__":
         list_filter = st.multiselect('', filter, filter)
         if st.button('Get Filter'):
             if 'html_result' in locals():
-                filter(html_result, list_filter)
+                get_filter(html_result, list_filter)
