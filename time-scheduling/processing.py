@@ -293,7 +293,7 @@ if __name__ == "__main__":
             if st.button('Generate'): 
                 main(file_name, list_filter)
                 html_result = main(file_name, list_filter)
-             if st.button('Get Filter'):
+            if st.button('Get Filter'):
                 filter(html_result)
         except:
             traceback.print_exc()
