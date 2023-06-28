@@ -6,6 +6,7 @@ from ConsoleApp import main
 # from ConsoleApp import get_filter
 import sys
 import traceback
+from itertools import chain
 from bs4 import BeautifulSoup
 # from session_state import SessionState
 
@@ -251,7 +252,7 @@ if __name__ == "__main__":
 
         filter = df_room['Room'].to_list()
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-        list_filter1 = [room for sublist in list_filter for room in sublist]        
+        list_filter1 = list(chain(*list_filter))    
         st.write(list_filter1)
         if st.sidebar.button('Get Filter'):
             if list_filter:
