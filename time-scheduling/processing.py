@@ -161,6 +161,7 @@ def get_filter(html_result, list_filter):
         if room_id in list_filter:
             filtered = filtered.append(div)
     return filtered
+    
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
@@ -254,6 +255,6 @@ if __name__ == "__main__":
         if st.button('Get Filter'):
             if 'html_result' in locals():
                 filtered = get_filter(html_result, list_filter)
-                st.markdown(filtered, unsafe_allow_html=True)
+                st.write(filtered)
         # if 'filtered_html' in locals():
         #     st.markdown(filtered_html, unsafe_allow_html=True)
