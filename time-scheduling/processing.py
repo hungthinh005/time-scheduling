@@ -236,11 +236,6 @@ if __name__ == "__main__":
             st.markdown(html_result, unsafe_allow_html=True)
 
 
-            filter = df_room['Room'].to_list()
-            list_filter = st.multiselect('', filter, filter)
-            filtered = get_filter(html_result, list_filter)
-            # html_result = main(file_name)
-            st.markdown(filtered, unsafe_allow_html=True)
         # except:
         #     traceback.print_exc()
 
@@ -248,5 +243,10 @@ if __name__ == "__main__":
         for_stu()
 
     with tab3:
-        filtered = get_filter(html_result, list_filter)
-        st.markdown(filtered, unsafe_allow_html=True)
+        filter = df_room['Room'].to_list()
+        list_filter = st.multiselect('', filter, filter)
+        if st.button('Room Filter'): 
+
+            filtered = get_filter(html_result, list_filter)
+            # html_result = main(file_name)
+            st.markdown(filtered, unsafe_allow_html=True)
