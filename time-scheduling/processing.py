@@ -275,7 +275,6 @@ if __name__ == "__main__":
             df_room['Size_Room'] = df_room['Size_Room'].astype(int)
             filter = df_room['Room'].to_list()
             list_filter = st.multiselect('Room Filter', filter )
-            list_filter = list_filter.to_list()
             df_room_filter = df_room[df_room['Room'].isin(list_filter[0])]   
 
       
