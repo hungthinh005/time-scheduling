@@ -300,6 +300,6 @@ if __name__ == "__main__":
     
     with tab2:         
         for_stu()
-    with st.sidebar():
+    with st.sidebar:
         filter = df_room['Room'].to_list()
         list_filter = st.multiselect('', filter, filter)
