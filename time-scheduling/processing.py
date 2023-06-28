@@ -253,6 +253,6 @@ if __name__ == "__main__":
         if st.button('Get Filter'):
             if 'html_result' in locals():
                 filtered_html = get_filter(html_result, list_filter)
-                st.coponents.v1.html(filtered_html, unsafe_allow_html=True, scrolling=True)
+                st.write(filtered_html)
         # if 'filtered_html' in locals():
         #     st.markdown(filtered_html, unsafe_allow_html=True)
