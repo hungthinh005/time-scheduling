@@ -3,81 +3,12 @@ import numpy as np
 import json
 import streamlit as st
 from ConsoleApp import main
+# from ConsoleApp import get_filter
 import sys
 import traceback
 
-# with st.sidebar:
-#     option = st.radio(
-#     "Which option do you want to",
-#     ('Upload File', 'Typing Data'))   
-#     st.write('You selected ' + option)
-
-
-##load file and processing data
-
- 
-    
-
 
 def load_file():
-
-    # uploaded_file = st.file_uploader('')
-
-    # if uploaded_file is not None:
-    #     df = pd.read_csv(uploaded_file)
-
-    # else:
-    #     df = [['Data Mining', 1, 35, 4, 'Nguyen Thi Thanh Sang'],
-    #         ['AOD', 2, 35, 4, 'Nguyen Thi Thanh Sang'],
-    #         ['Functional Programming', 0, 90, 3, 'Dao Tran Hoang Chau'],
-    #         ['Operating Systems', 0, 90, 3, 'Tran Manh Ha']]
-    #     room_columns = ['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']
-    #     df = pd.DataFrame(df, columns=room_columns)
-    
-    # df1 = df[['TenMH', 'ToTH', 'TongSoSV', 'SoTiet', 'TenDayDuNV']]
-    # df1 = df1.rename(columns={'TenMH': 'Course_Name', 'ToTH': 'Group_Lab', 'TongSoSV': 'Size_Course', 'SoTiet': 'Duration', 'TenDayDuNV': 'Prof_Name'})
-    # df1['Lab'] = df1['Group_Lab']
-    # # df1['Lab'] = df1['Lab'].astype(str)
-    # for index, row in df1.iterrows():
-    #     if row['Lab'] == 1 or row['Lab'] == 2 or row['Lab'] == 3 or row['Lab'] == 4:
-    #         df1.at[index, 'Lab'] = 'True'
-    #     else:
-    #         df1.at[index, 'Lab'] = ''
-    # df1['Lab'] = df1['Lab'].astype(bool)
-    
-
-
-    # ## create default room
-    # room_default = [['A1.309', 90, 0],
-    #                 ['L107', 40, 0],
-    #                 ['LA1.605', 35, 1],
-    #                 ['La1.607', 35, 1]
-    # ]
-    # room_columns = ['Room', 'Size_Room', 'Lab']
-    # df_room = pd.DataFrame(room_default, columns=room_columns)
-    # df_room['Lab'] = df_room['Lab'].astype(str)
-    # for index, row in df_room.iterrows():
-    #     if row['Lab'] == '1':
-    #         df_room.at[index, 'Lab'] = 'True'
-    #     else:
-    #         df_room.at[index, 'Lab'] = ''
-    # df_room['Lab'] = df_room['Lab'].astype(bool)
-    
-    # col1, col2, col3 = st.columns([7,2.4,4.5])
-    # with col1:
-    #     df2 = st.experimental_data_editor(df1, num_rows="dynamic")
-        
-
-    # with col2:
-    #     df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
-    #     df_room['Size_Room'] = df_room['Size_Room'].astype(int)
-
-        
-    # with col3:
-    #     with st.expander("Descriptions for Data Input"):    
-    #         st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
-    #         st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
-    # df2['Group_id'] = np.arange(1, len(df2) + 1)   
     
     list_course = []
     index_count_course_id = 0
@@ -216,10 +147,23 @@ def for_stu():
             with st.expander("List of recommend subjects in this semester"):    
                 st.dataframe(list_recommend_subjects.set_index(''))  
 
+def get_filter(html_result, list_filter):
+    # Parse the HTML
+    soup = BeautifulSoup(html_result, 'html.parser')
+    # Find all div elements with id starting with 'room_'
+    div_elements = soup.find_all('div', id=lambda x: x and x.startswith('room_'))
+    # Filter and display the schedule for specific rooms
+    filtered = ''
+    for div in div_elements:
+        room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
+        if room_id in list_filter:
+            return filtered.append(div)
+    
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
-    tab1, tab2 = st.tabs(["Schedule", "Student"])
+
+    tab1, tab2, tab3 = st.tabs(["Schedule", "Student", "Filter"])
     with tab1:
 
         uploaded_file = st.file_uploader('')
@@ -269,27 +213,46 @@ if __name__ == "__main__":
             df2['Duration'] = df2['Duration'].astype(int)
             df2['Group_id'] = np.arange(1, len(df2) + 1)
 
-
-        with col2:
+        with col2:                          
             df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
             df_room['Size_Room'] = df_room['Size_Room'].astype(int)
-
             
+            # df_room_filter = df_room[df_room['Room'].isin(list_filter)]   
+
+      
         with col3:
             with st.expander("Descriptions for Data Input"):    
                 st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
                 st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
     
-
+        
         load_file()
         file_name = "/GaSchedule1.json"
-        if len(sys.argv) > 1:
-            file_name = sys.argv[1]
-        try:
-            if st.button('Generate'): 
-                main(file_name)
-        except:
-            traceback.print_exc()
-    with tab2:
-         
+        # if len(sys.argv) > 1:
+        #     file_name = sys.argv[1]
+        # try:
+        if st.button('Generate'): 
+            html_result = main(file_name)
+            st.markdown(html_result, unsafe_allow_html=True)
+
+
+            filter = df_room['Room'].to_list()
+            list_filter = st.multiselect('', filter, filter)
+            filtered = get_filter(html_result, list_filter)
+            # html_result = main(file_name)
+            st.markdown(filtered, unsafe_allow_html=True)
+        # except:
+        #     traceback.print_exc()
+
+    with tab2:         
         for_stu()
+           
+    with tab3:
+        filter = df_room['Room'].to_list()
+        list_filter = st.multiselect('', filter, filter)
+
+        if st.button('Get Filter'):
+            if 'html_result' not in locals():
+                filtered = get_filter(html_result, list_filter)
+                # html_result = main(file_name)
+                st.markdown(filtered, unsafe_allow_html=True)
