@@ -28,6 +28,7 @@ def main(file_name, list_filter):
     # alg = Hgasso(configuration)
     alg.run()
     html_result = HtmlOutput.getResult(alg.result)
+    st.markdown(html_result, unsafe_allow_html=True)
     return html_result
     # temp_file_path = tempfile.gettempdir() + file_name.replace(".json", ".html")
     # writer = codecs.open(temp_file_path, "w", "utf-8")
