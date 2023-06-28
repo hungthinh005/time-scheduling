@@ -33,7 +33,7 @@ def main(file_name):
     # temp_file_path = tempfile.gettempdir() + file_name.replace(".json", ".html")
     # writer = codecs.open(temp_file_path, "w", "utf-8")
 
-def filter(html_result, list_filter):
+def get_filter(html_result, list_filter):
     # Parse the HTML
     soup = BeautifulSoup(html_result, 'html.parser')
     # Find all div elements with id starting with 'room_'
