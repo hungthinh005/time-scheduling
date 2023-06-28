@@ -3,7 +3,7 @@ import numpy as np
 import json
 import streamlit as st
 from ConsoleApp import main
-from ConsoleApp import get_filter
+# from ConsoleApp import get_filter
 import sys
 import traceback
 
