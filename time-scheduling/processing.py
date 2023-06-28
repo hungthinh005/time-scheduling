@@ -231,7 +231,7 @@ if __name__ == "__main__":
            
     with st.sidebar:
         filter = df_room['Room'].to_list()
-        list_filter = st.multiselect('', filter, filter)
+        list_filter = st.multiselect('Room Filter', filter, filter)
         if st.button('Get Filter'):
             if 'html_result' in locals():
                filtered_html = get_filter(html_result, list_filter)
