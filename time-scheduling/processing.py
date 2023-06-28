@@ -158,7 +158,7 @@ def get_filter(html_result, list_filter):
     for div in div_elements:
         room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
         if room_id in list_filter:
-            filtered_html += str(div)
+            filtered_html.append(div)
     # st.markdown(filtered_html, unsafe_allow_html=True)
     st.write(filtered_html)
     return filtered_html
