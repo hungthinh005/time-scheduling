@@ -167,7 +167,12 @@ def get_filter(html_result, list_filter):
         if room_id in list_filter:
             filtered += str(div)
     return filtered
-    
+
+def is_nested(lst):
+    for item in lst:
+        if isinstance(item, list):
+            return True
+    return False
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
@@ -253,7 +258,7 @@ if __name__ == "__main__":
 
         filter = df_room['Room'].to_list()
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-        st.write(list_filter)
+        st.write(is_nested(list_filter))
         list_filter1 = [item for sublist in list_filter for item in sublist]        
         st.write(list_filter1)
         if st.sidebar.button('Get Filter'):
