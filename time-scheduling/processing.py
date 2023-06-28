@@ -156,7 +156,7 @@ def get_filter(html_result, list_filter):
 
     # Find all div elements with id starting with 'room_'
     div_elements = soup.find_all('div', id=lambda x: x and x.startswith('room_'))
-    st.write(list_filter)
+    st.write(type(list_filter))
     # Filter and display the schedule for specific rooms
     filtered = ""
     for div in div_elements:
