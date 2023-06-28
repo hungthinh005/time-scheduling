@@ -247,9 +247,10 @@ if __name__ == "__main__":
     #            filtered_html = get_filter(html_result, list_filter)
     with tab3:
         filter = df_room['Room'].to_list()
-        list_filter = st.multiselect('Room Filter', filter, filter)
+        list_filter = st.multiselect('Room Filter', filter, filter, key="room_filter")
         if st.button('Get Filter'):
             if 'html_result' in locals():
-               get_filter(html_result, list_filter)
+               filtered_html = get_filter(html_result, list_filter)
+                st.markdown(filtered_html, unsafe_allow_html=True)
         # if 'filtered_html' in locals():
         #     st.markdown(filtered_html, unsafe_allow_html=True)
