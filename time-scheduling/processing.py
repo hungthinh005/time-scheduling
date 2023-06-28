@@ -258,7 +258,7 @@ if __name__ == "__main__":
         if st.sidebar.button('Get Filter'):
             # if list_filter:
             filtered = get_filter(session_state['html_result'], list_filter)
-            st.write(filtered)
+            st.sidebar.write(filtered)
 
 
         # except:
