@@ -256,7 +256,8 @@ if __name__ == "__main__":
 
         filter = df_room['Room'].to_list()
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-        if st.sidebar.button('Get Filter'):
-            if 'html_result' in session_state:
-                filtered = get_filter(session_state['html_result'], list_filter)
-                st.markdown(filtered, unsafe_allow_html=True)
+
+    if st.sidebar.button('Get Filter'):
+        if 'html_result' in session_state:
+            filtered = get_filter(session_state['html_result'], list_filter)
+            st.markdown(filtered, unsafe_allow_html=True)
