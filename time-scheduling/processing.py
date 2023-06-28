@@ -293,11 +293,12 @@ if __name__ == "__main__":
             if st.button('Generate'): 
                 # main(file_name, list_filter)
                 html_result = main(file_name)
-            if st.button('Get Filter'):
-                if 'html_result' in locals():
-                    filter(html_result, list_filter)
+            
         except:
             traceback.print_exc()
-    with tab2:
-         
+    with st.sidebar():
+        if st.button('Get Filter'):
+                # if 'html_result' in locals():
+            filter(html_result, list_filter)
+    with tab2:         
         for_stu()
