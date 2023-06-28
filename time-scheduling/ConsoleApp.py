@@ -34,7 +34,7 @@ def main(file_name, list_filter):
 
     # Parse the HTML
     soup = BeautifulSoup(html_result, 'html.parser')
-    
+    st.write(soup)
     # Find all div elements with id starting with 'room_'
     div_elements = soup.find_all('div', id=lambda x: x and x.startswith('room_'))
     
