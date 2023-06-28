@@ -16,6 +16,7 @@ import streamlit as st
 # from algorithm.Amga2 import Amga2
 # from algorithm.Hgasso import Hgasso
 from HtmlOutput import HtmlOutput
+from bs4 import BeautifulSoup
 
 def main(file_name, list_filter):
     start_time = int(round(time.time() * 1000))
@@ -34,7 +35,6 @@ def main(file_name, list_filter):
 
     # Parse the HTML
     soup = BeautifulSoup(html_result, 'html.parser')
-    st.write(soup)
     # Find all div elements with id starting with 'room_'
     div_elements = soup.find_all('div', id=lambda x: x and x.startswith('room_'))
     
