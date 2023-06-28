@@ -247,6 +247,6 @@ if __name__ == "__main__":
 
         if st.button('Get Filter'):
             if 'html_result' not in locals():
-                # filtered = get_filter(html_result, list_filter)
-                html_result = main(file_name)
-                st.markdown(html_result, unsafe_allow_html=True)
+                filtered = get_filter(html_result, list_filter)
+                # html_result = main(file_name)
+                st.markdown(filtered, unsafe_allow_html=True)
