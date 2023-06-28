@@ -166,7 +166,7 @@ def get_filter(html_result, list_filter):
         st.write(room_id)
         if room_id in list_filter:
             filtered += str(div)
-    st.write(filtered)
+    st.write(room_id in list_filter)
 
     return filtered
 
