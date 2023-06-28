@@ -235,6 +235,10 @@ if __name__ == "__main__":
             html_result = main(file_name)
             st.markdown(html_result, unsafe_allow_html=True)
 
+
+            filtered = get_filter(html_result, list_filter)
+            # html_result = main(file_name)
+            st.markdown(filtered, unsafe_allow_html=True)
         # except:
         #     traceback.print_exc()
 
