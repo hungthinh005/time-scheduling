@@ -234,9 +234,6 @@ if __name__ == "__main__":
             html_result = main(file_name)
             st.markdown(html_result, unsafe_allow_html=True)
 
-        filter = df_room['Room'].to_list()
-        list_filter = st.multiselect('', filter, filter)
-
         # except:
         #     traceback.print_exc()
 
