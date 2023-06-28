@@ -152,10 +152,10 @@ def for_stu():
 
 def get_filter(html_result, list_filter):
     # Parse the HTML
-    # soup = BeautifulSoup(html_result, 'html.parser')
+    soup = BeautifulSoup(html_result, 'html.parser')
 
     # Find all div elements with id starting with 'room_'
-    div_elements = html_result.find_all('div', id=lambda x: x and x.startswith('room_'))
+    div_elements = soup.find_all('div', id=lambda x: x and x.startswith('room_'))
     st.write(html_result)
     # Filter and display the schedule for specific rooms
     filtered = ''
@@ -254,7 +254,7 @@ if __name__ == "__main__":
         if st.sidebar.button('Get Filter'):
             if list_filter:
                 filtered = get_filter(session_state['html_result'], list_filter)
-                st.markdown(filtered, unsafe_allow_html=True)
+                st.markdown(BeautifulSoup(filtered, 'html.parser'), unsafe_allow_html=True)
 
 
         # except:
