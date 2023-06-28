@@ -248,5 +248,5 @@ if __name__ == "__main__":
         for_stu()
 
     with tab3:
-        get_filter()
+        filtered = get_filter(html_result, list_filter)
         st.markdown(filtered, unsafe_allow_html=True)
