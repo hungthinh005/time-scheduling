@@ -248,14 +248,6 @@ if __name__ == "__main__":
             st.markdown(session_state['html_result'], unsafe_allow_html=True)
 
 
-        # except:
-        #     traceback.print_exc()
-
-    with tab2:         
-        for_stu()
-
-    with tab3:
-
         filter = df_room['Room'].to_list()
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
 
@@ -263,3 +255,20 @@ if __name__ == "__main__":
             if list_filter:
                 filtered = get_filter(session_state['html_result'], list_filter)
                 st.markdown(filtered, unsafe_allow_html=True)
+
+
+        # except:
+        #     traceback.print_exc()
+
+    with tab2:         
+        for_stu()
+
+    # with tab3:
+
+    #     filter = df_room['Room'].to_list()
+    #     list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
+
+    #     if st.sidebar.button('Get Filter'):
+    #         if list_filter:
+    #             filtered = get_filter(session_state['html_result'], list_filter)
+    #             st.markdown(filtered, unsafe_allow_html=True)
