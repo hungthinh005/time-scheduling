@@ -292,9 +292,7 @@ if __name__ == "__main__":
             if st.button('Generate'): 
                 # main(file_name, list_filter)
                 html_result = main(file_name)
-            if st.button('Get Filter'):
-                if 'html_result' in locals():
-                    filter(html_result, list_filter)
+            
         except:
             traceback.print_exc()
     
@@ -303,3 +301,6 @@ if __name__ == "__main__":
     with st.sidebar:
         filter = df_room['Room'].to_list()
         list_filter = st.multiselect('', filter, filter)
+        if st.button('Get Filter'):
+            if 'html_result' in locals():
+                filter(html_result, list_filter)
