@@ -228,11 +228,11 @@ if __name__ == "__main__":
     with tab2:         
         for_stu()
     with tab3:
-        
+        st.markdown(filtered_html, unsafe_allow_html=True)
            
     with st.sidebar:
         filter = df_room['Room'].to_list()
         list_filter = st.multiselect('', filter, filter)
         if st.button('Get Filter'):
             if 'html_result' in locals():
-               get_filter(html_result, list_filter)
+               filtered_html = get_filter(html_result, list_filter)
