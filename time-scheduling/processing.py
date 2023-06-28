@@ -290,7 +290,7 @@ if __name__ == "__main__":
             file_name = sys.argv[1]
         try:
             if st.button('Generate'): 
-                main(file_name)
+                main(file_name, list_filter)
         except:
             traceback.print_exc()
     with tab2:
