@@ -251,10 +251,11 @@ if __name__ == "__main__":
 
         filter = df_room['Room'].to_list()
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-        st.write(list_filter)
+        list_filter1 = [room for sublist in list_filter for room in sublist]        
+        st.write(list_filter1)
         if st.sidebar.button('Get Filter'):
             if list_filter:
-                filtered = get_filter(session_state['html_result'], list_filter)
+                filtered = get_filter(session_state['html_result'], list_filter1)
                 st.markdown(BeautifulSoup(filtered, 'html.parser'), unsafe_allow_html=True)
 
 
