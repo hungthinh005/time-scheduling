@@ -252,7 +252,7 @@ if __name__ == "__main__":
 
         filter = df_room['Room'].to_list()
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-        list_filter1 = list(chain(*list_filter))    
+        list_filter1 = [item for sublist in list_filter for item in sublist]        
         st.write(list_filter1)
         if st.sidebar.button('Get Filter'):
             if list_filter:
