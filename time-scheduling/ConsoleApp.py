@@ -29,6 +29,8 @@ def main(file_name):
     alg.run()
     html_result = HtmlOutput.getResult(alg.result)
     st.markdown(html_result, unsafe_allow_html=True)
+    seconds = (int(round(time.time() * 1000)) - start_time) / 1000.0
+    st.write("\nCompleted in {} secs.\n".format(seconds))
     return html_result
     # temp_file_path = tempfile.gettempdir() + file_name.replace(".json", ".html")
     # writer = codecs.open(temp_file_path, "w", "utf-8")
@@ -46,22 +48,9 @@ def get_filter(html_result, list_filter):
         if room_id in list_filter:
             filtered_html += str(div)
     # st.markdown(filtered_html, unsafe_allow_html=True)
-    
-        
-    
+    st.write(filtered_html)
+    return filtered_html
     # writer.write(html_result)
     # writer.close()
 
-    seconds = (int(round(time.time() * 1000)) - start_time) / 1000.0
-    st.write("\nCompleted in {} secs.\n".format(seconds))
-    return filtered_html
-        # os.startfile(temp_file_path)
-# if __name__ == "__main__":
-#     file_name = "/GaSchedule3.json"
-#     if len(sys.argv) > 1:
-#         file_name = sys.argv[1]
 
-#     try:
-#         main(file_name)
-#     except:
-#         traceback.print_exc()
