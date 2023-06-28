@@ -155,7 +155,7 @@ def get_filter(html_result, list_filter):
     # Filter and display the schedule for specific rooms
     st.write(div_elements)
     filtered = ''
-    soup = BeautifulSoup(filtered, 'html.parser')
+    filtered = BeautifulSoup(filtered, 'html.parser')
     for div in div_elements:
         room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
         if room_id in list_filter:
