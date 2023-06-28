@@ -18,7 +18,7 @@ import streamlit as st
 from HtmlOutput import HtmlOutput
 from bs4 import BeautifulSoup
 
-def main(file_name, list_filter):
+def main(file_name):
     start_time = int(round(time.time() * 1000))
 
     configuration = Configuration()
@@ -33,7 +33,7 @@ def main(file_name, list_filter):
     # temp_file_path = tempfile.gettempdir() + file_name.replace(".json", ".html")
     # writer = codecs.open(temp_file_path, "w", "utf-8")
 
-def filter(html_result):
+def filter(html_result, list_filter):
     # Parse the HTML
     soup = BeautifulSoup(html_result, 'html.parser')
     # Find all div elements with id starting with 'room_'
