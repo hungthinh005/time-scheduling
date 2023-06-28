@@ -231,14 +231,14 @@ if __name__ == "__main__":
         
         load_file()
         file_name = "/GaSchedule1.json"
-        if len(sys.argv) > 1:
-            file_name = sys.argv[1]
-        try:
-            if st.button('Generate'): 
-                html_result = main(file_name)
-                st.markdown(html_result, unsafe_allow_html=True)
-        except:
-            traceback.print_exc()
+        # if len(sys.argv) > 1:
+        #     file_name = sys.argv[1]
+        # try:
+        if st.button('Generate'): 
+            html_result = main(file_name)
+            st.markdown(html_result, unsafe_allow_html=True)
+        # except:
+        #     traceback.print_exc()
 
     with tab2:         
         for_stu()
