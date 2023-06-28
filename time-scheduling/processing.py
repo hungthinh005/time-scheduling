@@ -242,8 +242,9 @@ if __name__ == "__main__":
         list_filter = st.multiselect('', filter, filter)
 
         if st.button('Get Filter'):
-            filtered = get_filter(html_result, list_filter)
-            st.write(filtered)
+            if 'html_result' in locals():
+                filtered = get_filter(html_result, list_filter)
+                st.write(filtered)
         # except:
         #     traceback.print_exc()
 
