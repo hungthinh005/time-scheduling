@@ -249,15 +249,15 @@ if __name__ == "__main__":
         #     file_name = sys.argv[1]
         # try:
         if st.button('Generate'): 
-            session_state['html_result'] = main(file_name)
-            st.markdown(session_state['html_result'], unsafe_allow_html=True)
+            html_result = main(file_name)
+            st.markdown(html_result, unsafe_allow_html=True)
 
 
         filter = df_room['Room'].to_list()
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if st.sidebar.button('Get Filter'):
             # if list_filter:
-            filtered = get_filter(session_state['html_result'], list_filter)
+            filtered = get_filter(html_result, list_filter)
             st.sidebar.write(filtered)
 
 
