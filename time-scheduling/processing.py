@@ -244,7 +244,7 @@ if __name__ == "__main__":
 
     with tab3:
         filter = df_room['Room'].to_list()
-        list_filter = st.multiselect('', filter, filter)
+        list_filter = st.sidebar.multiselect('', filter, filter)
         if st.button('Room Filter'): 
 
             filtered = get_filter(html_result, list_filter)
