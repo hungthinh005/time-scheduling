@@ -292,9 +292,9 @@ if __name__ == "__main__":
         try:
             if st.button('Generate'): 
                 # main(file_name, list_filter)
-                html_result = main(file_name, list_filter)
+                html_re = main(file_name, list_filter)
             if st.button('Get Filter'):
-                filter(html_result)
+                filter(html_re)
         except:
             traceback.print_exc()
     with tab2:
