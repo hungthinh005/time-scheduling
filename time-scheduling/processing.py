@@ -246,13 +246,3 @@ if __name__ == "__main__":
 
     with tab2:         
         for_stu()
-           
-    with tab3:
-        filter = df_room['Room'].to_list()
-        list_filter = st.multiselect('', filter, filter)
-
-        if st.button('Get Filter'):
-            if 'html_result' not in locals():
-                filtered = get_filter(html_result, list_filter)
-                # html_result = main(file_name)
-                st.markdown(filtered, unsafe_allow_html=True)
