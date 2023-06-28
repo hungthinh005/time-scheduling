@@ -16,9 +16,8 @@ import streamlit as st
 # from algorithm.Amga2 import Amga2
 # from algorithm.Hgasso import Hgasso
 from HtmlOutput import HtmlOutput
-from processing import list_filter
 
-def main(file_name):
+def main(file_name, list_filter):
     start_time = int(round(time.time() * 1000))
 
     configuration = Configuration()
