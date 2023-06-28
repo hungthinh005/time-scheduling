@@ -27,12 +27,11 @@ def main(file_name):
     alg = NsgaII(configuration)
     # alg = Hgasso(configuration)
     alg.run()
-    st.write(alg.result)
     html_result = HtmlOutput.getResult(alg.result)
 
     # temp_file_path = tempfile.gettempdir() + file_name.replace(".json", ".html")
     # writer = codecs.open(temp_file_path, "w", "utf-8")
-
+    st.write(html_result)
     st.markdown(html_result, unsafe_allow_html=True)
     # writer.write(html_result)
     # writer.close()
