@@ -255,10 +255,10 @@ if __name__ == "__main__":
 
         filter = df_room['Room'].to_list()
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-        if st.button('GetFilter'):
+        if st.sidebar.button('Get Filter'):
             # if list_filter:
             filtered = get_filter(session_state['html_result'], list_filter)
-            st.markdown(BeautifulSoup(filtered, 'html.parser'), unsafe_allow_html=True)
+            st.markdown(filtered, unsafe_allow_html=True)
 
 
         # except:
