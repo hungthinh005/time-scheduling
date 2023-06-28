@@ -6,7 +6,7 @@ from ConsoleApp import main
 # from ConsoleApp import get_filter
 import sys
 import traceback
-
+from bs4 import BeautifulSoup
 
 def load_file():
     
@@ -246,3 +246,7 @@ if __name__ == "__main__":
 
     with tab2:         
         for_stu()
+
+    with tab3:
+        get_filter()
+        st.markdown(filtered, unsafe_allow_html=True)
