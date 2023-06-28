@@ -161,6 +161,7 @@ def get_filter(html_result, list_filter):
         room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
         if room_id in list_filter:
             filtered += str(div)
+            st.write(div)
     return filtered
     
 st.set_page_config(layout="wide")
@@ -257,7 +258,7 @@ if __name__ == "__main__":
         filter = df_room['Room'].to_list()
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
 
-    if st.sidebar.button('Get Filter'):
-        if list_filter:
-            filtered = get_filter(session_state['html_result'], list_filter)
-            st.markdown(filtered, unsafe_allow_html=True)
+        if st.sidebar.button('Get Filter'):
+            if list_filter:
+                filtered = get_filter(session_state['html_result'], list_filter)
+                st.markdown(filtered, unsafe_allow_html=True)
