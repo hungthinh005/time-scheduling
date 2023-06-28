@@ -147,6 +147,22 @@ def for_stu():
             with st.expander("List of recommend subjects in this semester"):    
                 st.dataframe(list_recommend_subjects.set_index(''))  
 
+def get_filter(html_result, list_filter):
+    # Parse the HTML
+    soup = BeautifulSoup(html_result, 'html.parser')
+    # Find all div elements with id starting with 'room_'
+    div_elements = soup.find_all('div', id=lambda x: x and x.startswith('room_'))
+
+    filtered_html = ''
+    # Filter and display the schedule for specific rooms
+    for div in div_elements:
+        room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
+        if room_id in list_filter:
+            filtered_html += str(div)
+    # st.markdown(filtered_html, unsafe_allow_html=True)
+    st.write(filtered_html)
+    return filtered_html
+
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
@@ -227,14 +243,18 @@ if __name__ == "__main__":
     
     with tab2:         
         for_stu()
-    
            
-    with st.sidebar:
+    # with st.sidebar:
+    #     filter = df_room['Room'].to_list()
+    #     list_filter = st.multiselect('Room Filter', filter, filter)
+    #     if st.button('Get Filter'):
+    #         if 'html_result' in locals():
+    #            filtered_html = get_filter(html_result, list_filter)
+    with tab3:
         filter = df_room['Room'].to_list()
         list_filter = st.multiselect('Room Filter', filter, filter)
         if st.button('Get Filter'):
             if 'html_result' in locals():
                filtered_html = get_filter(html_result, list_filter)
-    with tab3:
-        if 'filtered_html' in locals():
-            st.markdown(filtered_html, unsafe_allow_html=True)
+        # if 'filtered_html' in locals():
+        #     st.markdown(filtered_html, unsafe_allow_html=True)
