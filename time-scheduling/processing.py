@@ -3,6 +3,7 @@ import numpy as np
 import json
 import streamlit as st
 from ConsoleApp import main
+from ConsoleApp import filter
 import sys
 import traceback
 
@@ -291,6 +292,9 @@ if __name__ == "__main__":
         try:
             if st.button('Generate'): 
                 main(file_name, list_filter)
+                html_result = main(file_name, list_filter)
+             if st.button('Get Filter'):
+                filter(html_result)
         except:
             traceback.print_exc()
     with tab2:
