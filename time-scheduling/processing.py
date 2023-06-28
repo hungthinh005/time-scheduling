@@ -161,6 +161,7 @@ def get_filter(html_result, list_filter):
     st.write("func", list_filter)
     for div in div_elements:
         room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
+        st.write(room_id)
         if room_id in list_filter:
             filtered += str(div)
     return filtered
