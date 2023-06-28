@@ -45,7 +45,8 @@ def get_filter(html_result, list_filter):
         room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
         if room_id in list_filter:
             filtered_html += str(div)
-    st.markdown(filtered_html, unsafe_allow_html=True)
+    # st.markdown(filtered_html, unsafe_allow_html=True)
+    
         
     
     # writer.write(html_result)
@@ -53,6 +54,7 @@ def get_filter(html_result, list_filter):
 
     seconds = (int(round(time.time() * 1000)) - start_time) / 1000.0
     st.write("\nCompleted in {} secs.\n".format(seconds))
+    return filtered_html
         # os.startfile(temp_file_path)
 # if __name__ == "__main__":
 #     file_name = "/GaSchedule3.json"
