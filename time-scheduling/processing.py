@@ -253,8 +253,8 @@ if __name__ == "__main__":
         filter = df_room['Room'].to_list()
         list_filter = st.multiselect('', filter, filter)
         if st.button('Get Filter'):
-            if 'html_result' in locals():
-                filtered = get_filter(html_result, list_filter)
-                st.write(filtered)
+            # if 'html_result' in locals():
+            filtered = get_filter(html_result, list_filter)
+            st.write(filtered)
         # if 'filtered_html' in locals():
         #     st.markdown(filtered_html, unsafe_allow_html=True)
