@@ -247,7 +247,7 @@ if __name__ == "__main__":
     #            filtered_html = get_filter(html_result, list_filter)
     with tab3:
         filter = df_room['Room'].to_list()
-        list_filter = st.multiselect('', filter, filter, key="room_filter", label_visibility='on_demand')
+        list_filter = st.multiselect('', filter, filter, key="room_filter", label_visibility='visible')
         if st.button('Get Filter'):
             if 'html_result' in locals():
                 filtered_html = get_filter(html_result, list_filter)
