@@ -290,10 +290,10 @@ if __name__ == "__main__":
         if len(sys.argv) > 1:
             file_name = sys.argv[1]
         try:
-            if st.button('Generate'): 
+            if st.button('Generate', key='generate_btn'): 
                 # main(file_name, list_filter)
                 html_result = main(file_name, list_filter)
-            if st.button('Get Filter'):
+            if st.button('Get Filter', key='filter_btn'):
                 if 'html_result' in locals():
                     filter(html_result)
         except:
