@@ -275,11 +275,9 @@ if __name__ == "__main__":
             df_room['Size_Room'] = df_room['Size_Room'].astype(int)
             filter = df_room['Room'].to_list()
             list_filter = st.multiselect('Room Filter', filter )
-            # list_filter[''] = np.arange(1, len(list_filter) + 1) 
-            df_room_filter = df_room
-            num = len(list_filter)
-            df_room_filter = df_room_filter[0:num]
-            df_room = df_room_filter
+            df_room_filter = df_room[df_room['Room'].isin(list_filter[0])]   
+
+      
         with col3:
             with st.expander("Descriptions for Data Input"):    
                 st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
