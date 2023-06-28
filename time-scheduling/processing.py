@@ -237,25 +237,25 @@ if __name__ == "__main__":
         if st.button('Generate'): 
             html_result = main(file_name)
             st.markdown(html_result, unsafe_allow_html=True)
+
+        filter = df_room['Room'].to_list()
+        list_filter = st.multiselect('', filter, filter)
+
+        if st.button('Get Filter'):
+            filtered = get_filter(html_result, list_filter)
+            st.write(filtered)
         # except:
         #     traceback.print_exc()
 
     with tab2:         
         for_stu()
            
-    # with st.sidebar:
+    # with tab3:
     #     filter = df_room['Room'].to_list()
-    #     list_filter = st.multiselect('Room Filter', filter, filter)
+    #     list_filter = st.multiselect('', filter, filter)
+
     #     if st.button('Get Filter'):
     #         if 'html_result' in locals():
-    #            filtered_html = get_filter(html_result, list_filter)
-    with tab3:
-        filter = df_room['Room'].to_list()
-        list_filter = st.multiselect('', filter, filter)
-        
-        if 'html_result' in locals():
-            if st.button('Get Filter'):
-                filtered = get_filter(html_result, list_filter)
-                st.write(filtered)
-        # if 'filtered_html' in locals():
-        #     st.markdown(filtered_html, unsafe_allow_html=True)
+    #             filtered = get_filter(html_result, list_filter)
+    #             st.write(filtered)
+
