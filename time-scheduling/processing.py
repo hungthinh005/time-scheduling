@@ -247,5 +247,5 @@ if __name__ == "__main__":
 
         if st.button('Get Filter'):
             if 'html_result' in locals():
-                filtered = get_filter(html_result, list_filter)
+                # filtered = get_filter(html_result, list_filter)
                 st.markdown(html_result, unsafe_allow_html=True)
