@@ -255,10 +255,12 @@ if __name__ == "__main__":
         filter = df_room['Room'].to_list()
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         
-        if st.sidebar.button('Get Filter'):
+        # if st.sidebar.button('Get Filter'):
             # if list_filter:
             # session_state['html_result'] = main(file_name)
             # st.markdown(session_state['html_result'], unsafe_allow_html=True)
+    with tab3:
+        if list_filter:
             filtered = get_filter(session_state['html_result'], list_filter)
             st.markdown(filtered, unsafe_allow_html=True)
 
