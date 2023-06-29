@@ -170,7 +170,7 @@ def get_filter(html, list_filter):
     return filtered
 
 def get_main(file_name, df2):
-    main(file_name)
+    html_result = main(file_name)
     df2 = df2
     return html_result
 
