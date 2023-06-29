@@ -252,14 +252,13 @@ if __name__ == "__main__":
         try:
 
             if st.button('Generate'): 
-                session_state['html_result'] = main(file_name)
-            list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-            if list_filter:
-                filtered1 = get_filter(session_state['html_result'], list_filter)
-                if filtered1:
-                    st.markdown(filtered1, unsafe_allow_html=True)  
+                # session_state['html_result'] = main(file_name)
+                html_result = main(file_name)
+
         except:
             traceback.print_exc()
-
+        list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
+        filtered1 = get_filter(html_result, list_filter)
+        st.markdown(filtered1, unsafe_allow_html=True)  
     with tab2:         
         for_stu()
