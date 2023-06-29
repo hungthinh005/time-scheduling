@@ -169,6 +169,9 @@ def get_filter(html, list_filter):
             filtered += str(div)
     return filtered
 
+def get_main(file_name, df2):
+    main(file_name)
+    df2 = df2
 
 
 st.set_page_config(layout="wide")
@@ -246,7 +249,7 @@ if __name__ == "__main__":
         
         load_file()
         file_name = "/GaSchedule1.json"
-        html_result = main(file_name)
+        html_result = get_main(file_name, df2)
         
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if st.button('Generate'):
