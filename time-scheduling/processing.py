@@ -248,8 +248,8 @@ if __name__ == "__main__":
         # try:
         if st.button('Save'): 
             session_state['main_html_result'] = main(file_name)
-            with st.expander("Schedule"): 
-                st.markdown(session_state['main_html_result'], unsafe_allow_html=True)
+        with st.expander("Schedule"): 
+            st.markdown(session_state['main_html_result'], unsafe_allow_html=True)
 
 
         
