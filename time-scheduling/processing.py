@@ -172,6 +172,7 @@ def get_filter(html, list_filter):
 def get_main(file_name, df2):
     main(file_name)
     df2 = df2
+    return html_result
 
 
 st.set_page_config(layout="wide")
