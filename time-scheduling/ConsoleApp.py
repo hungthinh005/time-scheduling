@@ -18,7 +18,6 @@ import streamlit as st
 from HtmlOutput import HtmlOutput
 from bs4 import BeautifulSoup
 
-@st.cache_data()
 def main(file_name):
     start_time = int(round(time.time() * 1000))
     configuration = Configuration()

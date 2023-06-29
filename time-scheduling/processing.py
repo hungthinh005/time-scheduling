@@ -169,6 +169,7 @@ def get_filter(html, list_filter):
             filtered += str(div)
     return filtered
 
+@st.cache_data()
 def data_display():
 
     uploaded_file = st.file_uploader('')
