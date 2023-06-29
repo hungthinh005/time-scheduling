@@ -263,9 +263,9 @@ if __name__ == "__main__":
             session_state['html_result'] = main(file_name)
 
         # session_state['main_html_result'] = main(file_name)
+        filter = df_room['Room'].to_list()
+        list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if st.button('Generate'): 
-            filter = df_room['Room'].to_list()
-            list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
             if list_filter:
                 filtered1 = get_filter(session_state['html_result'], list_filter)
                 if filtered1:
