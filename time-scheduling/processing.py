@@ -248,7 +248,7 @@ if __name__ == "__main__":
         # try:
         if st.button('Generate'): 
             session_state['html_result'] = main(file_name)
-            st.write(session_state['html_result'])
+            # st.write(session_state['html_result'])
             # st.markdown(session_state['html_result'], unsafe_allow_html=True)
 
 
