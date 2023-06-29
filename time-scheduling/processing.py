@@ -249,7 +249,7 @@ if __name__ == "__main__":
         if st.button('Generate'): 
             session_state['html_result'] = main(file_name)
             # st.write(session_state['html_result'])
-            st.markdown(session_state['html_result'], unsafe_allow_html=True)
+        st.markdown(session_state['html_result'], unsafe_allow_html=True)
 
 
         filter = df_room['Room'].to_list()
