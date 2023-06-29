@@ -154,7 +154,6 @@ def for_stu():
 
 def get_filter(html_result, list_filter):
     # Parse the HTML
-    st.write(html_result)
     soup = BeautifulSoup(html_result, 'html.parser')
 
     # Find all div elements with id starting with 'room_'
@@ -247,8 +246,8 @@ if __name__ == "__main__":
         # if len(sys.argv) > 1:
         #     file_name = sys.argv[1]
         # try:
-        # if st.button('Generate'): 
-            # session_state['html_result'] = main(file_name)
+        if st.button('Generate'): 
+            session_state['html_result'] = main(file_name)
             # st.markdown(session_state['html_result'], unsafe_allow_html=True)
 
 
@@ -256,7 +255,8 @@ if __name__ == "__main__":
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if st.sidebar.button('Get Filter'):
             # if list_filter:
-            session_state['html_result'] = main(file_name)
+            # session_state['html_result'] = main(file_name)
+            
             # st.markdown(session_state['html_result'], unsafe_allow_html=True)
             filtered = get_filter(session_state['html_result'], list_filter)
             st.markdown(filtered, unsafe_allow_html=True)
