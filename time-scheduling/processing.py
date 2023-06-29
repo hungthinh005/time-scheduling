@@ -247,13 +247,11 @@ if __name__ == "__main__":
         
         load_file()
         file_name = "/GaSchedule1.json"
-        session_state['html_result'] = main(file_name)
+        if session_state['html_result'] == {}:
+            session_state['html_result'] = main(file_name)
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-        st.write(len(sys.argv))
         if len(sys.argv) > 1:
             file_name = sys.argv[1]
-            session_state['html_result'] = main(file_name)
-
         try:
             if st.button('Generate'): 
                 filtered1 = get_filter(session_state['html_result'], list_filter)
