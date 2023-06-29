@@ -155,9 +155,9 @@ def for_stu():
             with st.expander("List of recommend subjects in this semester"):    
                 st.dataframe(list_recommend_subjects.set_index(''))  
 
-def get_filter(html_result, list_filter):
+def get_filter(html, list_filter):
     # Parse the HTML
-    soup = BeautifulSoup(html_result, 'html.parser')
+    soup = BeautifulSoup(html, 'html.parser')
 
     # Find all div elements with id starting with 'room_'
     div_elements = soup.find_all('div', id=lambda x: x and x.startswith('room_'))
@@ -248,7 +248,6 @@ if __name__ == "__main__":
         load_file()
         file_name = "/GaSchedule1.json"
         session_state['html_result'] = main(file_name)
-        st.write(session_state['html_result'])
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if len(sys.argv) > 1:
             file_name = sys.argv[1]
