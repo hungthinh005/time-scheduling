@@ -224,15 +224,15 @@ if __name__ == "__main__":
         df_room['Lab'] = df_room['Lab'].astype(bool)
 
 
-        col1, col2 = st.columns([2.4,7,2.4])
+        col1, col2, col3, col4 = st.columns([2.4,7,2.4,2.4])
 
-        with col1:
+        with col2:
             df2 = st.experimental_data_editor(df1, num_rows="dynamic")
             df2['Size_Course'] = df2['Size_Course'].astype(int)
             df2['Duration'] = df2['Duration'].astype(int)
             df2['Group_id'] = np.arange(1, len(df2) + 1)
 
-        with col2:                          
+        with col3:                          
             df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
             df_room['Size_Room'] = df_room['Size_Room'].astype(int)
             filter = df_room['Room'].to_list()
