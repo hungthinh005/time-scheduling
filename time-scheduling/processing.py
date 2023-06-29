@@ -246,8 +246,7 @@ if __name__ == "__main__":
         # if len(sys.argv) > 1:
         #     file_name = sys.argv[1]
         # try:
-        if 'main_html_result' in session_state:
-            session_state['main_html_result'] = main(file_name)
+        session_state['main_html_result'] = main(file_name)
         if st.button('Generate'): 
             
             if list_filter:
@@ -256,12 +255,6 @@ if __name__ == "__main__":
                 if filtered1:
                     st.markdown(filtered1, unsafe_allow_html=True)   
 
-        
-        
-        # if st.sidebar.button('Get Filter'):
-            # if list_filter:
-            # session_state['html_result'] = main(file_name)
-            # st.markdown(session_state['html_result'], unsafe_allow_html=True)
 
         # except:
         #     traceback.print_exc()
