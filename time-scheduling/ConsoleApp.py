@@ -18,16 +18,16 @@ import streamlit as st
 from HtmlOutput import HtmlOutput
 from bs4 import BeautifulSoup
 
+@st.cache_data
 def main(file_name):
     start_time = int(round(time.time() * 1000))
-
     configuration = Configuration()
     target_file = str(pathlib.Path().absolute()) + file_name
     configuration.parseFile(target_file)
     alg = NsgaII(configuration)
     # alg = Hgasso(configuration)
+    
     alg.run()
-    global html_result
     html_result = HtmlOutput.getResult(alg.result)
     # st.markdown(html_result, unsafe_allow_html=True)
     seconds = (int(round(time.time() * 1000)) - start_time) / 1000.0
