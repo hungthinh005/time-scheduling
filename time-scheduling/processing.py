@@ -248,7 +248,7 @@ if __name__ == "__main__":
         # if len(sys.argv) > 1:
         #     file_name = sys.argv[1]
         # try:
-        if st.button('Generate'): 
+        # if st.button('Generate'): 
             # session_state['html_result'] = main(file_name)
             # st.markdown(session_state['html_result'], unsafe_allow_html=True)
 
