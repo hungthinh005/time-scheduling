@@ -224,7 +224,7 @@ if __name__ == "__main__":
         df_room['Lab'] = df_room['Lab'].astype(bool)
 
 
-        col1, col2 = st.columns([7,2.4])
+        col1, col2 = st.columns([2.4,7,2.4])
 
         with col1:
             df2 = st.experimental_data_editor(df1, num_rows="dynamic")
