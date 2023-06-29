@@ -250,7 +250,8 @@ if __name__ == "__main__":
         
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if st.sidebar.button('Generate'): 
-            filtered1 = get_filter(session_state['html_result'], 'A1.309')
+            st.write(session_state['html_result'])
+            filtered1 = get_filter(session_state['html_result'], list_filter)
             st.markdown(filtered1, unsafe_allow_html=True)
         else:
             st.markdown(session_state['html_result'], unsafe_allow_html=True)
