@@ -251,29 +251,8 @@ if __name__ == "__main__":
         #     file_name = sys.argv[1]
         # try:
 
-        # with open("time-scheduling/GaSchedule1.json", 'r') as file:
-        #     json_data = json.load(file)
-
-        # # Calculate the hash of the JSON data
-        # json_hash = hashlib.md5(json.dumps(json_data, sort_keys=True).encode()).hexdigest()
-        
-        # # Check if the json_hash exists in session_state
-        # if 'json_hash' not in session_state or session_state['json_hash'] != json_hash:
-        #     # Update json_hash
-        #     session_state['json_hash'] = json_hash
-        
-            # Generate new html_result based on the JSON data
-        session_state['html_result'] = main(file_name)
-
-        # session_state['main_html_result'] = main(file_name)
-        
-        list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if st.button('Generate'): 
-            if list_filter:
-                filtered1 = get_filter(session_state['html_result'], list_filter)
-                if filtered1:
-                    st.markdown(filtered1, unsafe_allow_html=True)   
-
+            session_state['html_result'] = main(file_name)
 
         # except:
         #     traceback.print_exc()
@@ -281,12 +260,9 @@ if __name__ == "__main__":
     with tab2:         
         for_stu()
 
-    # with tab3:
-
-    #     filter = df_room['Room'].to_list()
-    #     list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-
-    #     if st.sidebar.button('Get Filter'):
-    #         if list_filter:
-    #             filtered = get_filter(session_state['html_result'], list_filter)
-    #             st.markdown(filtered, unsafe_allow_html=True)
+    with tab3:
+        list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
+        if list_filter:
+            filtered1 = get_filter(session_state['html_result'], list_filter)
+            if filtered1:
+                st.markdown(filtered1, unsafe_allow_html=True)  
