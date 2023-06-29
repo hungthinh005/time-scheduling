@@ -12,7 +12,6 @@ import traceback
 import hashlib
 from itertools import chain
 from bs4 import BeautifulSoup
-from ConsoleApp import html_result
 # from session_state import SessionState
 
 
@@ -247,6 +246,7 @@ if __name__ == "__main__":
         
         load_file()
         file_name = "/GaSchedule1.json"
+        html_result = None
         main(file_name)
         
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
