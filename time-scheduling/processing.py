@@ -163,7 +163,7 @@ def get_filter(html_result, list_filter):
     for div in div_elements:
         room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
         if room_id in list_filter:
-            filtered += str(div)
+            filtered += div.prettify()
 
     return filtered
 
