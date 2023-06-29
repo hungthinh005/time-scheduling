@@ -162,10 +162,9 @@ def get_filter(html_result, list_filter):
     filtered = ""
     for div in div_elements:
         room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
-        
         if room_id in list_filter:
-            filtered += div.prettify()
-    st.write(room_id)
+            filtered += str(div)
+    st.write(filtered)
     return filtered
 
 
@@ -262,9 +261,9 @@ if __name__ == "__main__":
             # st.markdown(session_state['html_result'], unsafe_allow_html=True)
     with tab3:
         if list_filter:
-            filtered = get_filter(session_state['html_result'], list_filter)
+            filtered1 = get_filter(session_state['html_result'], list_filter)
             if filtered:
-                st.markdown(filtered, unsafe_allow_html=True)
+                st.markdown(filtered1, unsafe_allow_html=True)
 
 
         # except:
