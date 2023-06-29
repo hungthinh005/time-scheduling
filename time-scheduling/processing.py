@@ -247,9 +247,9 @@ if __name__ == "__main__":
         #     file_name = sys.argv[1]
         # try:
         if st.button('Generate'): 
-            main_html_result = main(file_name)
+            session_state['main_html_result'] = main(file_name)
             # st.write(session_state['html_result'])
-            st.markdown(main_html_result, unsafe_allow_html=True)
+            st.markdown(session_state['main_html_result'], unsafe_allow_html=True)
 
 
         
@@ -260,7 +260,7 @@ if __name__ == "__main__":
             # st.markdown(session_state['html_result'], unsafe_allow_html=True)
     with tab3:
         if list_filter:
-            session_state['sub_html_result'] = main_html_result
+            session_state['sub_html_result'] = session_state['main_html_result']
             filtered1 = get_filter(session_state['sub_html_result'], list_filter)
             if filtered1:
                 st.markdown(filtered1, unsafe_allow_html=True)
