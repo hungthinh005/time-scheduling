@@ -163,7 +163,6 @@ def get_filter(html_result, list_filter):
     filtered = ""
     for div in div_elements:
         room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
-        st.write(room_id)
         if room_id in list_filter:
             filtered += str(div)
 
@@ -258,9 +257,9 @@ if __name__ == "__main__":
         if st.sidebar.button('Get Filter'):
             # if list_filter:
             session_state['html_result'] = main(file_name)
-            st.markdown(session_state['html_result'], unsafe_allow_html=True)
+            # st.markdown(session_state['html_result'], unsafe_allow_html=True)
             filtered = get_filter(session_state['html_result'], list_filter)
-            st.write(list_filter)
+            st.markdown(filtered, unsafe_allow_html=True)
 
 
         # except:
