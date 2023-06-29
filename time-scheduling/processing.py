@@ -175,8 +175,8 @@ if __name__ == "__main__":
 
     # Check if 'html_result' exists in session state
     if 'html_result' not in session_state:
-        session_state['html_result'] = ""  # Initialize 'html_result' if it doesn't exist
-
+        session_state['main_html_result'] = ""  # Initialize 'html_result' if it doesn't exist
+        session_state['sub_html_result'] = ""
     tab1, tab2, tab3 = st.tabs(["Schedule", "Student", "Filter"])
     with tab1:
 
