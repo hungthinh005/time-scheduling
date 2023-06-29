@@ -164,7 +164,6 @@ def get_filter(html_result, list_filter):
         room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
         if room_id in list_filter:
             filtered += str(div)
-    st.write(filtered)
     return filtered
 
 
@@ -231,7 +230,8 @@ if __name__ == "__main__":
         with col2:                          
             df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
             df_room['Size_Room'] = df_room['Size_Room'].astype(int)
-            
+            filter = df_room['Room'].to_list()
+            list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
             # df_room_filter = df_room[df_room['Room'].isin(list_filter)]   
 
       
@@ -252,8 +252,7 @@ if __name__ == "__main__":
         st.markdown(session_state['html_result'], unsafe_allow_html=True)
 
 
-        filter = df_room['Room'].to_list()
-        list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
+        
         
         # if st.sidebar.button('Get Filter'):
             # if list_filter:
