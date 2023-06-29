@@ -250,8 +250,9 @@ if __name__ == "__main__":
         # if len(sys.argv) > 1:
         #     file_name = sys.argv[1]
         # try:
+        session_state['html_result'] = ''
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-        if list_filter:
+        if list_filter and session_state['html_result'] != '':
             filtered1 = get_filter(session_state['html_result'], list_filter)
             if filtered1:
                 st.markdown(filtered1, unsafe_allow_html=True)  
