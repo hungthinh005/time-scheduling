@@ -251,19 +251,19 @@ if __name__ == "__main__":
         #     file_name = sys.argv[1]
         # try:
 
-        with open("time-scheduling/GaSchedule1.json", 'r') as file:
-            json_data = json.load(file)
+        # with open("time-scheduling/GaSchedule1.json", 'r') as file:
+        #     json_data = json.load(file)
 
-        # Calculate the hash of the JSON data
-        json_hash = hashlib.md5(json.dumps(json_data, sort_keys=True).encode()).hexdigest()
+        # # Calculate the hash of the JSON data
+        # json_hash = hashlib.md5(json.dumps(json_data, sort_keys=True).encode()).hexdigest()
         
-        # Check if the json_hash exists in session_state
-        if 'json_hash' not in session_state or session_state['json_hash'] != json_hash:
-            # Update json_hash
-            session_state['json_hash'] = json_hash
+        # # Check if the json_hash exists in session_state
+        # if 'json_hash' not in session_state or session_state['json_hash'] != json_hash:
+        #     # Update json_hash
+        #     session_state['json_hash'] = json_hash
         
             # Generate new html_result based on the JSON data
-            session_state['html_result'] = main(file_name)
+        session_state['html_result'] = main(file_name)
 
         # session_state['main_html_result'] = main(file_name)
         
