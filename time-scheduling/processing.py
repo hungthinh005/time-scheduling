@@ -169,17 +169,19 @@ def get_filter(html, list_filter):
             filtered += str(div)
     return filtered
 
+def get_main(file_name):
+    html = main(file_name)
+    return html
+
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
 
     session_state = {}
+    session_state1 = {}
 
-    # Check if 'html_result' exists in session state
-    if 'html_result' not in session_state:
-        session_state['main_html_result'] = ""  # Initialize 'html_result' if it doesn't exist
-        session_state['sub_html_result'] = ""
+
     tab1, tab2, tab3 = st.tabs(["Schedule", "Student", "Filter"])
     with tab1:
 
@@ -247,13 +249,14 @@ if __name__ == "__main__":
         
         load_file()
         file_name = "/GaSchedule1.json"
-        session_state['html_result'] = main(file_name)
+        session_state['html_result'] = get_main(file_name)
+        session_state1['html_result'] = session_state['html_result']
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if len(sys.argv) > 1:
             file_name = sys.argv[1]
         try:
             if st.button('Generate'): 
-                filtered1 = get_filter(session_state['html_result'], list_filter)
+                filtered1 = get_filter(session_state1['html_result'], list_filter)
                 st.markdown(filtered1, unsafe_allow_html=True)  
         except:
             traceback.print_exc()
