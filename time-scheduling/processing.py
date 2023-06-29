@@ -247,7 +247,7 @@ if __name__ == "__main__":
         
         load_file()
         file_name = "/GaSchedule1.json"
-        if session_state['html_result'] == {}:
+        if session_state == {}:
             session_state['html_result'] = main(file_name)
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if len(sys.argv) > 1:
