@@ -265,8 +265,8 @@ if __name__ == "__main__":
         #         st.markdown(filtered1, unsafe_allow_html=True)  
 
 
-        except:
-            traceback.print_exc()
+        # except:
+        #     traceback.print_exc()
 
     with tab2:         
         for_stu()
