@@ -262,7 +262,7 @@ if __name__ == "__main__":
     with tab3:
         if list_filter:
             filtered1 = get_filter(session_state['html_result'], list_filter)
-            if filtered:
+            if filtered1:
                 st.markdown(filtered1, unsafe_allow_html=True)
 
 
