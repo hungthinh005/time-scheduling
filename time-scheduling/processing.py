@@ -169,9 +169,6 @@ def get_filter(html, list_filter):
             filtered += str(div)
     return filtered
 
-def get_main(file_name):
-    html = main(file_name)
-    return html
 
 
 st.set_page_config(layout="wide")
@@ -249,14 +246,15 @@ if __name__ == "__main__":
         
         load_file()
         file_name = "/GaSchedule1.json"
-        session_state['html_result'] = get_main(file_name)
-        session_state1['html_result'] = session_state['html_result']
+        session_state['html_result'] = main(file_name)
+        
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if len(sys.argv) > 1:
             file_name = sys.argv[1]
         try:
             if st.button('Generate'): 
-                filtered1 = get_filter(session_state1['html_result'], list_filter)
+                temp = session_state['html_result']
+                filtered1 = get_filter(temp, list_filter)
                 st.markdown(filtered1, unsafe_allow_html=True)  
         except:
             traceback.print_exc()
