@@ -223,7 +223,9 @@ if __name__ == "__main__":
                 df_room.at[index, 'Lab'] = ''
         df_room['Lab'] = df_room['Lab'].astype(bool)
 
-        col1, col2, col3 = st.columns([7,2.4,4.5])
+
+        col1, col2 = st.columns([7,2.4])
+
         with col1:
             df2 = st.experimental_data_editor(df1, num_rows="dynamic")
             df2['Size_Course'] = df2['Size_Course'].astype(int)
@@ -237,10 +239,10 @@ if __name__ == "__main__":
             # df_room_filter = df_room[df_room['Room'].isin(list_filter)]   
 
       
-        with col3:
-            with st.expander("Descriptions for Data Input"):    
-                st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
-                st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
+        # with col3:
+        #     with st.expander("Descriptions for Data Input"):    
+        #         st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
+        #         st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
     
         
         load_file()
