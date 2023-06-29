@@ -246,7 +246,7 @@ if __name__ == "__main__":
         # if len(sys.argv) > 1:
         #     file_name = sys.argv[1]
         # try:
-        if 'main_html_result' not in session_state:
+        if 'main_html_result' in session_state:
             session_state['main_html_result'] = main(file_name)
         if st.button('Generate'): 
             
