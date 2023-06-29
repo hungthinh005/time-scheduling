@@ -240,7 +240,7 @@ if __name__ == "__main__":
     tab1, tab2, tab3 = st.tabs(["Schedule", "Student", "Filter"])
     with tab1:
         df2, df_room, filter = data_display()
-        load_file()
+        load_file(df2, df_room)
         file_name = "/GaSchedule1.json"
         html_result = main(file_name)
         
