@@ -12,6 +12,7 @@ import traceback
 import hashlib
 from itertools import chain
 from bs4 import BeautifulSoup
+from ConsoleApp import html_result
 # from session_state import SessionState
 
 
@@ -169,9 +170,6 @@ def get_filter(html, list_filter):
             filtered += str(div)
     return filtered
 
-def generate_schedule(file_name):
-    session_state['html_result'] = main(file_name)
-    return session_state['html_result']
 
 
 st.set_page_config(layout="wide")
@@ -249,14 +247,14 @@ if __name__ == "__main__":
         
         load_file()
         file_name = "/GaSchedule1.json"
-        st.session_state['html_result'] = generate_schedule(file_name)
+        main(file_name)
         
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if st.sidebar.button('Generate'): 
-            filtered1 = get_filter(st.session_state['html_result'], list_filter)
+            filtered1 = get_filter(html_result, list_filter)
             st.markdown(filtered1, unsafe_allow_html=True)
         else:
-            st.markdown(st.session_state['html_result'], unsafe_allow_html=True)
+            st.markdown(html_result, unsafe_allow_html=True)
 
         # if len(sys.argv) > 1:
         #     file_name = sys.argv[1]
