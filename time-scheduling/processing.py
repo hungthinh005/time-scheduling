@@ -250,15 +250,13 @@ if __name__ == "__main__":
         if len(sys.argv) > 1:
             file_name = sys.argv[1]
         try:
-
             if st.button('Generate'): 
-                # session_state['html_result'] = main(file_name)
                 session_state['html_result'] = main(file_name)
-
+            list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
+            filtered1 = get_filter(session_state['html_result'], list_filter)
+            st.markdown(filtered1, unsafe_allow_html=True)  
         except:
             traceback.print_exc()
-        list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-        filtered1 = get_filter(session_state['html_result'], list_filter)
-        st.markdown(filtered1, unsafe_allow_html=True)  
+
     with tab2:         
         for_stu()
