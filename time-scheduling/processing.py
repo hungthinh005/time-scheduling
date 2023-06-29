@@ -232,6 +232,7 @@ if __name__ == "__main__":
             df_room['Size_Room'] = df_room['Size_Room'].astype(int)
             filter = df_room['Room'].to_list()
             list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
+            session_state.list_filter = list_filter
             # df_room_filter = df_room[df_room['Room'].isin(list_filter)]   
 
       
@@ -249,6 +250,7 @@ if __name__ == "__main__":
         if st.button('Save'): 
             session_state['main_html_result'] = main(file_name)
         with st.expander("Schedule"): 
+            
             test = session_state['main_html_result']
             st.markdown(test, unsafe_allow_html=True)
 
@@ -262,7 +264,7 @@ if __name__ == "__main__":
     with tab3:
         if list_filter:
             session_state['sub_html_result'] = session_state['main_html_result']
-            filtered1 = get_filter(session_state['sub_html_result'], list_filter)
+            filtered1 = get_filter(session_state['sub_html_result'], session_state.list_filter)
             if filtered1:
                 st.markdown(filtered1, unsafe_allow_html=True)
 
