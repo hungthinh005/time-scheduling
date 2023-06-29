@@ -249,7 +249,7 @@ if __name__ == "__main__":
         #     file_name = sys.argv[1]
         # try:
 
-        with open("/GaSchedule1.json", 'r') as file:
+        with open("time-scheduling/GaSchedule1.json", 'r') as file:
             json_data = json.load(file)
 
         # Calculate the hash of the JSON data
