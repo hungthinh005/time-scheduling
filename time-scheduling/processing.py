@@ -262,9 +262,6 @@ if __name__ == "__main__":
         
             # Generate new html_result based on the JSON data
             session_state['html_result'] = main(file_name)
-        
-        # Use the stored html_result
-        st.markdown(session_state['html_result'], unsafe_allow_html=True)
 
         # session_state['main_html_result'] = main(file_name)
         if st.button('Generate'): 
