@@ -246,8 +246,9 @@ if __name__ == "__main__":
         # if len(sys.argv) > 1:
         #     file_name = sys.argv[1]
         # try:
+        session_state['main_html_result'] = main(file_name)
         if st.button('Generate'): 
-            session_state['main_html_result'] = main(file_name)
+            
             if list_filter:
                 session_state['sub_html_result'] = session_state['main_html_result']
                 filtered1 = get_filter(session_state['sub_html_result'], list_filter)
