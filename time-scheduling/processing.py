@@ -5,6 +5,8 @@ import streamlit as st
 from ConsoleApp import main
 # from ConsoleApp import get_filter
 import sys
+import hashlib
+import json
 import ast
 import traceback
 from itertools import chain
@@ -246,12 +248,28 @@ if __name__ == "__main__":
         # if len(sys.argv) > 1:
         #     file_name = sys.argv[1]
         # try:
-        session_state['main_html_result'] = main(file_name)
+
+        with open("/GaSchedule1.json", 'r') as file
+            json_data = json.load(file)
+
+        # Calculate the hash of the JSON data
+        json_hash = hashlib.md5(json.dumps(json_data, sort_keys=True).encode()).hexdigest()
+        
+        # Check if the json_hash exists in session_state
+        if 'json_hash' not in session_state or session_state['json_hash'] != json_hash:
+            # Update json_hash
+            session_state['json_hash'] = json_hash
+        
+            # Generate new html_result based on the JSON data
+            session_state['html_result'] = main(file_name)
+        
+        # Use the stored html_result
+        st.markdown(session_state['html_result'], unsafe_allow_html=True)
+
+        # session_state['main_html_result'] = main(file_name)
         if st.button('Generate'): 
-            
             if list_filter:
-                session_state['sub_html_result'] = session_state['main_html_result']
-                filtered1 = get_filter(session_state['sub_html_result'], list_filter)
+                filtered1 = get_filter(session_state['html_result'], list_filter)
                 if filtered1:
                     st.markdown(filtered1, unsafe_allow_html=True)   
 
