@@ -248,14 +248,23 @@ if __name__ == "__main__":
         file_name = "/GaSchedule1.json"
         session_state['html_result'] = main(file_name)
         
-        list_filter = st.sidebar.radio('Room Filter', filter)
-        if len(sys.argv) > 1:
-            file_name = sys.argv[1]
-        try:
-            if st.button('Generate'): 
-                temp = session_state['html_result']
-                filtered1 = get_filter(temp, list_filter)
-                st.markdown(filtered1, unsafe_allow_html=True)  
+        list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
+        if st.sidebar.button('Generate'): 
+            temp = session_state['html_result']
+            filtered1 = get_filter(temp, list_filter)
+            st.markdown(filtered1, unsafe_allow_html=True)
+        else:
+            st.markdown(session_state['html_result'], unsafe_allow_html=True)
+
+        # if len(sys.argv) > 1:
+        #     file_name = sys.argv[1]
+        # try:
+        #     if st.button('Generate'): 
+        #         temp = session_state['html_result']
+        #         filtered1 = get_filter(temp, list_filter)
+        #         st.markdown(filtered1, unsafe_allow_html=True)  
+
+
         except:
             traceback.print_exc()
 
