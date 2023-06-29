@@ -246,8 +246,7 @@ if __name__ == "__main__":
         
         load_file()
         file_name = "/GaSchedule1.json"
-        html_result = None
-        main(file_name)
+        html_result = main(file_name)
         
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if st.sidebar.button('Generate'): 
