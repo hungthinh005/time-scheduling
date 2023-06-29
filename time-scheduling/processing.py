@@ -252,10 +252,10 @@ if __name__ == "__main__":
         if len(sys.argv) > 1:
             file_name = sys.argv[1]
         try:
-            if st.button('Generate'): 
-                temp = session_state['html_result']
-                filtered1 = get_filter(temp, list_filter)
-                st.markdown(filtered1, unsafe_allow_html=True)  
+            # if st.button('Generate'): 
+            temp = session_state['html_result']
+            filtered1 = get_filter(temp, list_filter)
+            st.markdown(filtered1, unsafe_allow_html=True)  
         except:
             traceback.print_exc()
 
