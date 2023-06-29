@@ -232,8 +232,7 @@ if __name__ == "__main__":
         with col2:                          
             df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
             df_room['Size_Room'] = df_room['Size_Room'].astype(int)
-            filter = df_room['Room'].to_list()
-            list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
+
             # df_room_filter = df_room[df_room['Room'].isin(list_filter)]   
 
       
@@ -265,6 +264,8 @@ if __name__ == "__main__":
 
         # session_state['main_html_result'] = main(file_name)
         if st.button('Generate'): 
+            filter = df_room['Room'].to_list()
+            list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
             if list_filter:
                 filtered1 = get_filter(session_state['html_result'], list_filter)
                 if filtered1:
