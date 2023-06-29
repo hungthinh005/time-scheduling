@@ -5,6 +5,8 @@ import streamlit as st
 from ConsoleApp import main
 # from ConsoleApp import get_filter
 import sys
+import hashlib
+import json
 import ast
 import traceback
 import hashlib
@@ -155,7 +157,6 @@ def for_stu():
 
 def get_filter(html_result, list_filter):
     # Parse the HTML
-    st.write(html_result)
     soup = BeautifulSoup(html_result, 'html.parser')
 
     # Find all div elements with id starting with 'room_'
@@ -164,10 +165,8 @@ def get_filter(html_result, list_filter):
     filtered = ""
     for div in div_elements:
         room_id = div['id'].replace('room_', '')  # Extract the room ID from the div's id attribute
-        st.write(room_id)
         if room_id in list_filter:
             filtered += str(div)
-
     return filtered
 
 
@@ -179,8 +178,8 @@ if __name__ == "__main__":
 
     # Check if 'html_result' exists in session state
     if 'html_result' not in session_state:
-        session_state['html_result'] = ""  # Initialize 'html_result' if it doesn't exist
-
+        session_state['main_html_result'] = ""  # Initialize 'html_result' if it doesn't exist
+        session_state['sub_html_result'] = ""
     tab1, tab2, tab3 = st.tabs(["Schedule", "Student", "Filter"])
     with tab1:
 
@@ -234,7 +233,7 @@ if __name__ == "__main__":
         with col2:                          
             df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
             df_room['Size_Room'] = df_room['Size_Room'].astype(int)
-            
+            filter = df_room['Room'].to_list()
             # df_room_filter = df_room[df_room['Room'].isin(list_filter)]   
 
       
