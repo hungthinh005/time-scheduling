@@ -248,6 +248,7 @@ if __name__ == "__main__":
 
         # html_result_filter = main_filter(file_name)
         html_result = main(file_name)
+        st.write(html_result)
         if 'html_result' not in st.session_state:
             st.session_state.html_result = []
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
