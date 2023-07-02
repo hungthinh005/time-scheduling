@@ -246,13 +246,14 @@ if __name__ == "__main__":
         df2, df_room, filter = data_display()
         file_name = load_file(df2, df_room)
         html_result = main(file_name)
-        html_result_filter = main_filter(file_name)
+        # html_result_filter = main_filter(file_name)
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
 
         if st.button('Generate'):
             st.markdown(html_result, unsafe_allow_html=True)
     with tab3:
         if st.sidebar.button('Get Filter'): 
+            html_result_filter = html_result
             filtered1 = get_filter(html_result_filter, list_filter)
             st.markdown(filtered1, unsafe_allow_html=True)
 
@@ -263,7 +264,6 @@ if __name__ == "__main__":
         #         temp = session_state['html_result']
         #         filtered1 = get_filter(temp, list_filter)
         #         st.markdown(filtered1, unsafe_allow_html=True)  
-
 
         # except:
         #     traceback.print_exc()
