@@ -248,11 +248,11 @@ if __name__ == "__main__":
         html_result = main(file_name)
         html_result_filter = main_filter(file_name)
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-        if st.button('Save'):
-            html_result_filter = html_result
+
         if st.button('Generate'):
             st.markdown(html_result, unsafe_allow_html=True)
         if st.sidebar.button('Get Filter'): 
+            html_result_filter = html_result
             filtered1 = get_filter(html_result_filter, list_filter)
             st.markdown(filtered1, unsafe_allow_html=True)
 
