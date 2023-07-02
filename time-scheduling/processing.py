@@ -246,7 +246,7 @@ if __name__ == "__main__":
         df2, df_room, filter = data_display()
         file_name = load_file(df2, df_room)
 
-        html_result_filter = main_filter(file_name)
+        # html_result_filter = main_filter(file_name)
         html_result = main(file_name)
         if 'html_result' not in st.session_state:
             st.session_state.html_result = []
