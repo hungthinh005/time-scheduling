@@ -251,6 +251,7 @@ if __name__ == "__main__":
 
         if st.button('Generate'):
             st.markdown(html_result, unsafe_allow_html=True)
+    with tab3:
         if st.sidebar.button('Get Filter'): 
             filtered1 = get_filter(html_result_filter, list_filter)
             st.markdown(filtered1, unsafe_allow_html=True)
