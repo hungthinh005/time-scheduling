@@ -30,8 +30,8 @@ class HtmlOutput:
         sb.append(cc.Course.Name)
         sb.append("<br /> <span style='color:#00FFFF' title=''> <b>GV: <b/> </span>")
         sb.append(cc.Professor.Name)
-        # sb.append("<br /> <span style='color:#00FFFF' title=''> <b>Room: <b/> </span>")
-        # sb.append("/".join(map(lambda grp: grp.Name, cc.Groups)),)
+        sb.append("<br /> <span style='color:#00FFFF' title=''> <b>Room: <b/> </span>")
+        sb.append("/".join(map(lambda grp: grp.Name, cc.Groups)),)
         
         if cc.LabRequired:
             # sb.append(" Lab <br />")
