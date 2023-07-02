@@ -3,6 +3,8 @@ import numpy as np
 import json
 import streamlit as st
 from ConsoleApp import main
+from ConsoleApp import main_filter
+
 # from ConsoleApp import get_filter
 import sys
 import hashlib
@@ -243,12 +245,12 @@ if __name__ == "__main__":
         load_file(df2, df_room)
         file_name = "/GaSchedule1.json"
         html_result = main(file_name)
-        
+        html_result_filter = main_filter(file_name)
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
         if st.button('Generate'):
             st.markdown(html_result, unsafe_allow_html=True)
         if st.sidebar.button('Get Filter'): 
-            filtered1 = get_filter(html_result, list_filter)
+            filtered1 = get_filter(html_result_filter, list_filter)
             st.markdown(filtered1, unsafe_allow_html=True)
 
 
