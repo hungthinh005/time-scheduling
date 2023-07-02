@@ -42,11 +42,11 @@ def main_filter(file_name):
     # alg = Hgasso(configuration)
     
     alg.run()
-    html_result_filter = HtmlOutput.getResult(alg.result)
+    html_result = HtmlOutput.getResult(alg.result)
     # st.markdown(html_result, unsafe_allow_html=True)
     # seconds = (int(round(time.time() * 1000)) - start_time) / 1000.0
     # st.write("\nCompleted in {} secs.\n".format(seconds))
-    return html_result_filter
+    return html_result
 
 
 
