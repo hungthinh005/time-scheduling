@@ -14,7 +14,7 @@ import traceback
 import hashlib
 from itertools import chain
 from bs4 import BeautifulSoup
-from session_state import SessionState
+# from session_state import SessionState
 
 
 
@@ -248,13 +248,15 @@ if __name__ == "__main__":
 
         html_result_filter = main_filter(file_name)
         html_result = main(file_name)
-        ss = SessionState.get(test = html_result)
+        if 'html_result' not in st.session_state:
+            st.session_state.html_result = []
         list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
 
         if st.button('Generate'):
-            st.markdown(ss.test, unsafe_allow_html=True)
+            st.session_state.html_result = html_result
+            st.markdown(st.session_state.html_result, unsafe_allow_html=True)
         if st.sidebar.button('Get Filter'): 
-            filtered1 = get_filter(ss.test, list_filter)
+            filtered1 = get_filter(st.session_state.html_result, list_filter)
             st.markdown(filtered1, unsafe_allow_html=True)
 
         # if len(sys.argv) > 1:
