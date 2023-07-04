@@ -1,6 +1,7 @@
 from model.Constant import Constant
 from model.Reservation import Reservation
 from collections import defaultdict
+from bs4 import BeautifulSoup
 import streamlit as st
 
 class HtmlOutput:
@@ -155,6 +156,10 @@ class HtmlOutput:
 
                 if periodId == HtmlOutput.ROOM_ROW_NUMBER - 1:
                     sb.append("</table>\n</div>\n")
+            
+
+            sb = sb.replace("<b>Room: </b></span>", "<b>Room: </b></span>{}".format(room.Name))
+
         st.markdown(sb)
         return "".join(str(v) for v in sb)
     
