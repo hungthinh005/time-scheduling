@@ -44,6 +44,7 @@ def main(file_name):
     # alg = Hgasso(configuration)
     
     alg.run()
+    st.write(alg.result)
     html_result = HtmlOutput.getResult(alg.result)
     # st.markdown(html_result, unsafe_allow_html=True)
     seconds = (int(round(time.time() * 1000)) - start_time) / 1000.0
