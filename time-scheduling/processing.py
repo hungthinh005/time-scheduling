@@ -245,7 +245,7 @@ if __name__ == "__main__":
     with tab1:
         df2, df_room, filter = data_display()
         file_name = load_file(df2, df_room)
-        st.json(file_name)
+        st.write(file_name)
         # html_result_filter = main_filter(file_name)
         html_result = main(file_name)
         # st.write(html_result)
