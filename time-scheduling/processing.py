@@ -100,7 +100,6 @@ def load_file(df2, df_room):
             
     # create JSON object with list of objects
     json_data = json.dumps(objects, sort_keys=False)
-    st.write(json_data)
     # write JSON object to file
     with open('GaSchedule1.json', 'w') as f:
         f.write(json_data) 
