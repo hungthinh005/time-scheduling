@@ -100,7 +100,6 @@ def load_file(df2, df_room):
             
     # create JSON object with list of objects
     json_data = json.dumps(objects, sort_keys=False)
-
     # write JSON object to file
     with open('GaSchedule1.json', 'w') as f:
         f.write(json_data) 
@@ -245,7 +244,6 @@ if __name__ == "__main__":
     with tab1:
         df2, df_room, filter = data_display()
         file_name = load_file(df2, df_room)
-
         # html_result_filter = main_filter(file_name)
         html_result = main(file_name)
         # st.write(html_result)
