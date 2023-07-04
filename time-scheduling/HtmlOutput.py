@@ -57,7 +57,8 @@ class HtmlOutput:
         ci = 0
 
         time_table = defaultdict(list)
-        items = solution.classes.items        
+        items = solution.classes.items   
+        st.write(items)     
         ROOM_COLUMN_NUMBER = HtmlOutput.ROOM_COLUMN_NUMBER
         getCourseClass = HtmlOutput.getCourseClass
 
@@ -106,7 +107,6 @@ class HtmlOutput:
                 time_table[key] = room_schedule
 
             room_schedule[dayId] = "".join(getCourseClass(cc, solution.criteria, ci))
-            st.write(room_schedule[dayId])
             ci += len(HtmlOutput.CRITERIAS)
         return time_table
     
