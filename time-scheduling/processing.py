@@ -230,11 +230,6 @@ def data_display():
         # df_room_filter = df_room[df_room['Room'].isin(list_filter)]   
 
     return df2, df_room, filter
-    # with col3:
-    #     with st.expander("Descriptions for Data Input"):    
-    #         st.write("- Must Include: Course Name, Lab Group, Size of Course, Duration (Period of Course), Professor Name.")
-    #         st.write("- In the case of the course with 4 periods, 1 room can only accommodate 12 classes at most. Be careful when modifying the info on rooms")
-
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
