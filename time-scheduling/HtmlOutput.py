@@ -126,38 +126,39 @@ class HtmlOutput:
 
         sb = []
         for roomId in range(nr):
+            temp = []
             room = getRoomById(roomId)
             for periodId in range(HtmlOutput.ROOM_ROW_NUMBER):
                 if periodId == 0:
-                    sb.append("<div id='room_")
-                    sb.append(room.Name)
-                    sb.append("' style='padding: 0.5em'>\n")
-                    sb.append("<table style=' border: .25em solid white; text-align: center; width: 100%'>\n")
-                    sb.append(HtmlOutput.getTableHeader(room))
+                    temp.append("<div id='room_")
+                    temp.append(room.Name)
+                    temp.append("' style='padding: 0.5em'>\n")
+                    temp.append("<table style=' border: .25em solid white; text-align: center; width: 100%'>\n")
+                    temp.append(HtmlOutput.getTableHeader(room))
                 else:
                     key = (periodId, roomId)
                     room_duration = slot_table[key] if key in slot_table.keys() else None
                     room_schedule = time_table[key] if key in time_table.keys() else None
-                    sb.append("<tr>")
+                    temp.append("<tr>")
                     for dayId in range(HtmlOutput.ROOM_COLUMN_NUMBER):
                         if dayId == 0:
-                            sb.append("<th style='color: #00FFFF; border: .25em solid white; text-align: center; padding: .25em' scope='row' colspan='2'>")
-                            sb.append(HtmlOutput.PERIODS[periodId])
-                            sb.append("</th>\n")
+                            temp.append("<th style='color: #00FFFF; border: .25em solid white; text-align: center; padding: .25em' scope='row' colspan='2'>")
+                            temp.append(HtmlOutput.PERIODS[periodId])
+                            temp.append("</th>\n")
                             continue
 
                         if room_schedule is None and room_duration is None:
                             continue
 
                         content = room_schedule[dayId] if room_schedule is not None else None
-                        sb.append(HtmlOutput.getHtmlCell(content, room_duration[dayId]))
-                    sb.append("</tr>\n")
+                        temp.append(HtmlOutput.getHtmlCell(content, room_duration[dayId]))
+                    temp.append("</tr>\n")
 
                 if periodId == HtmlOutput.ROOM_ROW_NUMBER - 1:
-                    sb.append("</table>\n</div>\n")
-            
-                sb = json.dumps(sb).replace(" <b>Room: <b/> </span>", "<b> <b>Room: <b/> </span>{}".format(room.Name))
-                sb = json.loads(sb)
+                    temp.append("</table>\n</div>\n")
+            temp = json.dumps(temp).replace(" <b>Room: <b/> </span>", "<b> <b>Room: <b/> </span>{}".format(room.Name))
+            temp = json.loads(temp)
+            sb = sb.append(temp)
             st.markdown(sb)
         return "".join(str(v) for v in sb)
     
