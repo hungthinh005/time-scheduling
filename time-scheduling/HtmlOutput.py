@@ -1,9 +1,8 @@
 from model.Constant import Constant
 from model.Reservation import Reservation
 from collections import defaultdict
-from bs4 import BeautifulSoup
 import streamlit as st
-
+import json
 class HtmlOutput:
     ROOM_COLUMN_NUMBER = Constant.DAYS_NUM + 1
     ROOM_ROW_NUMBER = Constant.DAY_HOURS + 1
@@ -157,8 +156,8 @@ class HtmlOutput:
                 if periodId == HtmlOutput.ROOM_ROW_NUMBER - 1:
                     sb.append("</table>\n</div>\n")
             
-            sb = str(sb).replace(" <b>Room: <b/> </span>", "<b> <b>Room: <b/> </span>{}".format(room.Name))
-            sb = list(sb)
+            sb = json.dumps(sb).replace(" <b>Room: <b/> </span>", "<b> <b>Room: <b/> </span>{}".format(room.Name))
+            sb = json.loads(sb)
             st.markdown(sb)
         return "".join(str(v) for v in sb)
     
