@@ -45,7 +45,7 @@ def main(file_name):
     
     a = alg.run()
     st.write(a)
-    html_result = HtmlOutput.getResult(a.result)
+    html_result = HtmlOutput.getResult(alg.result)
     # st.markdown(html_result, unsafe_allow_html=True)
     seconds = (int(round(time.time() * 1000)) - start_time) / 1000.0
     st.write("\nCompleted in {} secs.\n".format(seconds))
