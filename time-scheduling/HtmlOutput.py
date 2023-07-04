@@ -58,7 +58,7 @@ class HtmlOutput:
 
         time_table = defaultdict(list)
         items = solution.classes.items   
-        st.write(items)     
+        st.write(time_table)     
         ROOM_COLUMN_NUMBER = HtmlOutput.ROOM_COLUMN_NUMBER
         getCourseClass = HtmlOutput.getCourseClass
 
