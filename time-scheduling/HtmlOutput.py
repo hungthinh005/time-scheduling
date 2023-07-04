@@ -147,7 +147,7 @@ class HtmlOutput:
                     sb.append("<div id='room_")
                     sb.append(room.Name)
                     sb.append("' style='padding: 0.5em'>\n")
-                    sb.append("<table style=' border: .1em solid white; text-align: center; width: 100%'>\n")
+                    sb.append("<table style=' border: .25em solid white; text-align: center; width: 100%'>\n")
                     sb.append(HtmlOutput.getTableHeader(room))
                 else:
                     key = (periodId, roomId)
@@ -156,7 +156,7 @@ class HtmlOutput:
                     sb.append("<tr>")
                     for dayId in range(HtmlOutput.ROOM_COLUMN_NUMBER):
                         if dayId == 0:
-                            sb.append("<th style='color: #00FFFF; border: .1em solid white; text-align: center; padding: .25em' scope='row' colspan='2'>")
+                            sb.append("<th style='color: #00FFFF; border: .25em solid white; text-align: center; padding: .25em' scope='row' colspan='2'>")
                             sb.append(HtmlOutput.PERIODS[periodId])
                             sb.append("</th>\n")
                             continue
@@ -176,17 +176,17 @@ class HtmlOutput:
 
     @staticmethod
     def getTableHeader(room):
-        sb = ["<tr><th style='color:#00FFFF; border: .1em solid white' scope='col' colspan='2'>Room: ", room.Name, "</th>\n"]
+        sb = ["<tr><th style='color:#00FFFF; border: .25em solid white' scope='col' colspan='2'>Room: ", room.Name, "</th>\n"]
         for weekDay in HtmlOutput.WEEK_DAYS:
-            sb.append("<th style='color: #00FFFF; border: .1em solid white; padding: .25em; width: 15%; text-align: center' scope='col' rowspan='2'>")
+            sb.append("<th style='color: #00FFFF; border: .25em solid white; padding: .25em; width: 15%; text-align: center' scope='col' rowspan='2'>")
             sb.append(weekDay)
             sb.append("</th>\n")
         sb.append("</tr>\n")
         sb.append("<tr>\n")
-        sb.append("<th style='color:#00FFFF; border: .1em solid white; padding: .25em'>Lab: ")
+        sb.append("<th style='color:#00FFFF; border: .25em solid white; padding: .25em'>Lab: ")
         sb.append("Yes" if room.Lab else "No")
         sb.append("</th>\n")
-        sb.append("<th style='color:#00FFFF; border: .1em solid white; padding: .25em'>Seats: ")
+        sb.append("<th style='color:#00FFFF; border: .25em solid white; padding: .25em'>Seats: ")
         sb.append(room.NumberOfSeats)
         sb.append("</th>\n")
         sb.append("</tr>\n")
