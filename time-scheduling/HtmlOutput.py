@@ -158,7 +158,7 @@ class HtmlOutput:
                     sb.append("</table>\n</div>\n")
             
 
-            sb = sb.replace("<b>Room: </b></span>", "<b>Room: </b></span>{}".format(room.Name))
+                sb = sb.replace("<b>Room: </b></span>", "<b>Room: </b></span>{}".format(room.Name))
 
         st.markdown(sb)
         return "".join(str(v) for v in sb)
