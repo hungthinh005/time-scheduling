@@ -27,7 +27,7 @@ class HtmlOutput:
         sb.append(cc.Course.Name)
         sb.append("<br /> <span style='color:#00FFFF' title=''> <b>GV: <b/> </span>")
         sb.append(cc.Professor.Name)
-        # sb.append("<br /> <span style='color:#00FFFF' title=''> <b>Room: <b/> </span>")
+        sb.append("<br /> <span style='color:#00FFFF' title=''> <b>Room: <b/> </span>")
         # sb.append(room.Name)
         # sb.append("/".join(map(lambda grp: grp.Name, cc.Groups)),)
         
@@ -68,8 +68,8 @@ class HtmlOutput:
             else:
                 periodId = 1
             roomId = reservation.Room
-            st.write(roomId)
             key = (periodId, roomId)
+
             if key in slot_table:
                 room_duration = slot_table[key]
             else:
@@ -155,7 +155,6 @@ class HtmlOutput:
 
                 if periodId == HtmlOutput.ROOM_ROW_NUMBER - 1:
                     sb.append("</table>\n</div>\n")
-            st.markdown(sb)
         return "".join(str(v) for v in sb)
     
     
