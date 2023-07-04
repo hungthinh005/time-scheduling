@@ -155,6 +155,7 @@ class HtmlOutput:
 
                 if periodId == HtmlOutput.ROOM_ROW_NUMBER - 1:
                     sb.append("</table>\n</div>\n")
+        st.write(sb)
         return "".join(str(v) for v in sb)
     
     
