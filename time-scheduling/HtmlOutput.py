@@ -156,7 +156,7 @@ class HtmlOutput:
                 if periodId == HtmlOutput.ROOM_ROW_NUMBER - 1:
                     sb.append("</table>\n</div>\n")
             
-            sb = json.dumps(sb).replace(" <b>Room: <b/> </span>", "<b> <b>Room: <b/> </span>{}".format(room.Name))
+            sb = json.dumps(sb).replace(" <b>Room: <b/> </span>", "<b> <b>Room: <b/> </span>{}</td>".format(room.Name))
             sb = json.loads(sb)
             st.markdown(sb)
         return "".join(str(v) for v in sb)
