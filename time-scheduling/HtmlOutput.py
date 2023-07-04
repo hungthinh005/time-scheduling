@@ -18,13 +18,9 @@ class HtmlOutput:
 
     @staticmethod
     def getCourseClass(cc, criterias, ci):
-        # COLOR1 = HtmlOutput.COLOR1
-        # COLOR2 = HtmlOutput.COLOR2
-        # CRITERIAS = HtmlOutput.CRITERIAS
-        # length_CRITERIAS = len(CRITERIAS)
-        # CRITERIAS_DESCR = HtmlOutput.CRITERIAS_DESCR
 
-        # sb = ["MH: ", cc.Course.Name, "<br />GV: ", cc.Professor.Name, "<br />Room: ", "/".join(map(lambda grp: grp.Name, cc.Groups)),"<br />"]
+
+
 
         sb = []
         sb.append(" <span style='color:#00FFFF' title=''> <b>MH: <b/> </span>")
@@ -36,19 +32,8 @@ class HtmlOutput:
         # sb.append("/".join(map(lambda grp: grp.Name, cc.Groups)),)
         
         if cc.LabRequired:
-            # sb.append(" Lab <br />")
             sb.append(" <br /><span style='color:#00FFFF' title=''> <b>Lab <b/> </span>")
-        # for i in range(length_CRITERIAS):
-        #     sb.append("<span style='color:")
-        #     if criterias[ci + i]:
-        #         sb.append("' title='")
-        #         sb.append(CRITERIAS_DESCR[i].format(any="" if (i == 1 or i == 2) else "no "))
-        #     else:
-        #         sb.append("' title='")
-        #         sb.append(CRITERIAS_DESCR[i].format(any="not " if (i == 1 or i == 2) else ""))
-        #     sb.append("'> ")
-        #     sb.append(CRITERIAS[i])
-        #     sb.append(" </span>")
+
 
         return sb
 
@@ -83,7 +68,7 @@ class HtmlOutput:
             else:
                 periodId = 1
             roomId = reservation.Room
-            
+            st.write(roomId)
             key = (periodId, roomId)
             if key in slot_table:
                 room_duration = slot_table[key]
