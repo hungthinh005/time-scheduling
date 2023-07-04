@@ -106,6 +106,7 @@ class HtmlOutput:
                 time_table[key] = room_schedule
 
             room_schedule[dayId] = "".join(getCourseClass(cc, solution.criteria, ci))
+            st.write(room_schedule[dayId])
             ci += len(HtmlOutput.CRITERIAS)
         return time_table
     
