@@ -158,7 +158,7 @@ class HtmlOutput:
                     temp.append("</table>\n</div>\n")
             temp = json.dumps(temp).replace(" <b>Room: <b/> </span>", "<b> <b>Room: <b/> </span>{}".format(room.Name))
             temp = json.loads(temp)
-            sb = sb.append(temp)
+            sb = temp
             st.markdown(sb)
         return "".join(str(v) for v in sb)
     
