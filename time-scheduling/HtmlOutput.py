@@ -120,7 +120,6 @@ class HtmlOutput:
 
         slot_table = defaultdict(list)
         time_table = HtmlOutput.generateTimeTable(solution, slot_table)  # Tuple[0] = time, Tuple[1] = roomId
-        st.write(time_table)
         if not slot_table or not time_table:
             return ""
 
@@ -157,7 +156,6 @@ class HtmlOutput:
                 if periodId == HtmlOutput.ROOM_ROW_NUMBER - 1:
                     temp.append("</table>\n</div>\n")
             temp = json.dumps(temp).replace(" <b>Room: <b/> </span>", "<b> <b>Room: <b/> </span>{}".format(room.Name))
-            st.write(temp)
             temp = json.loads(temp)
             sb = sb + temp
         return "".join(str(v) for v in sb)

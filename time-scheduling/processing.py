@@ -242,7 +242,7 @@ if __name__ == "__main__":
         file_name = load_file(df2, df_room)
         # html_result_filter = main_filter(file_name)
         html_result = main(file_name)
-        # st.write(html_result)
+        st.write(html_result)
         if 'html_result' not in st.session_state:
             st.session_state.html_result = []
         list_room_filter = st.sidebar.multiselect('Room Filter', filter, filter)
