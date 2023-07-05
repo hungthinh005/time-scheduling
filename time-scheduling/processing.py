@@ -222,8 +222,7 @@ def data_display():
         df2['Size_Course'] = df2['Size_Course'].astype(int)
         df2['Duration'] = df2['Duration'].astype(int)
         df2['Group_id'] = np.arange(1, len(df2) + 1)
-        df_prof_filter = df2['Prof_Name'].to_list()
-        df_prof_filter = list(set(df_prof_filter))
+        df_prof_filter = df2['Prof_Name'].drop_duplicates().tolist()
 
     with col3:                          
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
@@ -247,7 +246,7 @@ if __name__ == "__main__":
         if 'html_result' not in st.session_state:
             st.session_state.html_result = []
         list_room_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-        list_prof_filter = st.multiselect('Prof Filter', df_prof_filter, df_prof_filter)
+        list_prof_filter = st.sidebar.multiselect('Prof Filter', df_prof_filter, df_prof_filter)
         if st.button('Generate'):
             st.session_state.html_result = html_result
             st.markdown(st.session_state.html_result, unsafe_allow_html=True)
