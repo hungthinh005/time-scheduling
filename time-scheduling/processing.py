@@ -230,7 +230,7 @@ def data_display():
         filter = df_room['Room'].to_list()
         # df_room_filter = df_room[df_room['Room'].isin(list_filter)]   
 
-    return df2, df_room, filter
+    return df2, df_room, filter, df_prof_filter
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
@@ -238,7 +238,7 @@ if __name__ == "__main__":
 
     tab1, tab2, tab3 = st.tabs(["Schedule", "Student", "Filter"])
     with tab1:
-        df2, df_room, filter = data_display()
+        df2, df_room, filter, df_prof_filter = data_display()
         file_name = load_file(df2, df_room)
         # html_result_filter = main_filter(file_name)
         html_result = main(file_name)
