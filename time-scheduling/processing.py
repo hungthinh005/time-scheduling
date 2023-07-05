@@ -250,7 +250,7 @@ if __name__ == "__main__":
         if st.button('Generate'):
             st.session_state.html_result = html_result
             st.markdown(st.session_state.html_result, unsafe_allow_html=True)
-        if st.sidebar.button('Get Filter'): 
+        if st.sidebar.button('Room Filter'): 
             filtered1 = get_filter(st.session_state.html_result, list_room_filter)
             st.markdown(filtered1, unsafe_allow_html=True)
 
