@@ -222,6 +222,7 @@ def data_display():
         df2['Size_Course'] = df2['Size_Course'].astype(int)
         df2['Duration'] = df2['Duration'].astype(int)
         df2['Group_id'] = np.arange(1, len(df2) + 1)
+        df_prof_filter = df2['Prof_Name'].drop_duplicates().tolist()
 
     with col3:                          
         df_room = st.experimental_data_editor(df_room, num_rows="dynamic")
@@ -229,7 +230,7 @@ def data_display():
         filter = df_room['Room'].to_list()
         # df_room_filter = df_room[df_room['Room'].isin(list_filter)]   
 
-    return df2, df_room, filter
+    return df2, df_room, filter, df_prof_filter
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
@@ -237,20 +238,20 @@ if __name__ == "__main__":
 
     tab1, tab2, tab3 = st.tabs(["Schedule", "Student", "Filter"])
     with tab1:
-        df2, df_room, filter = data_display()
+        df2, df_room, filter, df_prof_filter = data_display()
         file_name = load_file(df2, df_room)
         # html_result_filter = main_filter(file_name)
         html_result = main(file_name)
         # st.write(html_result)
         if 'html_result' not in st.session_state:
             st.session_state.html_result = []
-        list_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-
+        list_room_filter = st.sidebar.multiselect('Room Filter', filter, filter)
+        list_prof_filter = st.sidebar.multiselect('Prof Filter', df_prof_filter, df_prof_filter)
         if st.button('Generate'):
             st.session_state.html_result = html_result
             st.markdown(st.session_state.html_result, unsafe_allow_html=True)
         if st.sidebar.button('Get Filter'): 
-            filtered1 = get_filter(st.session_state.html_result, list_filter)
+            filtered1 = get_filter(st.session_state.html_result, list_room_filter)
             st.markdown(filtered1, unsafe_allow_html=True)
 
         # if len(sys.argv) > 1:
