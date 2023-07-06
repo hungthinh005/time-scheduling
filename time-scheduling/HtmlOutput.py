@@ -150,7 +150,8 @@ class HtmlOutput:
                             continue
 
                         content = room_schedule[dayId] if room_schedule is not None else None
-                        temp.append(HtmlOutput.getHtmlCell(content, room_duration[dayId]))
+                        test = temp.append(HtmlOutput.getHtmlCell(content, room_duration[dayId]))
+                        st.write(test)
                     temp.append("</tr>\n")
 
                 if periodId == HtmlOutput.ROOM_ROW_NUMBER - 1:
