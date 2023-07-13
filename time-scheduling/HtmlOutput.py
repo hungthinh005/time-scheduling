@@ -48,7 +48,7 @@ class HtmlOutput:
 
         for cc, reservation_index in items():
             reservation = Reservation.parse(reservation_index)
-
+            st.markdown(reservation_index)
             # coordinate of time-space slot
             dayId = reservation.Day + 1
             dur = cc.Duration
