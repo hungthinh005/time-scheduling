@@ -14,7 +14,6 @@ def main(file_name):
     configuration.parseFile(target_file)
     alg = NsgaII(configuration)
     # alg = Hgasso(configuration)
-    st.markdown(alg)
     alg.run()
     html_result = HtmlOutput.getResult(alg.result)
     # st.markdown(html_result, unsafe_allow_html=True)
