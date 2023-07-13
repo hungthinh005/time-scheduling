@@ -92,7 +92,7 @@ class HtmlOutput:
 
             room_schedule[dayId] = "".join(getCourseClass(cc, solution.criteria, ci))
             ci += len(HtmlOutput.CRITERIAS)
-        st.write(time_table)
+        st.markdown(time_table)
         return time_table
     
     @staticmethod
