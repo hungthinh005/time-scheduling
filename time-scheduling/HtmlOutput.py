@@ -43,7 +43,6 @@ class HtmlOutput:
 
         time_table = defaultdict(list)
         items = solution.classes.items   
-        st.write(solution)
         ROOM_COLUMN_NUMBER = HtmlOutput.ROOM_COLUMN_NUMBER
         getCourseClass = HtmlOutput.getCourseClass
 
@@ -121,6 +120,7 @@ class HtmlOutput:
 
         slot_table = defaultdict(list)
         time_table = HtmlOutput.generateTimeTable(solution, slot_table)  # Tuple[0] = time, Tuple[1] = roomId
+        st.markdown(time_table)
         if not slot_table or not time_table:
             return ""
 
