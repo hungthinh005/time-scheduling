@@ -236,7 +236,7 @@ st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
 
-    tab1, tab2, tab3 = st.tabs(["Schedule", "Student", "Filter"])
+    tab1, tab2 = st.tabs(["Schedule", "Student"])
     with tab1:
         df2, df_room, filter, df_prof_filter = data_display()
         file_name = load_file(df2, df_room)
@@ -245,7 +245,7 @@ if __name__ == "__main__":
         if 'html_result' not in st.session_state:
             st.session_state.html_result = []
         list_room_filter = st.sidebar.multiselect('Room Filter', filter, filter)
-        list_prof_filter = st.sidebar.multiselect('Prof Filter', df_prof_filter, df_prof_filter)
+        # list_prof_filter = st.sidebar.multiselect('Prof Filter', df_prof_filter, df_prof_filter)
         if st.button('Generate'):
             st.session_state.html_result = html_result
             st.markdown(st.session_state.html_result, unsafe_allow_html=True)
