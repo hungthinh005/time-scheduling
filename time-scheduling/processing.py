@@ -238,7 +238,7 @@ if __name__ == "__main__":
 
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
     image = Image.open('time-scheduling/logo-vector-IU-01.png')
-    st.sidebar.image(image, width=250)
+    st.sidebar.image(image, width=150)
     tab1, tab2 = st.tabs(["Schedule", "Student"])
     with tab1:
         df2, df_room, filter, df_prof_filter = data_display()
