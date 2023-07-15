@@ -12,6 +12,7 @@ import json
 import ast
 import traceback
 import hashlib
+from PIL import Image
 from itertools import chain
 from bs4 import BeautifulSoup
 # from session_state import SessionState
@@ -235,7 +236,8 @@ def data_display():
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
     st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
-
+    image = Image.open('https://hcmiu.edu.vn/wp-content/uploads/2017/08/logo-vector-IU-01.png')
+    st.image(image)
     tab1, tab2 = st.tabs(["Schedule", "Student"])
     with tab1:
         df2, df_room, filter, df_prof_filter = data_display()
