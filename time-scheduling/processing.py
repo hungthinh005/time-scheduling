@@ -235,7 +235,7 @@ def data_display():
 
 st.set_page_config(layout="wide")
 if __name__ == "__main__":
-    col1, col2 = st.columns()
+    col1, col2 = st.columns(2)
     with col1:
         st.markdown("<h1 style='text-align: center; color: white;'>Time Scheduling Engine</h1>", unsafe_allow_html=True)
     with col2:
